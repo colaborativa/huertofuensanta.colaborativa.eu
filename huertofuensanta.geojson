@@ -1,7 +1,19 @@
 { "type": "FeatureCollection",
   "features": [
-    { "type": "Feature",
-      "geometry": {"type": "Point", "coordinates": [37.883974, 4.762335]},
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.762335,
+          37.883974
+        ]
+      },
+      "properties": {
+        "marker-symbol": "Huerto Urbano",
+        "name": "HuertoFuensanta",
+        "address": "Hernando de Magallanes s/n, Córdoba"
+      }
     }
-    ]
+  ]
 }
