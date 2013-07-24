@@ -1,0 +1,48 @@
+#To deploy the site, run rake deploy
+#To deploy a different environment, run rake deploy env=production
+#The same applies for launch:
+#rake launch
+#rake launch env=production
+#This command will open the environment in your default browser
+# REFERENCE LINKS:
+# * http://rake.rubyforge.org 
+# * http://onestepback.org/articles/buildingwithrake
+# * https://gist.github.com/jamiew/1225205 ejemplo de Rake for deployment
+##################################################################
+begin
+  require 'rubygems'
+  require 'bundler'
+  require 'yaml'
+rescue LoadError
+  raise "Could not load the bundler gem. Install it with `gem install bundler`."
+end
+
+begin
+  Bundler.setup
+rescue Bundler::GemNotFound
+  raise RuntimeError, "Bundler couldn't find some gems. Did you run `bundle install`?"
+end
+
+config_file = '_config.yml'
+config = YAML.load_file(config_file)
+
+desc 'Start Jekyll server with watch option'
+task :server do
+  sh "jekyll serve"
+end
+
+desc "By default, run jekyll for development"
+# A task named "default". This task does nothing by itself, but it has exactly one dependency, 
+# namely the "launch" task. Invoking the "default" task will cause Rake to invoke the "launch" task as well.
+task :default => :launch
+
+
+desc "Run jekyll for Development at http://localhost:4000/"
+task :launch do
+  # run jekyll to generate static site version at ./_site/ folder of current Git Branch
+  env = 'development'
+  # jekyll --auto --server --url http://localhost:4000/
+  # sh "jekyll --auto --server --url #{config['environments'][env]['url']}"
+  sh "jekyll serve -w"
+  sh "compass watch -c compass.rb"
+end
