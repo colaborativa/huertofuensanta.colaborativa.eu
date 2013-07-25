@@ -2,5 +2,3 @@ source "http://rubygems.org"
 
 gem "jekyll"
 gem "rake"
-gem "compass"
-gem "zurb-foundation"
