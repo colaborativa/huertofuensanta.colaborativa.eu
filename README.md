@@ -25,6 +25,6 @@ Estamos a la espera de que el proyecto 100% abierto [Discourse](http://www.disco
 Para unirse a la lista de correo del Huerto Fuensanta no es necesario tener una cuenta de gmail, cualquier email es válido para unirse al grupo.
 
  - Para unirse al Huerto Fuensanta envía un email a huertofuensanta+subscribe@googlegroups.com
- - Para visitar el grupo https://groups.google.com/d/forum/huertofuensanta?hl=es.
- - Para publicar una entrada en este grupo, envía un correo electrónico a huertofuensanta@googlegroups.com.
- - Para anular tu suscripción a este grupo, envía un correo electrónico a huertofuensanta+unsubscribe@googlegroups.com.
+ - Para visitar el grupo https://groups.google.com/d/forum/huertofuensanta?hl=es 
+ - Para publicar una entrada en este grupo, envía un correo electrónico a huertofuensanta@googlegroups.com 
+ - Para anular tu suscripción a este grupo, envía un correo electrónico a huertofuensanta+unsubscribe@googlegroups.com 
