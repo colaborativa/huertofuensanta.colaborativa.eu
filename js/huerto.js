@@ -39,7 +39,7 @@
 */
 Date.locale = {
     es: {
-       month_names: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octobre', 'Noviembre', 'Diciembre'],
+       month_names: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
        month_names_short: ['En', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
     }
 };
@@ -50,9 +50,16 @@ var jqxhr = $.getJSON( url, function() {
   console.log( "success" );
 })
 .done(function(data) { 
-	console.log( "second success" ); 
+	console.log( "second success "); 
+	//
+	function custom_sort(a, b) {
+    return new Date(a.datetaken).getTime() - new Date(b.datetaken).getTime();
+	}
+	var your_array = data.photos.photo;
+	your_array.sort(custom_sort);
+	//
  	var htmlString = ' ';
- 	$.each(data.photos.photo, function(i, item){
+ 	$.each(your_array, function(i, item){
  		var imageName = "http://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_b.jpg"
  		var imageTitle = item.title;
  		var imageDesc = item.description._content;
