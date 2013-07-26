@@ -37,34 +37,45 @@
 </div>
 
 */
-var url = 'http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos&api_key=eb8a57b5872cf567fbbb1a42bdbd26ad&group_id=2233980%40N22&format=json&nojsoncallback=1&auth_token=72157634788201621-216bf626aae13e55&api_sig=c5a2baef5adcbd9df5716fd46265becd';
+Date.locale = {
+    es: {
+       month_names: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octobre', 'Noviembre', 'Diciembre'],
+       month_names_short: ['En', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+    }
+};
+var url = 'http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos&api_key=d23ef69291abb4a7c7a3c5d578f0d982&group_id=2233980%40N22&extras=description%2Cdate_taken&format=json&nojsoncallback=1&auth_token=72157634800900844-0d55e4b1b7a64faa&api_sig=b85c092d5bbc1d77c38ca81fb35d8174';
 // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
 var jqxhr = $.getJSON( url, function() {
   console.log( "success" );
 })
 .done(function(data) { 
-
 	console.log( "second success" ); 
- 	console.log(data);
- 	var htmlString;
- 	$.each(data.photos.photo, function(i,item){
+ 	var htmlString = ' ';
+ 	$.each(data.photos.photo, function(i, item){
  		var imageName = "http://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_b.jpg"
- 		console.log(imageName);
- 		var fecha = new Date(item.dateadded);
- 		htmlString += '<div class="item"> <img src="'+imageName+'" alt="">';
+ 		var imageTitle = item.title;
+ 		var imageDesc = item.description._content;
+ 		if (imageDesc == "Add a description..."){
+ 			imageDesc = ' ';
+ 		}
+  		var imageFecha = new Date(item.datetaken);
+ 		var imageMes = Date.locale['es'].month_names[imageFecha.getMonth()];
+ 		if(i == 0){ // first image add active class
+ 			htmlString += '<div class="item active"> <img src="'+imageName+'" alt="">';
+ 		}else{
+	 		htmlString += '<div class="item"> <img src="'+imageName+'" alt="">';
+ 		}
  		htmlString += '<div class="container">';
  		htmlString += '<div class="carousel-caption">';
- 		htmlString += '<h1>' + item.title + '</h1>';
- 		htmlString += '<p class="lead"><span> 25 Mayo 2013 </span>'+'</p></div></div></div>';
+ 		htmlString += '<h1>' + imageTitle + '</h1>';
+ 		htmlString += '<p class="lead"><span>'+ imageFecha.getDate()+' de ' + imageMes +' de '+ imageFecha.getFullYear();
+ 		htmlString += '</span> '+imageDesc+'</p></div></div></div>';
 		
  	});
    $('.carousel-inner').append(htmlString);
 })
 .fail(function() { console.log( "error" ); })
 .always(function() { console.log( "complete" ); });
- 
-// perform other work here ...
- 
 // Set another completion function for the request above
 jqxhr.complete(function() { console.log( "second complete" ); });
