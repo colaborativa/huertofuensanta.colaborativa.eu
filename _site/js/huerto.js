@@ -1,5 +1,5 @@
 /* 
-  Descripción: 
+  * Descripción: 
     A través del siguiente código se obtienen las imágenes insertadas dentro del grupo de Flickr Huerto Fuensanta 
     (http://www.flickr.com/groups/2233980@N22/). Además de la imagen se extraen otros datos de utilidad como son:
       - Fecha en la que se tomó la foto
@@ -7,14 +7,14 @@
       - Descripción
     Las fotos se ordenan por la fecha en las que fueron tomadas.
 
-	Links de referencia:
-  http://www.flickr.com/services/api/explore/flickr.groups.pools.getPhotos
-	http://www.flickr.com/services/api/flickr.groups.pools.getPhotos.html
+	* Links de referencia:
+    http://www.flickr.com/services/api/explore/flickr.groups.pools.getPhotos
+	  http://www.flickr.com/services/api/flickr.groups.pools.getPhotos.html
 
-	Para iconos usar:  http://farm9.staticflickr.com/8251/buddyicons/50381188@N06.jpg
-  Para fotos de un grupo usar: http://farm9.staticflickr.com/8113/8655193988_07b236521f_b.jpg
+	* Para iconos usar:  http://farm9.staticflickr.com/8251/buddyicons/50381188@N06.jpg
+  * Para fotos de un grupo usar: http://farm9.staticflickr.com/8113/8655193988_07b236521f_b.jpg
 	
-  Salida JSON:
+  * Salida JSON:
   { "photos": { "page": 1, "pages": 1, "perpage": 100, "total": 58, 
     "photo": [
       { "id": "8677001289", "owner": "50381188@N06", "secret": "f0354915da", "server": "8254", 
@@ -28,13 +28,13 @@
       ....
   ] }, "stat": "ok" }
 
-  URL:http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos&api_key=ee4bdc6841d42f90d9ca5e598e99d2f3
+  * URL: http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos&api_key=ee4bdc6841d42f90d9ca5e598e99d2f3
   &group_id=2233980%40N22
   &extras=@%2C+owner_name%2C+icon_server
   &format=json&nojsoncallback=1
   &api_sig=9c8bb3ae7ac1e2a593358e9eaadf42c3
 
-  Estructura HTML:
+  * Estructura HTML:
   <div class="carousel-inner">
   <div class="item">
           <img src="http://farm9.staticflickr.com/8113/8655193988_07b236521f_b.jpg" alt="">
@@ -48,13 +48,12 @@
   ....
   </div>
 
-  Datos API de Flickr:
+  * Datos API de Flickr:
   huertofuensanta
   Clave: ee4bdc6841d42f90d9ca5e598e99d2f3
   Secreto: ce66d3877f4238c3
-
 */
-
+var stuff = []; // Test {"Name":"image_1","Title":"title_1"},{"Name":"image_2","Title":"title_2"}];
 Date.locale = {
     es: {
        month_names: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -74,7 +73,6 @@ var jqxhr = $.getJSON( url, function() {
 })
 .done(function(data) { 
 	console.log( "second success ");
-	console.log(data); 
 	//
 	function custom_sort(a, b) {
     return new Date(a.datetaken).getTime() - new Date(b.datetaken).getTime();
@@ -83,47 +81,54 @@ var jqxhr = $.getJSON( url, function() {
 	your_array.sort(custom_sort);
 	//
  	var htmlString = ' ';
+
  	$.each(your_array, function(i, item){
  		var imageName = "http://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_b.jpg"
  		var imageTitle = item.title;
  		var imageOwnerIcon =  'http://farm' + item.iconfarm+ '.staticflickr.com/'+ item.iconserver+ '/buddyicons/'+ item.owner +'.jpg';
  		var imageOwner = '';
  		var imageDesc = item.description._content;
+    var datetaken = new String(item.datetaken); 
+    datetaken = datetaken.replace(/\s/g, 'T'); // Replace space by 'T'
  		if (imageDesc == "Add a description..."){
  			imageDesc = ' ';
  		}
-  		var imageFecha = new Date(item.datetaken);
+  	var imageFecha = new Date(datetaken);// format: 2013-04-13 20:05:41 item.datetaken
+    console.log(item.datetaken + imageFecha);
  		var imageMes = Date.locale['es'].month_names[imageFecha.getMonth()];
  		//if( item.ownername != 'colaborativa.eu'){ // Test
 			imageOwner = 'Por ' + item.ownername + ' a ';
 		//}
-		console.log(imageOwnerIcon);
- 		if(i == 0){ // first image add active class
- 			htmlString += '<div class="item active"> <img src="'+imageName+'" alt="">';
- 		}else{
-	 		htmlString += '<div class="item"> <img src="'+imageName+'" alt="">';
- 		}
- 		htmlString += '<div class="container">';
- 		htmlString += '<div class="carousel-caption">';
- 		htmlString += '<h1>' + imageTitle + '</h1>';
- 		htmlString += '<p class="lead"><span> <img src="'+imageOwnerIcon+'" alt="">';
- 		htmlString += imageOwner+imageFecha.getDate()+' de ' + imageMes +' de '+ imageFecha.getFullYear();
- 		htmlString += '</span> '+imageDesc+'</p></div></div></div>';
-		
+ 		var imageFechaFinal= imageFecha.getDate() + ' de ' + imageMes + ' de ' + imageFecha.getFullYear();
+    
+    var obj = {"Name": imageName, 
+               "Title": imageTitle, 
+               "Fecha": imageFechaFinal,
+               "OwnerIcon": imageOwnerIcon,
+               "Owner": imageOwner,
+               "Description": imageDesc,
+             };
+    stuff.push(obj);
  	});
-   $('.carousel-inner').append(htmlString);
+  var flickrImages = {flickrImages: stuff}; 
+  $.get('/templates/templates.html', function(templates) { 
+    // Fetch the <script /> block from the loaded external 
+    // template file which contains our greetings template.
+    var template = $(templates).filter('#tpl-flickrimages').html();
+    var output = Mustache.to_html(template, flickrImages);
+    //var output = Mustache.render(template, flickrImages);
+    $('.carousel-inner').html(output);
+    var object = $('.carousel-inner div')[0];
+    $(object).addClass('active');
+  });
 })
 .fail(function() { console.log( "error" ); })
 .always(function() { console.log( "complete" ); });
 // Set another completion function for the request above
 jqxhr.complete(function() { console.log( "second complete" ); });
 
-
-
 /*
 colaborativa.eu_ct5s90mbmnqo4ddjur2733nhdc%40group.calendar.google.com&ctz
 https://www.googleapis.com/calendar/v3
-
 https://www.googleapis.com/calendar/v3
-
 */

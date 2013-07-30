@@ -1,0 +1,18 @@
+<script id="tpl-flickrimages" type="text/template">
+ {{#flickrImages}}
+   <div class="item"> 
+      <img src="{{Name}}" alt="">
+      <div class="container">
+      <div class="carousel-caption">
+        <h1>{{Title}}</h1>
+        <p class="lead">
+        <span> {{Description}}
+          <img src="{{OwnerIcon}}" alt="">
+          {{Owner}} {{Fecha}}
+          </span>  
+        </p>
+      </div>
+      </div>
+   </div>
+ {{/flickrImages}}
+</script>
