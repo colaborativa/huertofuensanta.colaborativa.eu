@@ -1,4 +1,5 @@
 /* Carousel base class */
+/* line 4, ../sass/huerto.scss */
 .carousel .container {
   position: absolute;
   right: 0;
@@ -7,37 +8,40 @@
   top: 60px;
 }
 
-
-
+/* line 14, ../sass/huerto.scss */
 .carousel-control {
-position: absolute;
-top: 40%;
-left: 15px;
-width: 40px;
-height: 40px;
-margin-top: 20px;
-font-size: 60px;
-font-weight: 100;
-line-height: 30px;
-color: white;
-text-align: center;
-background: #222;
-border: 3px solid white;
--webkit-border-radius: 23px;
--moz-border-radius: 23px;
-border-radius: 23px;
-opacity: 0.5;
-filter: alpha(opacity=50);
+  position: absolute;
+  top: 40%;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  background: #222;
+  border: 3px solid white;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  border-radius: 23px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 
+/* line 35, ../sass/huerto.scss */
 .carousel .item {
   height: 740px;
 }
+
+/* line 38, ../sass/huerto.scss */
 .carousel img {
   min-width: 100%;
   height: 740px;
 }
 
+/* line 43, ../sass/huerto.scss */
 .carousel-caption {
   background-color: transparent;
   position: static;
@@ -45,16 +49,22 @@ filter: alpha(opacity=50);
   padding: 0 20px;
   margin-bottom: 100px;
 }
+
+/* line 51, ../sass/huerto.scss */
 .carousel-caption h1,
 .carousel-caption .lead {
   margin: 0;
   line-height: 1.25;
   color: #fff;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
+
+/* line 57, ../sass/huerto.scss */
 .carousel-caption .btn {
   margin-top: 10px;
 }
+
+/* line 60, ../sass/huerto.scss */
 .carousel.carousel-fade .item {
   -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 1s ease-in-out;
@@ -62,6 +72,8 @@ filter: alpha(opacity=50);
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
 }
+
+/* line 68, ../sass/huerto.scss */
 .carousel.carousel-fade .active.left,
 .carousel.carousel-fade .active.right {
   left: 0;
@@ -69,42 +81,52 @@ filter: alpha(opacity=50);
   opacity: 0;
   filter: alpha(opacity=0);
 }
+
+/* line 75, ../sass/huerto.scss */
 .carousel.carousel-fade .next,
 .carousel.carousel-fade .prev {
   left: 0;
   z-index: 1;
 }
 
+/* line 80, ../sass/huerto.scss */
 .carousel.carousel-fade .carousel-control {
   z-index: 3;
 }
 
+/* line 84, ../sass/huerto.scss */
 .carousel {
-  margin-bottom: 60px;
+  margin-bottom: 0px;
 }
 
+/* line 88, ../sass/huerto.scss */
 .carousel .container {
   position: relative;
   z-index: 9;
 }
 
+/* line 93, ../sass/huerto.scss */
 .carousel-control {
   height: 80px;
   margin-top: 0;
   font-size: 120px;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   background-color: transparent;
   border: 0;
   z-index: 10;
 }
 
-.carousel-inner{
+/* line 103, ../sass/huerto.scss */
+.carousel-inner {
   background-color: black;
 }
 
+/* line 107, ../sass/huerto.scss */
 .carousel .item {
   height: 576px;
 }
+
+/* line 110, ../sass/huerto.scss */
 .carousel img {
   position: absolute;
   top: 0;
@@ -114,6 +136,7 @@ filter: alpha(opacity=50);
   margin-left: -512px;
 }
 
+/* line 119, ../sass/huerto.scss */
 .carousel-caption {
   background-color: transparent;
   position: static;
@@ -121,13 +144,17 @@ filter: alpha(opacity=50);
   padding: 0 20px;
   margin-top: 200px;
 }
+
+/* line 127, ../sass/huerto.scss */
 .carousel-caption h1,
 .carousel-caption .lead {
   margin: 0;
   line-height: 1.25;
   color: #fff;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
+
+/* line 133, ../sass/huerto.scss */
 .carousel-caption .btn {
   margin-top: 10px;
 }
@@ -135,18 +162,23 @@ filter: alpha(opacity=50);
 /*  jumbotron and subhead */
 /* Subhead (other pages)
 ------------------------- */
+/* line 140, ../sass/huerto.scss */
 .jumbotron {
   position: relative;
   padding: 40px 0;
   color: #000;
   text-align: center;
 }
+
+/* line 146, ../sass/huerto.scss */
 .jumbotron h1 {
   font-size: 80px;
   font-weight: bold;
   letter-spacing: -1px;
   line-height: 1;
 }
+
+/* line 152, ../sass/huerto.scss */
 .jumbotron p {
   font-size: 24px;
   font-weight: 300;
@@ -155,21 +187,28 @@ filter: alpha(opacity=50);
 }
 
 /* Link styles (used on .masthead-links as well) */
+/* line 160, ../sass/huerto.scss */
 .jumbotron a {
   color: #fff;
-  color: rgba(255,255,255,.5);
+  color: rgba(255, 255, 255, 0.5);
   -webkit-transition: all .2s ease-in-out;
-     -moz-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
+
+/* line 167, ../sass/huerto.scss */
 .jumbotron a:hover {
   color: #fff;
-  text-shadow: 0 0 10px rgba(255,255,255,.25);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
+
+/* line 171, ../sass/huerto.scss */
 .jumbotron .container {
   position: relative;
   z-index: 2;
 }
+
+/* line 175, ../sass/huerto.scss */
 .jumbotron:after {
   content: '';
   display: block;
@@ -181,45 +220,51 @@ filter: alpha(opacity=50);
   background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
   opacity: .4;
 }
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1) {
 
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1) {
+  /* line 191, ../sass/huerto.scss */
   .jumbotron:after {
     background-size: 150px 150px;
   }
-
 }
+/* line 196, ../sass/huerto.scss */
 .subhead {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+
+/* line 200, ../sass/huerto.scss */
 .subhead h1 {
   font-size: 60px;
 }
+
+/* line 203, ../sass/huerto.scss */
 .subhead p {
   margin-bottom: 20px;
 }
+
+/* line 206, ../sass/huerto.scss */
 .subhead .navbar {
   display: none;
 }
 
 /* Sidenav for Docs
 -------------------------------------------------- */
-
+/* line 213, ../sass/huerto.scss */
 .bs-docs-sidenav {
   width: 228px;
   margin: 30px 0 0;
   padding: 0;
   background-color: #fff;
   -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 }
+
+/* line 225, ../sass/huerto.scss */
 .bs-docs-sidenav > li > a {
   display: block;
   width: 190px \9;
@@ -227,75 +272,199 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
   padding: 8px 14px;
   border: 1px solid #e5e5e5;
 }
+
+/* line 232, ../sass/huerto.scss */
 .bs-docs-sidenav > li:first-child > a {
   -webkit-border-radius: 6px 6px 0 0;
-     -moz-border-radius: 6px 6px 0 0;
-          border-radius: 6px 6px 0 0;
+  -moz-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
 }
+
+/* line 237, ../sass/huerto.scss */
 .bs-docs-sidenav > li:last-child > a {
   -webkit-border-radius: 0 0 6px 6px;
-     -moz-border-radius: 0 0 6px 6px;
-          border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
 }
+
+/* line 242, ../sass/huerto.scss */
 .bs-docs-sidenav > .active > a {
   position: relative;
   z-index: 2;
   padding: 9px 15px;
   border: 0;
-  text-shadow: 0 1px 0 rgba(0,0,0,.15);
-  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
-     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
-          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1), inset -1px 0 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1), inset -1px 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1), inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
+
 /* Chevrons */
+/* line 253, ../sass/huerto.scss */
 .bs-docs-sidenav .icon-chevron-right {
   float: right;
   margin-top: 2px;
   margin-right: -6px;
   opacity: .25;
 }
+
+/* line 259, ../sass/huerto.scss */
 .bs-docs-sidenav > li > a:hover {
   background-color: #f5f5f5;
 }
+
+/* line 262, ../sass/huerto.scss */
 .bs-docs-sidenav a:hover .icon-chevron-right {
   opacity: .5;
 }
+
+/* line 266, ../sass/huerto.scss */
 .bs-docs-sidenav .active .icon-chevron-right,
 .bs-docs-sidenav .active a:hover .icon-chevron-right {
   background-image: url(../img/glyphicons-halflings-white.png);
   opacity: 1;
 }
+
+/* line 270, ../sass/huerto.scss */
 .bs-docs-sidenav.affix {
   top: 40px;
 }
+
+/* line 273, ../sass/huerto.scss */
 .bs-docs-sidenav.affix-bottom {
   position: absolute;
   top: auto;
   bottom: 270px;
 }
 
-
 /* Footer
 -------------------------------------------------- */
-
+/* line 283, ../sass/huerto.scss */
 .footer {
   text-align: left;
   padding: 30px 0;
   margin-top: 70px;
   border-top: 1px solid #e5e5e5;
-  background-color: #f5f5f5;
+  background-color: #fff;
 }
+
+/* line 290, ../sass/huerto.scss */
 .footer p {
   margin-bottom: 0;
   color: #777;
 }
+
+/* line 294, ../sass/huerto.scss */
 .footer-links {
   margin: 10px 0;
 }
+
+/* line 297, ../sass/huerto.scss */
 .footer-links li {
   display: inline;
   padding: 0 2px;
 }
+
+/* line 301, ../sass/huerto.scss */
 .footer-links li:first-child {
   padding-left: 0;
+}
+
+/* Logo optimization */
+/* line 310, ../sass/huerto.scss */
+#logo {
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+  background-color: white;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+/* general styles */
+/* line 320, ../sass/huerto.scss */
+html body {
+  font-family: helvetica;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* line 326, ../sass/huerto.scss */
+section.confondo {
+  background-color: #eee;
+  -webkit-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
+  -webkit-background-size: 1500px auto !important;
+  background-size: 1500px auto !important;
+  background: url(http://farm9.staticflickr.com/8239/8655253716_ce4b54315d_b.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+/* line 335, ../sass/huerto.scss */
+section.sinfondo {
+  background-color: #fff;
+}
+/* line 338, ../sass/huerto.scss */
+section h1 {
+  font-family: latoregular;
+  font-weight: normal;
+  font-size: 40px;
+  margin-bottom: 0px;
+}
+/* line 344, ../sass/huerto.scss */
+section h2.subtitle {
+  margin-top: 10px;
+  font-family: helvetica;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 25px;
+  color: #999999;
+}
+/* line 352, ../sass/huerto.scss */
+section h3 {
+  font-family: latoregular;
+  font-weight: normal;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+/* line 358, ../sass/huerto.scss */
+section {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+/* line 364, ../sass/huerto.scss */
+.navegadorActividades {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 369, ../sass/huerto.scss */
+.navegadorActividades .btn-group {
+  width: 100%;
+}
+/* line 371, ../sass/huerto.scss */
+.navegadorActividades .btn-group .btn {
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+/* line 376, ../sass/huerto.scss */
+.navegadorActividades .btn-group .btn.retroceder, .navegadorActividades .btn-group .btn.avanzar {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 20%;
+}
+/* line 381, ../sass/huerto.scss */
+.navegadorActividades .btn-group .btn.titulo {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 60%;
 }
