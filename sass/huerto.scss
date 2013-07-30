@@ -11,15 +11,6 @@ background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0.
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 }
 /* Carousel base class */
-.carousel .container {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  top: 60px;
-}
-
-
 
 .carousel-control {
 position: absolute;
@@ -41,13 +32,30 @@ border-radius: 23px;
 opacity: 0.5;
 filter: alpha(opacity=50);
 }
+.carousel .container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 60px;
+}
 
 .carousel .item {
-  height: 740px;
+  height: 690px;
+  overflow: hidden;
+}
+
+.carousel-inner{
+  background-color: black;
+}
+.carousel img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -512px;
 }
 .carousel img {
   min-width: 100%;
-  height: 740px;
 }
 
 .carousel-caption {
@@ -110,21 +118,7 @@ filter: alpha(opacity=50);
   z-index: 10;
 }
 
-.carousel-inner{
-  background-color: black;
-}
 
-.carousel .item {
-  height: 576px;
-}
-.carousel img {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  min-width: 1024px;
-  height: 576px;
-  margin-left: -512px;
-}
 
 .carousel-caption {
   background-color: transparent;
@@ -139,10 +133,14 @@ filter: alpha(opacity=50);
   line-height: 1.25;
   color: #fff;
   text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  display: none;
 }
 .carousel-caption .btn {
   margin-top: 10px;
 }
+
+
+
 
 /*  jumbotron and subhead */
 /* Subhead (other pages)
@@ -318,12 +316,16 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 /* Logo optimization */
 #logo{
   position: absolute;
-  bottom: 80px;
+  bottom: 100px;
   width: 100%;
+  height: 80px;
   background-color: white;
   -webkit-border-radius: 6px;
    -moz-border-radius: 6px;
         border-radius: 6px;
+  h1, p{
+    display: none;
+  }
 }
 
 
@@ -484,4 +486,15 @@ section{
       /**/
     }
   }
+}
+.navbar{
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 2000;
+  .navbar-inner{
+    //background-color: white;
+    //background-image: none;
+  }
+  
 }
