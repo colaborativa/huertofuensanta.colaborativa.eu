@@ -1,7 +1,9 @@
 <script id="tpl-flickrimages" type="text/template">
  {{#flickrImages}}
    <div class="item">
-      <div class="image" style="{{Name}}">
+      <!-- https://github.com/lokesh/color-thief -->
+      <div class="mascaraColor" style="background: -webkit-linear-gradient(left, rgba(128,128,128,1) 0%,rgba(128,128,128,0) 200px,rgba(128,128,128,0) 600px,rgba(128,128,128,1) 800px,rgba(128,128,128,1) 100%);"></div>
+      <div class="image" style="background-image:url({{Nombre}})"></div>
       <div class="container">
       <div class="carousel-caption">
         <h1>{{Titulo}}</h1>

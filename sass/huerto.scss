@@ -10,7 +10,11 @@ background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0.
 background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0.91) 30%,rgba(255,255,255,0.05) 60%,rgba(255,255,255,0) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 }
+
+
+
 /* Carousel base class */
+$carouselHeight: 690px/2;
 
 .carousel-control {
 position: absolute;
@@ -41,21 +45,74 @@ filter: alpha(opacity=50);
 }
 
 .carousel .item {
-  height: 690px;
+  height:$carouselHeight;
   overflow: hidden;
 }
+.carousel {
+  overflow: hidden;
+  .mascaraColor{
+    z-index: 2;
+    top: 0px;
+    left: 50%;
+    position: absolute;
+    height: 100%;
+    //Tablets
+    @media (min-width: 768px) {
+      width: 768px+200px;
+      margin-left: -(768px+200px)/2;
+    }
+    //Normal screens
+    @media (min-width: 980px) {
+      width: 980px+200px;
+      margin-left: -(980px+200px)/2;
+    }
+    //Big screens
+    @media (min-width: 1200px) {
+      width: 1200px+200px;
+      margin-left: -(1200px+200px)/2;
+    }
+  }
+  .carousel-inner{
+    margin-left: auto;
+    margin-right: auto;
+    //Tablets
+    @media (min-width: 768px) {
+      width:768px+200px;
+    }
+    //Normal screens
+    @media (min-width: 980px) {
+      width:980px+200px;
+    }
+    //Big screens
+    @media (min-width: 1200px) {
+      height:$carouselHeight;
+      width:1200px+200px;
+    }
 
-.carousel-inner{
-  background-color: black;
-}
-.carousel img {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  margin-left: -512px;
-}
-.carousel img {
-  min-width: 100%;
+  }
+  .image {
+    //Tablets
+    @media (min-width: 768px) {
+      height:$carouselHeight;
+      @include background-size(auto 100%);
+      background-position: left center;
+      background-repeat: no-repeat;
+    }
+    //Normal screens
+    @media (min-width: 980px) {
+      height:$carouselHeight;
+      @include background-size(70% auto);
+      background-position: left center;
+      background-repeat: no-repeat;
+    }
+    //Big screens
+    @media (min-width: 1200px) {
+      height:$carouselHeight;
+      @include background-size(900px auto);
+      background-position: left center;
+      background-repeat: no-repeat;
+    }
+  }
 }
 
 .carousel-caption {
@@ -407,6 +464,7 @@ section{
     }
   }
   position: relative;
+
   .container{
   }
   .imagenFondo{
@@ -417,7 +475,6 @@ section{
     z-index: -800;
     -webkit-background-size: 100% auto!important;
     background-size: 100% auto!important;
-    background: url(http://farm3.staticflickr.com/2841/9033255329_3b0206398b_k.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     //Tablets
