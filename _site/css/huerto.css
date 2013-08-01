@@ -544,15 +544,44 @@ section {
   padding-bottom: 70px;
 }
 
+/* line 468, ../sass/huerto.scss */
+#quees {
+  overflow: hidden;
+}
+/* line 470, ../sass/huerto.scss */
+#quees .imagenFondo {
+  background: url(/img/planoHuertoFuensanta.png);
+  background-size: 100% auto !important;
+  background-position: center center !important;
+}
+@media (min-width: 768px) {
+  /* line 470, ../sass/huerto.scss */
+  #quees .imagenFondo {
+    left: 150px;
+  }
+}
+@media (min-width: 980px) {
+  /* line 470, ../sass/huerto.scss */
+  #quees .imagenFondo {
+    left: 200px;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 470, ../sass/huerto.scss */
+  #quees .imagenFondo {
+    left: 250px;
+  }
+}
+
 /* lista calendario */
-/* line 472, ../sass/huerto.scss */
+/* line 492, ../sass/huerto.scss */
 #estapasando .listaCalendario ol {
   margin: 0px;
   list-style: none;
   list-style-position: inside;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
 }
-/* line 477, ../sass/huerto.scss */
+/* line 497, ../sass/huerto.scss */
 #estapasando .listaCalendario ol li {
   /*texttruncation*/
   white-space: nowrap;
@@ -562,29 +591,29 @@ section {
   line-height: 2.25em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-/* line 485, ../sass/huerto.scss */
+/* line 505, ../sass/huerto.scss */
 #estapasando .listaCalendario ol li:last-child {
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
-/* line 490, ../sass/huerto.scss */
+/* line 510, ../sass/huerto.scss */
 #estapasando .listaCalendario a {
   line-height: 2.25em;
 }
 
 /* visor de imagenes */
-/* line 497, ../sass/huerto.scss */
+/* line 517, ../sass/huerto.scss */
 section {
   position: relative;
 }
 @media (min-width: 768px) {
-  /* line 498, ../sass/huerto.scss */
+  /* line 518, ../sass/huerto.scss */
   section.confondo {
     -webkit-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
     box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
   }
 }
-/* line 512, ../sass/huerto.scss */
+/* line 532, ../sass/huerto.scss */
 section .imagenFondo {
   top: 0px;
   width: 100%;
@@ -597,20 +626,20 @@ section .imagenFondo {
   background-repeat: no-repeat;
 }
 @media (max-width: 989px) {
-  /* line 512, ../sass/huerto.scss */
+  /* line 532, ../sass/huerto.scss */
   section .imagenFondo {
     -webkit-background-size: auto 100% !important;
     background-size: auto 100% !important;
   }
 }
 @media (min-width: 990px) {
-  /* line 512, ../sass/huerto.scss */
+  /* line 532, ../sass/huerto.scss */
   section .imagenFondo {
     -webkit-background-size: 100% auto !important;
     background-size: 100% auto !important;
   }
 }
-/* line 533, ../sass/huerto.scss */
+/* line 553, ../sass/huerto.scss */
 section .mascaraFondo {
   top: 0px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -618,17 +647,17 @@ section .mascaraFondo {
   height: 100%;
   position: absolute;
   z-index: -500;
-  background: -moz-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.91) 30%, rgba(255, 255, 255, 0.05) 60%, rgba(255, 255, 255, 0) 100%);
+  background: -moz-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-stop(30%, rgba(255, 255, 255, 0.91)), color-stop(60%, rgba(255, 255, 255, 0.05)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-st5p(40%, rgba(255, 255, 255, 0.91)), color-stop(60%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 0)));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.91) 30%, rgba(255, 255, 255, 0.05) 60%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.91) 30%, rgba(255, 255, 255, 0.05) 60%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.91) 30%, rgba(255, 255, 255, 0.05) 60%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
   /* IE10+ */
-  background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0.91) 30%, rgba(255, 255, 255, 0.05) 60%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
   /* IE6-9 */
@@ -637,11 +666,11 @@ section .mascaraFondo {
 /* navegador actividades */
 /**/
 /* posicionamiento del boton */
-/* line 551, ../sass/huerto.scss */
+/* line 571, ../sass/huerto.scss */
 #estapasando .row {
   position: relative;
 }
-/* line 553, ../sass/huerto.scss */
+/* line 573, ../sass/huerto.scss */
 #estapasando .row .span6:last-child {
   position: absolute;
   bottom: 0px;
@@ -649,7 +678,7 @@ section .mascaraFondo {
 }
 
 /* estilos del boton */
-/* line 561, ../sass/huerto.scss */
+/* line 581, ../sass/huerto.scss */
 .navegadorActividades {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -658,24 +687,24 @@ section .mascaraFondo {
   padding: 0px;
   margin: 0px;
 }
-/* line 566, ../sass/huerto.scss */
+/* line 586, ../sass/huerto.scss */
 .navegadorActividades .btn-group {
   width: 100%;
 }
-/* line 568, ../sass/huerto.scss */
+/* line 588, ../sass/huerto.scss */
 .navegadorActividades .btn-group .btn {
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 573, ../sass/huerto.scss */
+/* line 593, ../sass/huerto.scss */
 .navegadorActividades .btn-group .btn.retroceder, .navegadorActividades .btn-group .btn.avanzar {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 15%;
 }
-/* line 578, ../sass/huerto.scss */
+/* line 598, ../sass/huerto.scss */
 .navegadorActividades .btn-group .btn.titulo {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -688,7 +717,7 @@ section .mascaraFondo {
   /**/
 }
 
-/* line 589, ../sass/huerto.scss */
+/* line 609, ../sass/huerto.scss */
 .navbar {
   top: 0px;
   left: 0px;

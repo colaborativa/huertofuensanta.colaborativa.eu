@@ -69,12 +69,16 @@ var jqxhr = $.getJSON( url, function() {
 			imageOwner = 'Por ' + item.ownername + ' a ';
 		}
  		var imageFechaFinal= imageFecha.getDate() + ' de ' + imageMes + ' de ' + imageFecha.getFullYear();
+    var colorThief = new ColorThief();
+    //var color = colorThief.getColor(imageName);
+    //console.log(color.r);
     var obj = {"Nombre": imageName, 
                "Titulo": imageTitle, 
                "Fecha": imageFechaFinal,
                "OwnerIcon": imageOwnerIcon,
                "Owner": imageOwner,
-               "Descripcion": imageDesc.substr(0,imageDesc.length) ,
+               "Descripcion": imageDesc.substr(0,imageDesc.length),
+               //"ColorR": color.r
              };
     stuff.push(obj);
  	});
