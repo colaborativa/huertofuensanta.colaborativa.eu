@@ -24,7 +24,7 @@ var ocultarFlickrOwnerName = 'colaborativa.eu'; /* Si casi todas las fotos las h
 aqui el "ownerName" para no mostrarlo en las fotos ya que sería repetitivo */
 var htmlTag = '.carousel-inner'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
 var fileTemplate = '/templates/templates.html'; // Archivo donde se encuentra la plantilla con el HTML para las imágenes
-
+var flickrTemplateID = '#tpl-flickrimages';
 // Definición de variables
 Date.locale = {
     es: {
@@ -42,10 +42,10 @@ var stuff = [];
 // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
 var jqxhr = $.getJSON( url, function() {
-  console.log( "success" );
+  console.log( "flickr success" );
 })
 .done(function(data) { 
-	console.log( "second success ");
+	console.log( "flickr second success ");
 	//
 	function custom_sort(a, b) {
     return new Date(b.datetaken).getTime() - new Date(a.datetaken).getTime();
@@ -80,17 +80,17 @@ var jqxhr = $.getJSON( url, function() {
  	});
   var flickrImages = {flickrImages: stuff}; 
   $.get(fileTemplate, function(templates) { 
-    var template = $(templates).filter('#tpl-flickrimages').html();
+    var template = $(templates).filter(flickrTemplateID).html();
     var output = Mustache.to_html(template, flickrImages);
     $(htmlTag).html(output);
     var object = $(htmlTag + ' div')[0];
     $(object).addClass('active');
   });
 })
-.fail(function() { console.log( "error" ); })
-.always(function() { console.log( "complete" ); });
+.fail(function() { console.log( "flickr error" ); })
+.always(function() { console.log( "flickr complete" ); });
 // Set another completion function for the request above
-jqxhr.complete(function() { console.log( "second complete" ); });
+jqxhr.complete(function() { console.log( "flickr second complete" ); });
 /* 
   INFORMACIÓN ADICIONAL DE UTILIDAD PARA EL DESARROLLADOR:
 
@@ -136,8 +136,89 @@ jqxhr.complete(function() { console.log( "second complete" ); });
   Clave: ee4bdc6841d42f90d9ca5e598e99d2f3
   Secreto: ce66d3877f4238c3
 */
+
 /*
-colaborativa.eu_ct5s90mbmnqo4ddjur2733nhdc%40group.calendar.google.com&ctz
+
 https://www.googleapis.com/calendar/v3
-https://www.googleapis.com/calendar/v3
+  - Descripción:
+
+  - Link de referencia:
+  https://developers.google.com/google-apps/calendar/?hl=es
+  https://developers.google.com/api-client-library/javascript/start/start-js
+  https://admin.google.com/AdminHome
+  https://developers.google.com/gdata/samples/cal_sample
+
+ - URL pública del calendario
+  http://www.google.com/calendar/embed?src=urbanismodebarrio.com_uld0g0slrn1ms2h46njrmctp8s%40group.calendar.google.com&ctz=Europe/Madrid 
+
+- Returns Events:  
+  https://developers.google.com/google-apps/calendar/v3/reference/calendars/get,
+  https://developers.google.com/google-apps/calendar/v3/reference/?hl=es#Events)
+  ** https://www.googleapis.com/calendar/v3/calendars/urbanismodebarrio.com_uld0g0slrn1ms2h46njrmctp8s%40group.calendar.google.com/events/?key=AIzaSyBZpkN4-NjFMyzMoL6ow-24Vz4haQHckiI
+
 */
+var google_api_key = 'AIzaSyBZpkN4-NjFMyzMoL6ow-24Vz4haQHckiI';
+var google_cal_id = 'urbanismodebarrio.com_uld0g0slrn1ms2h46njrmctp8s%40group.calendar.google.com';
+var google_cal_orderby = 'startTime';
+var ahora = new Date();
+var google_url_events = 'https://www.googleapis.com/calendar/v3/calendars/'+google_cal_id+'/events?';
+google_url_events += 'orderBy=startTime&singleEvents=true';
+google_url_events += '&timeMin='+ahora.toISOString();
+google_url_events += '&key='+google_api_key;
+
+//
+var google_stuff = [];
+var google_htmlTag = '#estapasando .container .row #actividadesfuturas'; // Este es el TAG donde se insertarán los eventos del calendario
+var googleTemplateID = '#tpl-GoogleEvents';
+// HABILITAR EL CALENDARIO CON PERMISO DE LECTURA Y ESCRITURA, ESPERAR A MAÑANA Y PROBAR URL DE ARRIBA
+var call_google_url = $.getJSON( google_url_events, function() {
+  console.log( "google success "+ google_url_events);
+})
+.done(function(data) { 
+  console.log( "google second success ");
+    $.each(data.items, function(i, item){
+      var imageMes, Fecha_Fin_Str, Fecha_InicioStr;
+      var Fecha_Inicio = new Date(item.start.dateTime);
+      if(Fecha_Inicio != 'Invalid Date'){
+        imageMes = Date.locale['es'].month_names_short[Fecha_Inicio.getMonth()];
+        var hours = Fecha_Inicio.getHours()
+        var minutes = Fecha_Inicio.getMinutes()
+        if (minutes < 10){
+          minutes = "0" + minutes
+        }
+        Fecha_InicioStr = hours + ':' + minutes+'h ' + Fecha_Inicio.getDate() + '-' + imageMes + '-' + Fecha_Inicio.getFullYear()+' ';
+      }else{
+        Fecha_InicioStr ="[Pendiente] ";
+      }     
+      var Fecha_Fin = new Date(item.end.dateTime);
+      if(Fecha_Inicio != 'Invalid Date'){
+        imageMes = Date.locale['es'].month_names_short[Fecha_Fin.getMonth()];
+        var hours = Fecha_Inicio.getHours()
+        var minutes = Fecha_Inicio.getMinutes()
+        if (minutes < 10){
+          minutes = "0" + minutes
+        }
+        Fecha_Fin_Str = hours + ':' + minutes+ 'h ' + Fecha_Fin.getDate() + '-' + imageMes + '-' + Fecha_Fin.getFullYear()+ ' ';
+      }else{
+        Fecha_Fin_Str ="[Pendiente] ";
+      } 
+      var obj = {"Nombre": item.summary, 
+               "Descripcion": item.description, 
+               "Localizacion":item.location,
+               "Organizador": item.organizer.displayName,
+               "Fecha_Inicio": Fecha_InicioStr,
+               "Fecha_Fin": Fecha_Fin_Str
+             };
+      google_stuff.push(obj);
+    }); // end each event of calendar
+    var GoogleEvents = {GoogleEvents: google_stuff};
+    $.get(fileTemplate, function(templates) { 
+        var template = $(templates).filter(googleTemplateID).html();
+        var output = Mustache.to_html(template, GoogleEvents);
+        $(google_htmlTag).html(output);
+    });
+})
+.fail(function() { console.log( "google error" ); })
+.always(function() { console.log( "google complete" ); });
+// Set another completion function for the request above
+call_google_url.complete(function() { console.log( "google second complete" ); });

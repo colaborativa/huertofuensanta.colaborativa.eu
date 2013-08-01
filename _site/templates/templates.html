@@ -1,7 +1,7 @@
 <script id="tpl-flickrimages" type="text/template">
  {{#flickrImages}}
    <div class="item">
-      <div class="image" style="{{Name}}">
+      <div class="image" style="{{Nombre}}"> </div>
       <div class="container">
       <div class="carousel-caption">
         <h1>{{Titulo}}</h1>
@@ -15,4 +15,16 @@
       </div>
    </div>
  {{/flickrImages}}
+</script>
+
+<script id="tpl-GoogleEvents" type="text/template">
+   <div class="listaCalendario">
+    <h3>Próximas actividades</h3>
+    <ol>
+        {{#GoogleEvents}}
+        <li><time datetime="{{Fecha_Inicio}}">{{Fecha_Inicio}}</time>{{Nombre}}{{Descripcion}} en {{Localizacion}} organizada por {{Organizador}}</li>
+        {{/GoogleEvents}}
+    </ol>
+    <a>Ver todo el calendario aquí</a>
+  </div>
 </script>
