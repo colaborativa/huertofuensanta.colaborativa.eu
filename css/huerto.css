@@ -553,11 +553,12 @@ section {
   background: url(/img/planoHuertoFuensanta.png);
   background-repeat: no-repeat;
   background-position: center center !important;
+  background-color: #f5f3e9;
 }
 @media (min-width: 768px) {
   /* line 470, ../sass/huerto.scss */
   #quees .imagenFondo {
-    background-size: 768px auto !important;
+    background-size: auto 100% !important;
     left: 150px;
   }
 }
@@ -577,14 +578,14 @@ section {
 }
 
 /* lista calendario */
-/* line 494, ../sass/huerto.scss */
+/* line 495, ../sass/huerto.scss */
 #estapasando .listaCalendario ol {
   margin: 0px;
   list-style: none;
   list-style-position: inside;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
 }
-/* line 499, ../sass/huerto.scss */
+/* line 500, ../sass/huerto.scss */
 #estapasando .listaCalendario ol li {
   /*texttruncation*/
   white-space: nowrap;
@@ -594,29 +595,29 @@ section {
   line-height: 2.25em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-/* line 507, ../sass/huerto.scss */
+/* line 508, ../sass/huerto.scss */
 #estapasando .listaCalendario ol li:last-child {
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
-/* line 512, ../sass/huerto.scss */
+/* line 513, ../sass/huerto.scss */
 #estapasando .listaCalendario a {
   line-height: 2.25em;
 }
 
 /* visor de imagenes */
-/* line 519, ../sass/huerto.scss */
+/* line 520, ../sass/huerto.scss */
 section {
   position: relative;
 }
 @media (min-width: 768px) {
-  /* line 520, ../sass/huerto.scss */
+  /* line 521, ../sass/huerto.scss */
   section.confondo {
     -webkit-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
     box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
   }
 }
-/* line 533, ../sass/huerto.scss */
+/* line 534, ../sass/huerto.scss */
 section .imagenFondo {
   top: 0px;
   width: 100%;
@@ -629,20 +630,20 @@ section .imagenFondo {
   background-repeat: no-repeat;
 }
 @media (max-width: 989px) {
-  /* line 533, ../sass/huerto.scss */
+  /* line 534, ../sass/huerto.scss */
   section .imagenFondo {
     -webkit-background-size: auto 100% !important;
     background-size: auto 100% !important;
   }
 }
 @media (min-width: 990px) {
-  /* line 533, ../sass/huerto.scss */
+  /* line 534, ../sass/huerto.scss */
   section .imagenFondo {
     -webkit-background-size: 100% auto !important;
     background-size: 100% auto !important;
   }
 }
-/* line 554, ../sass/huerto.scss */
+/* line 555, ../sass/huerto.scss */
 section .mascaraFondo {
   top: 0px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -669,11 +670,11 @@ section .mascaraFondo {
 /* navegador actividades */
 /**/
 /* posicionamiento del boton */
-/* line 572, ../sass/huerto.scss */
+/* line 573, ../sass/huerto.scss */
 #estapasando .row {
   position: relative;
 }
-/* line 574, ../sass/huerto.scss */
+/* line 575, ../sass/huerto.scss */
 #estapasando .row .span6:last-child {
   position: absolute;
   bottom: 0px;
@@ -681,7 +682,7 @@ section .mascaraFondo {
 }
 
 /* estilos del boton */
-/* line 582, ../sass/huerto.scss */
+/* line 583, ../sass/huerto.scss */
 .navegadorActividades {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -690,24 +691,24 @@ section .mascaraFondo {
   padding: 0px;
   margin: 0px;
 }
-/* line 587, ../sass/huerto.scss */
+/* line 588, ../sass/huerto.scss */
 .navegadorActividades .btn-group {
   width: 100%;
 }
-/* line 589, ../sass/huerto.scss */
+/* line 590, ../sass/huerto.scss */
 .navegadorActividades .btn-group .btn {
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 594, ../sass/huerto.scss */
+/* line 595, ../sass/huerto.scss */
 .navegadorActividades .btn-group .btn.retroceder, .navegadorActividades .btn-group .btn.avanzar {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 15%;
 }
-/* line 599, ../sass/huerto.scss */
+/* line 600, ../sass/huerto.scss */
 .navegadorActividades .btn-group .btn.titulo {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -720,7 +721,7 @@ section .mascaraFondo {
   /**/
 }
 
-/* line 610, ../sass/huerto.scss */
+/* line 611, ../sass/huerto.scss */
 .navbar {
   top: 0px;
   left: 0px;

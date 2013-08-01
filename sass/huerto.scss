@@ -471,8 +471,9 @@ section {
     background: url(/img/planoHuertoFuensanta.png);
     background-repeat: no-repeat;
     background-position: center center !important;
+    background-color: rgb(245,243,233);
     @media (min-width: 768px) {
-      background-size: 768px auto !important;
+      background-size: auto 100% !important;
       left: 150px;
     }
     //Normal screens
