@@ -468,19 +468,21 @@ section {
 #quees{
   overflow: hidden;
   .imagenFondo{
-
     background: url(/img/planoHuertoFuensanta.png);
-    background-size: 100% auto !important;
-    background-position: center center!important;
+    background-repeat: no-repeat;
+    background-position: center center !important;
     @media (min-width: 768px) {
+      background-size: 768px auto !important;
       left: 150px;
     }
     //Normal screens
     @media (min-width: 980px) {
+      background-size: 980px auto !important;
       left: 200px;
     }
     //Big screens
     @media (min-width: 1200px) {
+      background-size: 1200px auto !important;
       left: 250px;
     }
   }
@@ -526,7 +528,6 @@ section{
     }
   }
   position: relative;
-
   .container{
   }
   .imagenFondo{
