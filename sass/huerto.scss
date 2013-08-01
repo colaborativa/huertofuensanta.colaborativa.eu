@@ -1,5 +1,5 @@
 @import "compass/css3";
-
+@import "compass/utilities/general/clearfix";
 
 @mixin whiteGradientBackground{
 background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.91) 30%, rgba(255,255,255,0.05) 60%, rgba(255,255,255,0) 100%); /* FF3.6+ */
@@ -11,45 +11,101 @@ background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0.
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 }
 
-
-
 /* Carousel base class */
 $carouselHeight: 690px/2;
+$imageCaptionSize: 80px;
 
-.carousel-control {
-position: absolute;
-top: 40%;
-left: 15px;
-width: 40px;
-height: 40px;
-margin-top: 20px;
-font-size: 60px;
-font-weight: 100;
-line-height: 30px;
-color: white;
-text-align: center;
-background: #222;
-border: 3px solid white;
--webkit-border-radius: 23px;
--moz-border-radius: 23px;
-border-radius: 23px;
-opacity: 0.5;
-filter: alpha(opacity=50);
-}
-.carousel .container {
+
+.pieImagenContainer{
+  z-index: 4;
+  top: 0px;
+  left: 50%;
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  top: 60px;
+  height:$carouselHeight;
+  display: table;
+  //Tablets
+  @media (min-width: 768px) {
+    width: 364px;
+    .textoAutor{
+      width: 364px - $imageCaptionSize;
+    }
+  }
+  //Normal screens
+  @media (min-width: 980px) {
+    width: 480px;
+    .textoAutor{
+      width: 480px - $imageCaptionSize;
+    }
+  }
+  //Big screens
+  @media (min-width: 1200px) {
+    width: 570px;
+    .textoAutor{
+      width: 570px - $imageCaptionSize;
+    }
+  }
+  .pieImagen{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: latoregular;
+    @include clearfix;
+    .imagenAutor{
+      float: right;
+      width: $imageCaptionSize;
+      @include clearfix;
+      .imagen{
+        clear: both;
+        display: table-cell;
+        vertical-align: middle;
+        background-color: rgb(128,128,128);
+        width: $imageCaptionSize;
+        height: $imageCaptionSize;
+        border: 2px solid white;
+        @include border-radius($imageCaptionSize/2, $imageCaptionSize/2);
+        @include background-size(cover);
+        @include box-shadow(rgba(0,0,0,0.3) 0px 0px 5px);
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+    }
+    .textoAutor{
+      float: left;
+      text-align: right;
+      display: block;
+      @include box-sizing (border-box);
+      padding-right: 20px;
+      .texto{
+        padding-right: 20px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        border-width: 1px;
+        border-style: solid;
+        border-bottom-style: none;
+        border-top-style: none;
+        border-left-style: none;
+      }
+    }
+  }
 }
 
-.carousel .item {
-  height:$carouselHeight;
-  overflow: hidden;
-}
+
+
+
+
+
+
+
+
+
+
 .carousel {
   overflow: hidden;
+  .carousel .item {
+    height:$carouselHeight;
+    overflow: hidden;
+  }
   .mascaraColor{
     z-index: 2;
     top: 0px;
@@ -115,23 +171,33 @@ filter: alpha(opacity=50);
   }
 }
 
-.carousel-caption {
-  background-color: transparent;
-  position: static;
-  max-width: 550px;
-  padding: 0 20px;
-  margin-bottom: 100px;
+
+
+.carousel {
+  margin-bottom: 0px;
 }
-.carousel-caption h1,
-.carousel-caption .lead {
-  margin: 0;
-  line-height: 1.25;
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+.carousel-control {
+  position: absolute;
+  top: 40%;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+  font-family: latohairline;
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  background: #222;
+  border: 3px solid white;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  border-radius: 23px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
-.carousel-caption .btn {
-  margin-top: 10px;
-}
+
 .carousel.carousel-fade .item {
   -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 1s ease-in-out;
@@ -156,15 +222,6 @@ filter: alpha(opacity=50);
   z-index: 3;
 }
 
-.carousel {
-  margin-bottom: 0px;
-}
-
-.carousel .container {
-  position: relative;
-  z-index: 9;
-}
-
 .carousel-control {
   height: 80px;
   margin-top: 0;
@@ -173,27 +230,6 @@ filter: alpha(opacity=50);
   background-color: transparent;
   border: 0;
   z-index: 10;
-}
-
-
-
-.carousel-caption {
-  background-color: transparent;
-  position: static;
-  max-width: 550px;
-  padding: 0 20px;
-  margin-top: 200px;
-}
-.carousel-caption h1,
-.carousel-caption .lead {
-  margin: 0;
-  line-height: 1.25;
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
-  display: none;
-}
-.carousel-caption .btn {
-  margin-top: 10px;
 }
 
 
