@@ -1,18 +1,20 @@
 <script id="tpl-flickrimages" type="text/template">
  {{#flickrImages}}
    <div class="item">
-      <div class="image" style="{{Nombre}}"> </div>
-      <div class="container">
-      <div class="carousel-caption">
-        <h1>{{Titulo}}</h1>
-        <p class="lead">
-        <span> {{Descripcion}}
-          <img src="{{OwnerIcon}}" alt="">
-          {{Owner}} {{Fecha}}
-          </span>  
-        </p>
+      <div class="pieImagenContainer">
+        <div class="pieImagen">
+          <div class="textoAutor" style="color: white">
+            <p class="texto"><span class="titulo">{{Titulo}}</span>. <span class="fecha">{{Fecha}}</span>. <span>{{Descripcion}}</span></p>
+          </div>
+          <!-- for the text color http://24ways.org/2010/calculating-color-contrast/ -->
+          <div class="imagenAutor">
+            <div class="imagen" style="background-image:url({{OwnerIcon}})" data-toggle="tooltip" title="{{Owner}}"></div>
+          </div>
+        </div>
       </div>
-      </div>
+      <!-- https://github.com/lokesh/color-thief -->
+      <div class="mascaraColor" style="background: -webkit-linear-gradient(left, rgba(128,128,128,1) 0%,rgba(128,128,128,0) 200px,rgba(128,128,128,0) 600px,rgba(128,128,128,1) 800px,rgba(128,128,128,1) 100%);"></div>
+      <div class="image" style="background-image:url({{Nombre}})"></div>
    </div>
  {{/flickrImages}}
 </script>
