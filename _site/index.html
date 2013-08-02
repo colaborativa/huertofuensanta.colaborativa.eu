@@ -25,32 +25,56 @@
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
     <!-- include navbar -->
-    <!-- navbar -->
-<div class="navbar navbar-static-top" data-spy="affix" data-offset-top="345">
-  <div class="navbar-inner">
-    <div class="container">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
+    <!-- navbar Phone-->
+<div class="navbar navbar-fixed-top visible-sm">
+  <div class="container">
+    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+    <a href="/" class="navbar-brand visible-sm">Huerto Fuensanta</a>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        
           
-            
-              <li class="active"><a href="/" class="active">Inicio</a></li>
-            
+            <li class="active"><a href="/" class="active">Inicio</a></li>
           
-            
-              <li><a href="/informacion/">Información</a></li>
-            
+        
           
-            
-              <li><a href="/agradecimientos/">Agradecimientos</a></li>
-            
+            <li><a href="/informacion/">Información</a></li>
           
-        </ul>
-      </div>
+        
+          
+            <li><a href="/agradecimientos/">Agradecimientos</a></li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- navbar Resto-->
+<div class="navbar navbar-static-top hidden-sm" data-spy="affix" data-offset-top="345">
+  <div class="container">
+    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+    <a href="/" class="navbar-brand visible-sm">Huerto Fuensanta</a>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        
+          
+            <li class="active"><a href="/" class="active">Inicio</a></li>
+          
+        
+          
+            <li><a href="/informacion/">Información</a></li>
+          
+        
+          
+            <li><a href="/agradecimientos/">Agradecimientos</a></li>
+          
+        
+      </ul>
     </div>
   </div>
 </div>
@@ -58,58 +82,84 @@
       <div class="container">
         <!-- Que es el huerto fuensanta -->
         <div class="row">
-          <div class="span6">
+          <div class="col-sm-6">
             <hgroup>
               <h1>¿Qué es el huerto fuensanta?</h1>
               <h2 class="subtitle">Toda la información del huerto accesible y abierta</h2>
             </hgroup>
-            <h3>¿Cómo funciona?</h3>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-            <button class="btn" type="button">Lee toda la información aquí</button>
+            <div class="descripcion">
+              <h3>¿Cómo funciona?</h3>
+              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+              <div class="visible-sm">
+                <a href="#" class="btn btn-block btn-large btn-default">Lee toda la información aquí</a>
+              </div>
+              <div class="hidden-sm">
+                <a href="#" class="btn btn-default">Lee toda la información aquí</a>
+              </div>
+            </div>
             <div class="suscripcion-lista">
               <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit</p>
-              <div class="input-append">
-                <input class="span2" id="appendedInputButton" type="email" value="introduce tu email">
-                <button class="btn" type="button">Forma parte</button>
+              <div class="visible-sm">
+                <div class="input-group">
+                  <input class="form-control input-large" id="appendedInputButton" type="email" value="introduce tu email">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-large" type="button">Forma parte</button>
+                  </span>
+                </div>
+              </div>
+              <div class="hidden-sm">
+                <div class="input-group">
+                  <input class="form-control" id="appendedInputButton" type="email" value="introduce tu email">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Forma parte</button>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="span6">
-            <div class="notaMapa">
+          <div class="col-sm-6">
+            <div class="notaMapa hidden-sm">
               <p>Pásate por el huerto y habla con nosotros, la gente va y viene durante toda la semana pero nos encontrarás seguro los lunes por la tarde.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="mascaraFondo" ></div>
-      <div class="imagenFondo"></div>
+      <div class="mascaraFondo hidden-sm"></div>
+      <div class="imagenFondo hidden-sm"></div>
+      <div class="notaMapaPhone visible-sm">
+        <p>Pásate por el huerto y habla con nosotros, la gente va y viene durante toda la semana pero nos encontrarás seguro los lunes por la tarde.</p>
+      </div>
+      <div class="mascaraFondoPhone visible-sm"></div>
+      <div class="imagenFondoPhone visible-sm"></div>
     </section>
 
     <section class="sinfondo" id="gestion">
       <div class="container">
         <!-- La gestion en el huerto fuensanta -->
         <div class="row" >
-          <div class="span6">
+          <div class="col-12 col-sm-6">
             <hgroup>
               <h1>Participa en la gestión</h1>
               <h2 class="subtitle">Toda la información del huerto accesible y abierta</h2>
             </hgroup>
           </div>
-          <div class="span6">
+          <div class="col-12 col-sm-6">
             <div class="row" id="diario">
-              <div class="span4">
+              <div class="col-8">
                 <h3>Diario del #huertoFuensanta</h3>
                 <p>Aquí apuntamos las tareas de mantenimiento habituales. Todo el mundo puede editar el documento, ¿A qué esperas?</p>
               </div>
-              <div class="span2">
-                <img class="icono">
+              <div class="col-4">
+                <img class="icono" src="img/icon_docs.png">
               </div>
-              <div class="span4">
+            </div>
+            <div class="row" id="diario">
+              <div class="col-8">
                 <h3>Cuentas #HuertoFuensanta</h3>
                 <p>Aquí apuntamos las cuentas del huerto fuensanta, de qué dinero se dispone y en que se ha gastado.</p>
               </div>
-              <div class="span2">
-                <img class="icono">
+              <div class="col-4">
+                <img class="icono" src="img/icon_spreadsheet.png">
               </div>
             </div>
           </div>
@@ -121,14 +171,14 @@
       <div class="container">
         <!-- Esta pasando -->
         <div class="row" >
-          <div class="span6" id="actividadesfuturas">
+          <div class="col-sm-6" id="actividadesfuturas">
             <hgroup>
               <h1>Está pasando</h1>
               <h2 class="subtitle">Numerosas personas colectivos y asociaciones participan en este proyecto , aquí tienes una muestra</h2>
             </hgroup>
              <!-- Template tpl-GoogleEvents AQUI! -->
           </div>
-          <div class="span6">
+          <div class="col-sm-6">
           </div>
         </div>
       </div>
@@ -138,17 +188,19 @@
     <section class="sinfondo" id="gestion">
       <div class="container">
         <div class="row" >
-          <div class="span6">
+          <div class="col-sm-6">
             <hgroup>
               <h1>Agradecimientos</h1>
               <h2 class="subtitle">El huerto fuensanta es fruto del trabajo de muchísimas personas y asociaciones</h2>
             </hgroup>
           </div>
-          <div class="span6">
-            <div class="row">
-              <a class="btn" href="/agradecimientos/">Toda la información aquí</a>
+          <div class="col-sm-6">
+            <div class="visible-sm">
+              <a href="#" class="btn btn-block btn-large btn-default">Los créditos aquí</a>
             </div>
-          </div>
+            <div class="hidden-sm">
+              <a href="#" class="btn btn-default">Los créditos aquí</a>
+            </div>
         </div>
       </div>
     </section>
@@ -170,7 +222,9 @@
       !function ($) {
         $(function(){
           // carousel demo
-          $('#myCarousel').carousel()
+          $('#myCarousel').carousel({
+              interval: 30000
+            })
         })
       }(window.jQuery)
     </script>
