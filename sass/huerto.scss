@@ -2,7 +2,7 @@
 @import "compass/utilities/general/clearfix";
 @import "sidebar";
 
-@mixin whiteGradientBackground{
+@mixin whiteGradientBackgroundHorizontal{
 background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.0) 60%, rgba(255,255,255,0) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-st5p(40%,rgba(255,255,255,0.91)), color-stop(60%,rgba(255,255,255,0.0)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0.95) 40%,rgba(255,255,255,0.0) 60%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
@@ -12,36 +12,29 @@ background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0.
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 }
 
+@mixin whiteGradientBackgroundVertical{
+background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0,rgba(255,255,255,0.0) 380px,rgba(255,255,255,1.0) 480px,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+}
+
 /* Carousel base class */
 $carouselHeight: 690px/2;
 $imageCaptionSize: 80px;
 
-//Tablets
-@media (max-width: 767px) {
-  .navbar{
-    .container{
-      width: 748px;
-      min-width: 748px;
-    }
-  }
-  .container{
-    width: 768px;
-    min-width: 768px;
-  }
-  footer{
-    min-width: 768px;
-  }
-}
 
-/* general styles */
+/* general styles Fonts and text sizes */
 html body{
-  min-width: 768px;
   font-family: helvetica;
   font-size: 16px;
   line-height: 24px;
 }
+.navbar{
+  margin-bottom: 0px;
+  background-color: #fff;
+  &.affix, &.navbar-fixed-top {
+    @include box-shadow(rgba(0,0,0,0.3) 0px 0px 15px);
+  }
+}
 section {
-  min-width: 768px;
   h1{
     font-family: latoregular;
     font-weight: normal;
@@ -67,37 +60,22 @@ section {
     padding-bottom: 70px;
   }
 }
+.icono{
+  width: 100px;
+  padding-top: 25px;
+  float: left;
+}
+section{
+  &.confondo{
+    @include single-box-shadow(rgba(0,0,0,0.15), 0px, 0px, 25px, false, true);
+  }
+}
 
-
-
+// Pies de imagen del slideshow superior
 .pieImagenContainer{
   z-index: 4;
-  top: 0px;
-  left: 50%;
   position: absolute;
-  height:$carouselHeight;
   display: table;
-  //Tablets
-  @media (max-width: 767px) {
-    width: 364px;
-    .textoAutor{
-      width: 364px - $imageCaptionSize;
-    }
-  }
-  //Normal screens
-  @media (min-width: 768px) and (max-width: 980px) {
-    width: 480px;
-    .textoAutor{
-      width: 480px - $imageCaptionSize;
-    }
-  }
-  //Big screens
-  @media (min-width: 1200px) {
-    width: 570px;
-    .textoAutor{
-      width: 570px - $imageCaptionSize;
-    }
-  }
   .pieImagen{
     display: table-cell;
     vertical-align: middle;
@@ -106,26 +84,18 @@ section {
     font-family: latoregular;
     @include clearfix;
     .imagenAutor{
-      float: right;
-      width: $imageCaptionSize;
-      @include clearfix;
+      float:right;
       .imagen{
-        clear: both;
-        display: table-cell;
-        vertical-align: middle;
-        background-color: rgb(128,128,128);
-        width: $imageCaptionSize;
-        height: $imageCaptionSize;
         border: 2px solid white;
-        @include border-radius($imageCaptionSize/2, $imageCaptionSize/2);
+        @include border-radius(50%, 50%);
         @include background-size(cover);
         @include box-shadow(rgba(0,0,0,0.3) 0px 0px 5px);
         background-position: center center;
         background-repeat: no-repeat;
+        background-color: rgb(128,128,128);
       }
     }
     .textoAutor{
-      float: left;
       text-align: right;
       display: block;
       @include box-sizing (border-box);
@@ -152,19 +122,139 @@ section {
 
 
 
-
-
-
-
-
-
-
+//Phone
+@media (max-width: 767px) {
+  footer .creditosTecnicos{
+    padding: 15px;
+  }
+  section.confondo{
+    @include single-box-shadow(rgba(0,0,0,0.5), 0px, 0px, 25px, false, true);
+    padding-bottom: 0px;
+  }
+  .carousel{
+    margin-top: 50px;
+    .carousel-inner{
+      height:420px;
+      width:100%;
+      .item {
+        .mascaraColorPhone{
+          width:100%;
+        }
+        .pieImagenContainer{
+          width:100%;
+          height: auto;
+          vertical-align: bottom;
+          bottom: 0px;
+          left: 0px;
+          @include box-sizing (border-box);
+          padding-left: 20px;
+          padding-right: 20px;
+          .pieImagen{
+            padding-bottom: 30px;
+            .textoAutor{
+              padding-right: 70px;
+              width: auto;
+            }
+            .imagenAutor{
+            }
+          }
+        }
+        height:420px;
+        width:100%;
+        .image{
+          width: 100%;
+          height:420px;
+          @include background-size(150% auto);
+          background-position: center top;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}
+//Tablets
+@media (min-width: 768px) and (max-width: 990px) {
+  .mascaraColor{
+    width: 768px;
+    margin-left: -(768px)/2;
+  }
+  .carousel-inner{
+    height:$carouselHeight;
+    width:728px;
+  }
+  .image{
+    height:$carouselHeight;
+    @include background-size(auto 100%);
+    background-position: left center;
+    background-repeat: no-repeat;
+  }
+  .pieImagenContainer{
+    height:$carouselHeight;
+    left: 50%;
+    width: 364px;
+    top: 0px;
+    .textoAutor{
+      width: 364px - $imageCaptionSize;
+    }
+  }
+}
+//Normal screens
+@media (min-width: 991px) and (max-width: 1199px) {
+  .mascaraColor{
+    width: 980px;
+    margin-left: -(980px)/2;
+  }
+  .carousel-inner{
+    height:$carouselHeight;
+    width:940px;
+  }
+  .image{
+    height:$carouselHeight;
+    @include background-size(70% auto);
+    background-position: left center;
+    background-repeat: no-repeat;
+  }
+  .pieImagenContainer{
+    height:$carouselHeight;
+    left: 50%;
+    width: 480px;
+    top: 0px;
+    .textoAutor{
+      width: 480px - $imageCaptionSize;
+    }
+  }
+}
+//Big screens
+@media (min-width: 1200px) {
+  .mascaraColor{
+    width: 1200px;
+    margin-left: -(1200px)/2;
+  }
+  .carousel-inner{
+    height:$carouselHeight;
+    width:1200px;
+  }
+  .image {
+    height:$carouselHeight;
+    @include background-size(900px auto);
+    background-position: left center;
+    background-repeat: no-repeat;
+  }
+  .pieImagenContainer{
+    height:$carouselHeight;
+    left: 50%;
+    width: 570px;
+    top: 0px;
+    .textoAutor{
+      width: 570px - $imageCaptionSize;
+    }
+  }
+}
 
 .carousel {
-  min-width: 768px;
+  margin-bottom: 0px;
   overflow: hidden;
-  .carousel .item {
-    height:$carouselHeight;
+  .item {
     overflow: hidden;
   }
   .mascaraColor{
@@ -173,78 +263,25 @@ section {
     left: 50%;
     position: absolute;
     height: 100%;
-    //Tablets
-    @media (max-width: 767px) {
-      width: 768px;
-      margin-left: -(768px)/2;
-    }
-    //Normal screens
-    @media (min-width: 768px) and (max-width: 980px) {
-      width: 980px;
-      margin-left: -(980px)/2;
-    }
-    //Big screens
-    @media (min-width: 1200px) {
-      width: 1200px;
-      margin-left: -(1200px)/2;
-    }
+  }
+  .mascaraColorPhone{
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    height: 100%;
   }
   .carousel-inner{
     margin-left: auto;
     margin-right: auto;
-    //Tablets
-    @media (max-width: 767px) {
-      width:768px+200px;
-    }
-    //Normal screens
-    @media (min-width: 768px) and (max-width: 980px) {
-      width:980px+200px;
-    }
-    //Big screens
-    @media (min-width: 1200px) {
-      height:$carouselHeight;
-      width:1200px+200px;
-    }
-
-  }
-  .image {
-    //Tablets
-    @media (max-width: 767px) {
-      height:$carouselHeight;
-      @include background-size(auto 100%);
-      background-position: left center;
-      background-repeat: no-repeat;
-    }
-    //Normal screens
-    @media (min-width: 768px) and (max-width: 980px) {
-      height:$carouselHeight;
-      @include background-size(70% auto);
-      background-position: left center;
-      background-repeat: no-repeat;
-    }
-    //Big screens
-    @media (min-width: 1200px) {
-      height:$carouselHeight;
-      @include background-size(900px auto);
-      background-position: left center;
-      background-repeat: no-repeat;
-    }
   }
 }
 
-.carousel {
-  margin-bottom: 0px;
-}
 .carousel-control {
   position: absolute;
   top: 40%;
-  left: 15px;
-  width: 40px;
-  height: 40px;
-  margin-top: 20px;
+  width: 50px;
   font-family: latohairline;
-  font-size: 60px;
-  font-weight: 100;
   line-height: 30px;
   color: white;
   text-align: center;
@@ -255,6 +292,18 @@ section {
   border-radius: 23px;
   opacity: 0.5;
   filter: alpha(opacity=50);
+  height: 80px;
+  margin-top: 0;
+  font-size: 120px;
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  background-color: transparent;
+  background-image: none!important;
+  border: 0;
+  z-index: 10;
+  &.left, &.right{
+    background-color: transparent;
+    background-image: none!important;
+  }
 }
 
 .carousel.carousel-fade .item {
@@ -281,21 +330,11 @@ section {
   z-index: 3;
 }
 
-.carousel-control {
-  height: 80px;
-  margin-top: 0;
-  font-size: 120px;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
-  background-color: transparent;
-  border: 0;
-  z-index: 10;
-}
-
-
 
 
 /* Mapa centrado */
 #quees{
+  @include clearfix;
   overflow: hidden;
   .imagenFondo{
     background: url(/img/planoHuertoFuensanta.png);
@@ -316,6 +355,39 @@ section {
       background-size: 1200px auto !important;
       left: 250px;
     }
+  }
+  .imagenFondoPhone{
+    position: relative;
+    background: url(/img/planoHuertoFuensanta.png);
+    background-repeat: no-repeat;
+    background-position: center center !important;
+    width: 100%;
+    height: 490px;
+    z-index: -800;
+  }
+  .mascaraFondoPhone{
+    position: relative;
+    @include whiteGradientBackgroundVertical;
+    width: 100%;
+    height: 490px;
+    top:0px;
+    background-color: rgba(255,255,255,0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -500;
+  }
+  .notaMapaPhone{
+    @include box-shadow(rgba(0,0,0,0.4) 0px 0px 5px);
+    @include border-radius( 10px, 10px);
+    @include box-sizing (border-box);
+    background-color: white;
+    padding: 20px;
+    position: absolute;
+    bottom: 50px;
+    width: 320px;
+    left: 50%;
+    margin-left: -160px;
   }
 }
 
@@ -348,16 +420,6 @@ section {
 
 /* visor de imagenes */
 section{
-  &.confondo{
-    //Tablets
-    @media (max-width: 767px) {
-      
-    }
-    //Normal screens
-    @media (max-width: 767px) {
-      @include single-box-shadow(rgba(0,0,0,0.15), 0px, 0px, 25px, false, true);
-    }
-  }
   position: relative;
   .imagenFondo{
     top:0px;
@@ -387,7 +449,7 @@ section{
     height: 100%;
     position: absolute;
     z-index: -500;
-    @include whiteGradientBackground;
+    @include whiteGradientBackgroundHorizontal;
   }
 }
 

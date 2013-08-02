@@ -17,32 +17,56 @@
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
   <!-- include navbar -->
-  <!-- navbar -->
-<div class="navbar navbar-static-top" data-spy="affix" data-offset-top="345">
-  <div class="navbar-inner">
-    <div class="container">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
+  <!-- navbar Phone-->
+<div class="navbar navbar-fixed-top visible-sm">
+  <div class="container">
+    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+    <a href="/" class="navbar-brand visible-sm">Huerto Fuensanta</a>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        
           
-            
-              <li><a href="/">Inicio</a></li>
-            
+            <li><a href="/">Inicio</a></li>
           
-            
-              <li class="active"><a href="/informacion/" class="active">Información</a></li>
-            
+        
           
-            
-              <li><a href="/agradecimientos/">Agradecimientos</a></li>
-            
+            <li class="active"><a href="/informacion/" class="active">Información</a></li>
           
-        </ul>
-      </div>
+        
+          
+            <li><a href="/agradecimientos/">Agradecimientos</a></li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- navbar Resto-->
+<div class="navbar navbar-static-top hidden-sm" data-spy="affix" data-offset-top="345">
+  <div class="container">
+    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+    <a href="/" class="navbar-brand visible-sm">Huerto Fuensanta</a>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        
+          
+            <li><a href="/">Inicio</a></li>
+          
+        
+          
+            <li class="active"><a href="/informacion/" class="active">Información</a></li>
+          
+        
+          
+            <li><a href="/agradecimientos/">Agradecimientos</a></li>
+          
+        
+      </ul>
     </div>
   </div>
 </div>
@@ -58,13 +82,13 @@
     <div class="container">
       <!-- Docs nav -->
       <div class="row">
-        <div class="span3 bs-docs-sidebar">
+        <div class="col-lg-3 bs-docs-sidebar">
           <ul class="nav nav-list bs-docs-sidenav affix-top" data-spy="affix" data-offset-top="200">
             <li><a href="#quees"><i class="icon-chevron-right"></i> Huerto Fuensanta</a></li>
             <li><a href="#comofunciona"><i class="icon-chevron-right"></i> Como funcionamos</a></li>
           </ul>
         </div>
-        <div class="span9">
+        <div class="col-lg-9">
           <section>
             <h1 id="quees">Fuerto Fuensanta</h1>
             <p class="lead">Este es un párrafo introductorio sobre el huerto fuenstanta puede sacarse del párrafo inicial.</p>
