@@ -63,7 +63,7 @@ section {
 .icono{
   width: 100px;
   padding-top: 25px;
-  float: left;
+  float: right;
 }
 section{
   &.confondo{
@@ -417,7 +417,6 @@ section{
     }
   }
 }
-
 /* visor de imagenes */
 section{
   position: relative;
@@ -454,7 +453,11 @@ section{
 }
 
 
-
+#botonCreditos{
+  margin-top: 80px;
+  width: 340px;
+  float: right;
+}
 
 /* navegador actividades */
 /**/

@@ -141,7 +141,7 @@ section {
 .icono {
   width: 100px;
   padding-top: 25px;
-  float: left;
+  float: right;
 }
 
 /* line 69, ../sass/huerto.scss */
@@ -590,11 +590,11 @@ section.confondo {
 }
 
 /* visor de imagenes */
-/* line 422, ../sass/huerto.scss */
+/* line 421, ../sass/huerto.scss */
 section {
   position: relative;
 }
-/* line 424, ../sass/huerto.scss */
+/* line 423, ../sass/huerto.scss */
 section .imagenFondo {
   top: 0px;
   width: 100%;
@@ -607,20 +607,20 @@ section .imagenFondo {
   background-repeat: no-repeat;
 }
 @media (max-width: 989px) {
-  /* line 424, ../sass/huerto.scss */
+  /* line 423, ../sass/huerto.scss */
   section .imagenFondo {
     -webkit-background-size: auto 100% !important;
     background-size: auto 100% !important;
   }
 }
 @media (min-width: 990px) {
-  /* line 424, ../sass/huerto.scss */
+  /* line 423, ../sass/huerto.scss */
   section .imagenFondo {
     -webkit-background-size: 100% auto !important;
     background-size: 100% auto !important;
   }
 }
-/* line 445, ../sass/huerto.scss */
+/* line 444, ../sass/huerto.scss */
 section .mascaraFondo {
   top: 0px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -644,14 +644,21 @@ section .mascaraFondo {
   /* IE6-9 */
 }
 
+/* line 456, ../sass/huerto.scss */
+#botonCreditos {
+  margin-top: 80px;
+  width: 340px;
+  float: right;
+}
+
 /* navegador actividades */
 /**/
 /* posicionamiento del boton */
-/* line 463, ../sass/huerto.scss */
+/* line 466, ../sass/huerto.scss */
 #estapasando .row {
   position: relative;
 }
-/* line 465, ../sass/huerto.scss */
+/* line 468, ../sass/huerto.scss */
 #estapasando .row .span6:last-child {
   position: absolute;
   bottom: 0px;
@@ -659,7 +666,7 @@ section .mascaraFondo {
 }
 
 /* estilos del boton */
-/* line 473, ../sass/huerto.scss */
+/* line 476, ../sass/huerto.scss */
 .navegadorActividades {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -668,24 +675,24 @@ section .mascaraFondo {
   padding: 0px;
   margin: 0px;
 }
-/* line 478, ../sass/huerto.scss */
+/* line 481, ../sass/huerto.scss */
 .navegadorActividades .btn-group {
   width: 100%;
 }
-/* line 480, ../sass/huerto.scss */
+/* line 483, ../sass/huerto.scss */
 .navegadorActividades .btn-group .btn {
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 485, ../sass/huerto.scss */
+/* line 488, ../sass/huerto.scss */
 .navegadorActividades .btn-group .btn.retroceder, .navegadorActividades .btn-group .btn.avanzar {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 15%;
 }
-/* line 490, ../sass/huerto.scss */
+/* line 493, ../sass/huerto.scss */
 .navegadorActividades .btn-group .btn.titulo {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -698,7 +705,7 @@ section .mascaraFondo {
   /**/
 }
 
-/* line 501, ../sass/huerto.scss */
+/* line 504, ../sass/huerto.scss */
 .navbar {
   top: 0px;
   left: 0px;
@@ -708,7 +715,7 @@ section .mascaraFondo {
 
 /* Footer
 -------------------------------------------------- */
-/* line 518, ../sass/huerto.scss */
+/* line 521, ../sass/huerto.scss */
 .footer {
   text-align: left;
   padding: 30px 0;
@@ -717,30 +724,30 @@ section .mascaraFondo {
   background-color: #fff;
 }
 
-/* line 525, ../sass/huerto.scss */
+/* line 528, ../sass/huerto.scss */
 .footer p {
   margin-bottom: 0;
   color: #777;
 }
 
-/* line 529, ../sass/huerto.scss */
+/* line 532, ../sass/huerto.scss */
 .footer-links {
   margin: 10px 0;
 }
 
-/* line 532, ../sass/huerto.scss */
+/* line 535, ../sass/huerto.scss */
 .footer-links li {
   display: inline;
   padding: 0 2px;
 }
 
-/* line 536, ../sass/huerto.scss */
+/* line 539, ../sass/huerto.scss */
 .footer-links li:first-child {
   padding-left: 0;
 }
 
 /* Logo optimization */
-/* line 544, ../sass/huerto.scss */
+/* line 547, ../sass/huerto.scss */
 #logo {
   position: absolute;
   bottom: 100px;
@@ -751,7 +758,7 @@ section .mascaraFondo {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
-/* line 553, ../sass/huerto.scss */
+/* line 556, ../sass/huerto.scss */
 #logo h1, #logo p {
   display: none;
 }
