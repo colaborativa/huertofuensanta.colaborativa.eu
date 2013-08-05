@@ -13,11 +13,16 @@
   - Links de referencia:
     http://www.flickr.com/services/api/explore/flickr.groups.pools.getPhotos
     http://www.flickr.com/services/api/flickr.groups.pools.getPhotos.html
+  - Problema con CORS:
+    http://www.flickr.com/groups/api/discuss/72157629144244216/
+    Without CORS, the browser security model prevents the pixel data from being accessed from other domains. 
+
   - Autor: Colaborativa.eu
 
 */
 // DATOS DE ENTRADA:
 // Reemplazar por vuestros datos particulares
+var embed_api_key='44f41e05b6194f569a7db290062a48aa';
 var api_key='ee4bdc6841d42f90d9ca5e598e99d2f3'; // Clave API, solicitar a través de la web de Flickr
 var group_id='2233980%40N22'; // Identificador del grupo de Flickr
 var ocultarFlickrOwnerName = 'colaborativa.eu'; /* Si casi todas las fotos las ha insertado el mismo usuario entonces incluir 
@@ -35,7 +40,7 @@ Date.locale = {
 var url = 'http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos';
 url += '&api_key='+api_key;
 url += '&group_id='+group_id;
-url += '&extras=description%2Cdate_taken%2C+owner_name%2C+icon_server';
+url += '&extras=description%2Cdate_taken%2C+owner_name%2C+icon_server%2C+views';
 url += '&per_page=500'; // by default 50
 url += '&format=json&nojsoncallback=1';
 var stuff = []; 
@@ -69,18 +74,34 @@ var jqxhr = $.getJSON( url, function() {
 			imageOwner = 'Por ' + item.ownername + ' a ';
 		}
  		var imageFechaFinal= imageFecha.getDate() + ' de ' + imageMes + ' de ' + imageFecha.getFullYear();
+    //
+    var colorStr,colorR, colorG, colorB;
+    $.embedly.defaults.key = embed_api_key; //http://embed.ly/extract/pricing
+    $.embedly.extract(imageName)
+    .progress(function(obj){
+      // Grab images and create the colors.
+      var img = obj.images[0];//,
+     // Display the image inline.
+      colorR = img.colors[0].color[0];
+      colorG = img.colors[0].color[1];
+      colorB = img.colors[0].color[2];
+      console.log(colorR, colorG, colorB);
+    });
+    //
     var obj = {"Nombre": imageName, 
                "Titulo": imageTitle, 
                "Fecha": imageFechaFinal,
                "OwnerIcon": imageOwnerIcon,
                "Owner": imageOwner,
-               "Descripcion": imageDesc.substr(0,imageDesc.length) ,
+               "Descripcion": imageDesc.substr(0,imageDesc.length),
+               "Prueba": colorR      
              };
     stuff.push(obj);
  	});
   var flickrImages = {flickrImages: stuff}; 
   $.get(fileTemplate, function(templates) { 
     var template = $(templates).filter(flickrTemplateID).html();
+    console.log(template);
     var output = Mustache.to_html(template, flickrImages);
     $(htmlTag).html(output);
     var object = $(htmlTag + ' div')[0];
@@ -91,7 +112,8 @@ var jqxhr = $.getJSON( url, function() {
 .always(function() { console.log( "flickr complete" ); });
 // Set another completion function for the request above
 jqxhr.complete(function() { console.log( "flickr second complete" ); });
-/* 
+
+ /* 
   INFORMACIÓN ADICIONAL DE UTILIDAD PARA EL DESARROLLADOR:
 
   * Para iconos usar:  http://farm9.staticflickr.com/8251/buddyicons/50381188@N06.jpg
@@ -147,7 +169,7 @@ https://www.googleapis.com/calendar/v3
   https://developers.google.com/api-client-library/javascript/start/start-js
   https://admin.google.com/AdminHome
   https://developers.google.com/gdata/samples/cal_sample
-
+  Por qué no se puede editar por todo el mundo: http://edutraining.googleapps.com/Training-Home/module-3-calendar/chapter-5/1-2
  - URL pública del calendario
   http://www.google.com/calendar/embed?src=urbanismodebarrio.com_uld0g0slrn1ms2h46njrmctp8s%40group.calendar.google.com&ctz=Europe/Madrid 
 
@@ -208,10 +230,12 @@ var call_google_url = $.getJSON( google_url_events, function() {
                "Organizador": item.organizer.displayName,
                "Fecha_Inicio": Fecha_InicioStr,
                "Fecha_Fin": Fecha_Fin_Str
-             };
+               };
       google_stuff.push(obj);
     }); // end each event of calendar
-    var GoogleEvents = {GoogleEvents: google_stuff};
+    var GoogleEvents = {GoogleEvents: google_stuff, 
+                        "Url_Publica": "http://www.google.com/calendar/embed?src=urbanismodebarrio.com_uld0g0slrn1ms2h46njrmctp8s%40group.calendar.google.com&ctz=Europe/Madrid"
+                       };
     $.get(fileTemplate, function(templates) { 
         var template = $(templates).filter(googleTemplateID).html();
         var output = Mustache.to_html(template, GoogleEvents);
