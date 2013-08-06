@@ -13,6 +13,10 @@
   - Links de referencia:
     http://www.flickr.com/services/api/explore/flickr.groups.pools.getPhotos
     http://www.flickr.com/services/api/flickr.groups.pools.getPhotos.html
+
+    http://www.flickr.com/services/api/explore/flickr.photos.addTags
+    http://www.flickr.com/services/api/auth.oauth.html
+
   - Problema con CORS:
     http://www.flickr.com/groups/api/discuss/72157629144244216/
     Without CORS, the browser security model prevents the pixel data from being accessed from other domains. 
@@ -22,7 +26,7 @@
 */
 // DATOS DE ENTRADA:
 // Reemplazar por vuestros datos particulares
-var embed_api_key='44f41e05b6194f569a7db290062a48aa';
+var embed_api_key='b1afe35625df4ec2bb0a858fd9983152'; //44f41e05b6194f569a7db290062a48aa';
 var api_key='ee4bdc6841d42f90d9ca5e598e99d2f3'; // Clave API, solicitar a través de la web de Flickr
 var group_id='2233980%40N22'; // Identificador del grupo de Flickr
 var ocultarFlickrOwnerName = 'colaborativa.eu'; /* Si casi todas las fotos las ha insertado el mismo usuario entonces incluir 
@@ -40,12 +44,14 @@ Date.locale = {
 var url = 'http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos';
 url += '&api_key='+api_key;
 url += '&group_id='+group_id;
-url += '&extras=description%2Cdate_taken%2C+owner_name%2C+icon_server%2C+views';
+url += '&extras=description%2Cdate_taken%2C+owner_name%2C+icon_server%2C+views%2C+tags';
 url += '&per_page=500'; // by default 50
 url += '&format=json&nojsoncallback=1';
 var stuff = []; 
 // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
+$.embedly.defaults.key = embed_api_key; //http://embed.ly/extract/pricing
+
 var jqxhr = $.getJSON( url, function() {
   console.log( "flickr success" );
 })
@@ -57,6 +63,7 @@ var jqxhr = $.getJSON( url, function() {
 	}
 	var your_array = data.photos.photo;
 	your_array.sort(custom_sort);
+  // 1st Step: Get Pictures INFO from FLICKR
  	$.each(your_array, function(i, item){
  		var imageName = "http://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_b.jpg"
  		var imageTitle = item.title;
@@ -74,44 +81,118 @@ var jqxhr = $.getJSON( url, function() {
 			imageOwner = 'Por ' + item.ownername + ' a ';
 		}
  		var imageFechaFinal= imageFecha.getDate() + ' de ' + imageMes + ' de ' + imageFecha.getFullYear();
+    // Checking for RGB colors embedded into Image Tag as "R22 G33 B33"
+    var imageColorR =0;
+    var imageColorG =0;
+    var imageColorB =0; // Default RGB Values
+    var imageColors = new String(item.tags);
+    if( imageColors.indexOf('r') != -1 && imageColors.indexOf('g') != -1 && imageColors.indexOf('b') != -1 ){
+      var imageColorsArray = imageColors.split(' ');
+      console.log("Array " + imageColorsArray[0]+' '+ imageColorsArray[1] +' '+  imageColorsArray[2]);
+      $.each(imageColorsArray, function(i,item){
+        var str = new String(item);
+        console.log("Each " + str );
+          if(str.indexOf('r') != -1){
+            imageColorR = str.substr(str.indexOf('r')+1,str.length);
+          }
+          if(str.indexOf('b') != -1){
+            imageColorB = str.substr(str.indexOf('b')+1,str.length);
+          }
+          if(str.indexOf('g') != -1){
+            imageColorG = str.substr(str.indexOf('g')+1,str.length);
+          }
+      });
+    }
     //
-    var colorStr,colorR, colorG, colorB;
-    $.embedly.defaults.key = embed_api_key; //http://embed.ly/extract/pricing
-    $.embedly.extract(imageName)
-    .progress(function(obj){
-      // Grab images and create the colors.
-      var img = obj.images[0];//,
-     // Display the image inline.
-      colorR = img.colors[0].color[0];
-      colorG = img.colors[0].color[1];
-      colorB = img.colors[0].color[2];
-      console.log(colorR, colorG, colorB);
-    });
-    //
-    var obj = {"Nombre": imageName, 
+    var obj = {"ColorR": imageColorR,
+               "ColorG": imageColorG,
+               "ColorB": imageColorB,
+               "Nombre": imageName, 
                "Titulo": imageTitle, 
                "Fecha": imageFechaFinal,
                "OwnerIcon": imageOwnerIcon,
                "Owner": imageOwner,
-               "Descripcion": imageDesc.substr(0,imageDesc.length),
-               "Prueba": colorR      
+               "Descripcion": imageDesc //.substr(0,imageDesc.length)                 
              };
-    stuff.push(obj);
- 	});
-  var flickrImages = {flickrImages: stuff}; 
-  $.get(fileTemplate, function(templates) { 
-    var template = $(templates).filter(flickrTemplateID).html();
-    console.log(template);
-    var output = Mustache.to_html(template, flickrImages);
-    $(htmlTag).html(output);
-    var object = $(htmlTag + ' div')[0];
-    $(object).addClass('active');
-  });
+      stuff.push(obj);
+  }); // End Each Item of Flickr 
+   // 2nd Step: Get Pictures Dominant Color from EMBED.LY
+   if(1 == 0){ // So embedly wont be called continuously
+   var colorStr = new String('');
+   var colorR = new Number();
+   var colorG, colorB;
+   $.each(stuff, function(i,picture){
+      // If we don´t have a valid color then extract
+      if( picture.ColorR == 0 && picture.ColorR == 0 && picture.ColorR == 0){
+      $.embedly.extract(picture.Nombre)
+      .progress(function(obj){
+        // Grab images and create the colors.
+        var img = obj.images[0];//,
+        //Display the image inline.
+        var color = new Color(img.colors[0].color[0], img.colors[0].color[1], img.colors[0].color[2]);
+        picture.ColorR = color.r;
+        picture.ColorG = color.g;
+        picture.ColorB = color.b;
+        if((stuff.length - 1) == i){
+                  // 3rd Step: Render Template with Values   
+                  var flickrImages = {flickrImages: stuff}; 
+                  console.log(flickrImages);
+                  /* TEMPLATING WITH MUSTACHE or HANDLERS */
+                  $.get(fileTemplate, function(templates) { 
+                          var source = $(templates).filter(flickrTemplateID).html();
+                          var template = Handlebars.compile(source);
+                          var result = template(flickrImages);
+                          //console.log(result);
+                          $(htmlTag).html(result);
+                          var object = $(htmlTag + ' div')[0];    
+                          $(object).addClass('active');
+                  }); // End Get Template
+                  // End 3rd Step
+        } // End If Last Element
+        // 4th Step: Write into Flickr Image Property Tag  as "R22 G33 B33"
+        /* http://api.flickr.com/services/rest/?method=flickr.photos.addTags&api_key=ee4bdc6841d42f90d9ca5e598e99d2f3c&photo_id=9403964488&tags=R49+G50+B51&format=json&nojsoncallback=1&auth_token=72157634956968380-6120809791baf7c8&api_sig=882d4f3193fede0bfbbb8660245cb13e
+'http://www.flickr.com/services/oauth/request_token'
+'?oauth_nonce=95613465'
+'&oauth_timestamp=1305586162'
+'&oauth_consumer_key='+api_key; //653e7a6ecc1d528c516cc8f92cf98611
+'&oauth_signature_method=HMAC-SHA1';
+'&oauth_version=1.0';
+'&oauth_signature=7w18YS2bONDPL%2FzgyzP5XTr5af4%3D
+'&oauth_callback='http%3A%2F%2Fwww.example.com*/
+
+        // End 4th Step
+        }); // end .progress
+     } // End If checking for Color Already extracted
+     }); // End each
+  }else{
+    // 3rd Step: Render Template with Values   
+        var flickrImages = {flickrImages: stuff}; 
+        console.log(flickrImages);
+        /* TEMPLATING WITH MUSTACHE or HANDLERS */
+        $.get(fileTemplate, function(templates) { 
+        var source = $(templates).filter(flickrTemplateID).html();
+        var template = Handlebars.compile(source);
+        var result = template(flickrImages);
+        //console.log(result);
+        $(htmlTag).html(result);
+        var object = $(htmlTag + ' div')[0];    
+        $(object).addClass('active');
+        }); // End Get Template
+  }
 })
 .fail(function() { console.log( "flickr error" ); })
 .always(function() { console.log( "flickr complete" ); });
 // Set another completion function for the request above
 jqxhr.complete(function() { console.log( "flickr second complete" ); });
+   
+ function hex2a(hex) {
+    var str = '';
+    for (var i = 0; i < hex.length; i += 2) {
+        var v = parseInt(hex.substr(i, 2), 16);
+        if (v) str += String.fromCharCode(v);
+    }
+    return str;
+}  
 
  /* 
   INFORMACIÓN ADICIONAL DE UTILIDAD PARA EL DESARROLLADOR:
@@ -236,11 +317,12 @@ var call_google_url = $.getJSON( google_url_events, function() {
     var GoogleEvents = {GoogleEvents: google_stuff, 
                         "Url_Publica": "http://www.google.com/calendar/embed?src=urbanismodebarrio.com_uld0g0slrn1ms2h46njrmctp8s%40group.calendar.google.com&ctz=Europe/Madrid"
                        };
+    /* TEMPLATING WITH MUSTACHE
     $.get(fileTemplate, function(templates) { 
         var template = $(templates).filter(googleTemplateID).html();
         var output = Mustache.to_html(template, GoogleEvents);
         $(google_htmlTag).html(output);
-    });
+    });*/
 })
 .fail(function() { console.log( "google error" ); })
 .always(function() { console.log( "google complete" ); });
