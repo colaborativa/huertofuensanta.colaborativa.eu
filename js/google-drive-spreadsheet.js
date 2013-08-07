@@ -1,17 +1,76 @@
 /*
-https://developers.google.com/gdata/samples/spreadsheet_sample?hl=es
 
-No olvidar ir a "archivo"->"hacer publico en la web" en la Spreadsheet para
-que pueda ser accesible via la URL
+    - Link de Referencia:
+    https://developers.google.com/drive/v2/reference/files/update
+    https://developers.google.com/gdata/samples/spreadsheet_sample?hl=es
+    API de JavaScript de Google: https://developers.google.com/+/web/api/javascript?hl=es
+    https://developers.google.com/api-client-library/javascript/samples/samples
+
+    http://stackoverflow.com/questions/10317638/inserting-file-to-google-drive-through-api/13985931#13985931
+
+    PENDING: FOLLOW WITH PREVIOUS LINK AND READ AGAIN STACKOVERFLOW POST,
+        IT MUST BE  
+    Form of the File: https://developers.google.com/drive/v2/reference/files#resource
+
+    -Notas
+    No olvidar ir a "archivo"->"hacer publico en la web" en la Spreadsheet para
+    que pueda ser accesible via la URL
 
 */
-
 var DEBUG_GOOGLE = 0;
 // Función Auxiliar
 // --------------------
 // Esta función extrae la información de la spreadsheet de Google Drive con el `id` especificado. 
 // Al concluir invocará a la callback especificada como argumento de entrada.
-function google_GetSpreadsheet(id, callback) {
+/**
+ * Update an existing file's metadata and content.
+ *
+ * @param {String} fileId ID of the file to update.
+ * @param {Object} fileMetadata existing Drive file's metadata.
+ * @param {File} fileData File object to read data from.
+ * @param {Function} callback Callback function to call when the request is complete.
+ */
+function google_SetSpreadsheet(fileId, fileMetadata, fileData, callback) {
+/*  const boundary = '-------314159265358979323846';
+  const delimiter = "\r\n--" + boundary + "\r\n";
+  const close_delim = "\r\n--" + boundary + "--";
+
+  var reader = new FileReader();
+  reader.readAsBinaryString(fileData);
+  reader.onload = function(e) {
+    var contentType = fileData.type || 'application/octet-stream';
+    // Updating the metadata is optional and you can instead use the value from drive.files.get.
+    var base64Data = btoa(reader.result);
+    var multipartRequestBody =
+        delimiter +
+        'Content-Type: application/json\r\n\r\n' +
+        JSON.stringify(fileMetadata) +
+        delimiter +
+        'Content-Type: ' + contentType + '\r\n' +
+        'Content-Transfer-Encoding: base64\r\n' +
+        '\r\n' +
+        base64Data +
+        close_delim;
+
+    var request = gapi.client.request({
+        'path': '/upload/drive/v2/files/' + fileId,
+        'method': 'PUT',
+        'params': {'uploadType': 'multipart', 'alt': 'json'},
+        'headers': {
+          'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+        },
+        'body': multipartRequestBody});
+    if (!callback) {
+      callback = function(file) {
+        console.log(file)
+      };
+    }
+    request.execute(callback);
+  }*/
+}
+/*
+*/
+function google_GetSpreadsheet(id, headerTitlesName,headerTitlesNumber, callback) {
     if( DEBUG_GOOGLE) { console.log("function google_GetSpreadsheet");}
     // Chequear que `reqwest` existe para así poder comunicarnos con Google Drive.
     if (typeof reqwest === 'undefined'){
@@ -20,27 +79,23 @@ function google_GetSpreadsheet(id, callback) {
     // La función `response` se ejecutará una vez concluída la llamada a `reqwest` invocada más abajo.
     // Se encargará de extraer cada fila de la spreadsheet, localizar cada columna (título, dirección, etc.)
     // y almacenar todos los datos en la variable array `features`.
-    function response(x) {
-        if( DEBUG_GOOGLE) { console.log("function response");}
+    function response(x) { // Callback
+        if( DEBUG_GOOGLE) { console.log("function response "+x);}
+        //console.log(  JSON.stringify(x));
         var features = []; // This array stores the spreadsheet values
         // Chequear que los datos son válidos antes de continuar.
         if (!x || !x.feed) return features;
         // Bucle for para cada fila de la spreadsheet, que corresponde con un edificio abandonado.
         for (var i = 0; i < x.feed.entry.length; i++) {                             
            var entry = x.feed.entry[i];
-           var obj = {
-                // Obtener cada columna de la fila actual en formato texto.
-                    'Orden': entry['gsx$númerodeactividad'].$t,
-                    'Titulo': entry['gsx$títuloactividad'].$t,
-                    'Descripcion': entry['gsx$descripción'].$t,
-                    'Organizador': entry['gsx$organizador'].$t,  
-                    'FechaInicio': entry['gsx$fechayhorainicio'].$t,
-                    'FechaFin': entry['gsx$fechayhorafin'].$t,  
-                    'Estado': entry['gsx$estado'].$t,
-                    'NAsistentes': entry['gsx$númerodeasistentes'].$t,
-                    'Contacto': entry['gsx$datosdecontacto'].$t,      
-            };
-            features.push(obj);
+           var obj = {}; // Object
+           for(var y = 0; y < headerTitlesNumber; y++){
+                var titleName = headerTitlesName[y][0];
+                var titleValue= 'gsx$'+headerTitlesName[y][1];
+                obj[titleName] = entry[titleValue].$t;
+           }// End For
+           features.push(obj);
+           //console.log(features);
         } // End for
         // Llamar a la función callback con el array `features` como dato de entrada.
         return callback(features);

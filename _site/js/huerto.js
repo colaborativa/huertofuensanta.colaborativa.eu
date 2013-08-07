@@ -31,7 +31,7 @@
   - Fecha: Agosto 2013
 
 */
-var DEBUG_HUERTO = 1;
+var DEBUG_HUERTO = 0;
 // DATOS DE ENTRADA:
 // Reemplazar por vuestros datos particulares
 var embed_api_key='b1afe35625df4ec2bb0a858fd9983152'; // Solicitar a través de http://embed.ly/ "Embed.ly service"
@@ -86,32 +86,16 @@ var jqxhr = $.getJSON( url, function() {
  		if (imageDesc.indexOf("Add a description")!= -1 || imageDesc.indexOf("Agrega un comentario")!= -1 ){
  			imageDesc = ' ';
  		}
-  	var imageFecha = new Date(datetaken);// format: 2013-04-13 20:05:41 item.datetaken
+  	var imageFecha = new Date(datetaken);// Format: 2013-04-13 20:05:41 item.datetaken
  		var imageMes = Date.locale['es'].month_names[imageFecha.getMonth()];
  		if( item.ownername != ocultarFlickrOwnerName){ // Test
 			imageOwner = 'Por ' + item.ownername + ' a ';
 		}
  		var imageFechaFinal= imageFecha.getDate() + ' de ' + imageMes + ' de ' + imageFecha.getFullYear();
-    // Checking for RGB colors embedded into Image Tag as "R22 G33 B33"
+    // Setting Up Default Colors for all images: Black
     var imageColorR =0;
     var imageColorG =0;
     var imageColorB =0; // Default RGB Values
-    var imageColors = new String(item.tags);
-    if( imageColors.indexOf('r') != -1 && imageColors.indexOf('g') != -1 && imageColors.indexOf('b') != -1 ){
-      var imageColorsArray = imageColors.split(' ');
-      $.each(imageColorsArray, function(i,item){
-        var str = new String(item);
-          if(str.indexOf('r') != -1){
-            imageColorR = str.substr(str.indexOf('r')+1,str.length);
-          }
-          if(str.indexOf('b') != -1){
-            imageColorB = str.substr(str.indexOf('b')+1,str.length);
-          }
-          if(str.indexOf('g') != -1){
-            imageColorG = str.substr(str.indexOf('g')+1,str.length);
-          }
-      });
-    }
     var obj = {"ColorR": imageColorR,
                "ColorG": imageColorG,
                "ColorB": imageColorB,
@@ -120,53 +104,51 @@ var jqxhr = $.getJSON( url, function() {
                "Fecha": imageFechaFinal,
                "OwnerIcon": imageOwnerIcon,
                "Owner": imageOwner,
-               "Descripcion": imageDesc                  
-             };
-      stuff.push(obj);
+               "Descripcion": imageDesc};
+    stuff.push(obj);
   }); // End Each Item of Flickr 
-   // 2nd Step: Get Pictures Dominant Color from EMBED.LY
-   if(1 == 0){ // So embedly wont be called continuously
-   var colorStr = new String('');
-   var colorR = new Number();
-   var colorG, colorB;
-   $.each(stuff, function(i,picture){
-      // If we don´t have a valid color then extract
-      if( picture.ColorR == 0 && picture.ColorR == 0 && picture.ColorR == 0){
-      $.embedly.extract(picture.Nombre)
-      .progress(function(obj){
-        // Grab images and create the colors.
-        var img = obj.images[0];//,
-        //Display the image inline.
-        var color = new Color(img.colors[0].color[0], img.colors[0].color[1], img.colors[0].color[2]);
-        picture.ColorR = color.r;
-        picture.ColorG = color.g;
-        picture.ColorB = color.b;
-        if((stuff.length - 1) == i){
-                  // 3rd Step: Render Template with Values   
-                  var flickrImages = {flickrImages: stuff}; 
-                  /* TEMPLATING WITH MUSTACHE or HANDLERS */
-                  $.get(fileTemplate, function(templates) { 
-                          var source = $(templates).filter(flickrTemplateID).html();
-                          var template = Handlebars.compile(source);
-                          var result = template(flickrImages);
-                          //console.log(result);
-                          $(htmlTag).html(result);
-                          var object = $(htmlTag + ' div')[0];    
-                          $(object).addClass('active');
-                  }); // End Get Template
-                  // End 3rd Step
-        } // End If Last Element
-        // 4th Step: Write into Flickr Image Property Tag  as "R22 G33 B33"
-
-        // End 4th Step
-        }); // end .progress
-     } // End If checking for Color Already extracted
-     }); // End each
-  }else{
-    // 3rd Step: Render Template with Values   
-        var flickrImages = {flickrImages: stuff}; 
-        /* TEMPLATING WITH MUSTACHE or HANDLERS */
-        $.get(fileTemplate, function(templates) { 
+  // 2nd Step: Get dominant colors from SpreadSheets
+  var google_sh_id_colors = '0ApaZkqgevJCgdG1DMVIxdUtGQ1lpUGFvLWZnNTgxX1E'; 
+  // Este es el TAG donde se insertarán los eventos del calendario
+  var google_stuff_colors = [];
+  var headerTitlesColors = {'0': ['Imagen', 'nombredelaimagen'],
+                            '1': ['ColorR','colorr'],
+                            '2': ['ColorG','colorg'],
+                            '3': ['ColorB','colorb']};
+  // Llamada a la función que extrae información de SpreadSheet
+  google_GetSpreadsheet(google_sh_id_colors, headerTitlesColors, 4, ColorsAdd);
+  google_SetSpreadsheet(google_sh_id_colors, null, null, null);
+  function ColorsAdd(colors){
+      $.each(stuff, function(i,image){
+        var imageFound = false;
+        $.each(colors, function(j,color){    
+            if(color["Imagen"] == image["Nombre"]){
+               image["ColorR"] = color["ColorR"];
+               image["ColorG"] = color["ColorG"];
+               image["ColorB"] = color["ColorB"]; 
+               imageFound = true;
+            } // End if
+        }); // End Each Color
+        // 3rd Step: Get rest of Pictures Dominant Color from EMBED.LY
+        if( imageFound == false){ // Ask for dominant colors to Embed.ly
+              $.embedly.extract(image["Nombre"])
+                    .progress(function(obj){
+                      // Grab images and create the colors.
+                      var img = obj.images[0];//,
+                      //Display the image inline.
+                      var colorTemp = new Color(img.colors[0].color[0], img.colors[0].color[1], img.colors[0].color[2]);
+                      image["ColorR"] = colorTemp.r;
+                      image["ColorG"] = colorTemp.g;
+                      image["ColorB"] = colorTemp.b;
+                      console.log("EMBEDL.LY " + image["Nombre"]+" ,"+image["ColorR"]+" ,"+image["ColorG"]+" ,"+image["ColorB"]);
+                      // FALTA AÑADIR FILA A SPREADSHEET ****
+              }); // end .progress
+        } // End if Image not Found
+      }); // End Each Image
+      // 4th Step: Render Template with Values   
+      var flickrImages = {flickrImages: stuff}; 
+      /* TEMPLATING WITH MUSTACHE or HANDLERS */
+      $.get(fileTemplate, function(templates) { 
         var source = $(templates).filter(flickrTemplateID).html();
         var template = Handlebars.compile(source);
         var result = template(flickrImages);
@@ -174,11 +156,12 @@ var jqxhr = $.getJSON( url, function() {
         $(htmlTag).html(result);
         var object = $(htmlTag + ' div')[0];    
         $(object).addClass('active');
-        }); // End Get Template
-  }
-})
+      }); // End Get Template
+   } // End ColorAdd Function
+   // xnd Step: End
+  }) // End .Done
 .fail(function() { if(DEBUG_HUERTO){ console.log( "flickr error" );} })
-.always(function() { console.log( "flickr complete" ); });
+.always(function() { if(DEBUG_HUERTO){console.log( "flickr complete" );} });
 // Set another completion function for the request above
 jqxhr.complete(function() { if(DEBUG_HUERTO){ console.log( "flickr second complete" );} });
  // Fin Llamada a la API de Flickr
@@ -202,8 +185,19 @@ var google_htmlTag = '#estapasando .container .row #actividadesfuturas';
 // Identificador de la template de mustache
 var googleTemplateID = '#tpl-GoogleActivities';
 var google_stuff = [];
+var headerTitles = {
+    '0': ['Orden', 'númerodeactividad'],
+    '1': ['Titulo','títuloactividad'],
+    '2': ['Descripcion','descripción'],
+    '3': ['Organizador','organizador'],  
+    '4': ['FechaInicio','fechayhorainicio'],
+    '5': ['FechaFin','fechayhorafin'],  
+    '6': ['Estado','estado'],
+    '7': ['NAsistentes','númerodeasistentes'],
+    '8': ['Contacto','datosdecontacto'] ,
+};
 // Llamada a la función que extrae información de SpreadSheet
-google_GetSpreadsheet(google_sh_id, ActivitiesAdd);
+google_GetSpreadsheet(google_sh_id, headerTitles, 9, ActivitiesAdd);
 // Campos:  Orden,  Titulo,  Descripcion,  Organizador,  FechaInicio,  FechaFin,  Estado,  NAsistentes,  Contacto,  
 
 // ActivitiesAdd es la Callback una vez concluida la extracción de información de la SpreadSheet
