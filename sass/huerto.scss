@@ -124,6 +124,12 @@ section{
 
 //Phone
 @media (max-width: 767px) {
+  .visible-mediano{
+    display: none;
+  }
+  .visible-grande{
+    display:none;
+  }
   footer .creditosTecnicos{
     padding: 15px;
   }
@@ -135,7 +141,9 @@ section{
     margin-top: 50px;
     .carousel-inner{
       height:420px;
-      width:100%;
+      .itemContenedor{
+        width:100%;
+      }
       .item {
         .mascaraColorPhone{
           width:100%;
@@ -174,12 +182,20 @@ section{
 }
 //Tablets
 @media (min-width: 768px) and (max-width: 990px) {
+  .visible-mediano{
+    display: none;
+  }
+  .visible-grande{
+    display:none;
+  }
   .mascaraColor{
     width: 768px;
     margin-left: -(768px)/2;
   }
   .carousel-inner{
     height:$carouselHeight;
+  }
+  .itemContenedor{
     width:728px;
   }
   .image{
@@ -200,13 +216,21 @@ section{
 }
 //Normal screens
 @media (min-width: 991px) and (max-width: 1199px) {
+  .visible-mediano{
+    display: block;
+  }
+  .visible-grande{
+    display:none;
+  }
   .mascaraColor{
-    width: 980px;
-    margin-left: -(980px)/2;
+    width: 990px;
+    margin-left: -(990px)/2;
   }
   .carousel-inner{
     height:$carouselHeight;
-    width:940px;
+  }
+  .itemContenedor{
+    width: 990px;
   }
   .image{
     height:$carouselHeight;
@@ -226,13 +250,21 @@ section{
 }
 //Big screens
 @media (min-width: 1200px) {
+  .visible-mediano{
+    display: none;
+  }
+  .visible-grande{
+    display: block;
+  }
   .mascaraColor{
     width: 1200px;
     margin-left: -(1200px)/2;
   }
   .carousel-inner{
     height:$carouselHeight;
-    width:1200px;
+  }
+  .itemContenedor{
+    width: 1200px;
   }
   .image {
     height:$carouselHeight;
@@ -255,7 +287,12 @@ section{
   margin-bottom: 0px;
   overflow: hidden;
   .item {
+    width:100%;
     overflow: hidden;
+    .itemContenedor{
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   .mascaraColor{
     z-index: 2;
@@ -272,8 +309,7 @@ section{
     height: 100%;
   }
   .carousel-inner{
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
   }
 }
 

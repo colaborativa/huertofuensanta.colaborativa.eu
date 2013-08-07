@@ -1,7 +1,8 @@
 <script id="tpl-flickrimages" type="text/template">
- {{#flickrImages}}
-   <div class="item">  -- {{ColorR}} --
-        <div class="pieImagenContainer">
+  {{#flickrImages}}
+  <div class="item" style="background-color: rgb({{ColorR}},{{ColorG}},{{ColorB}})">
+    <div class="itemContenedor">
+      <div class="pieImagenContainer">
         <div class="pieImagen">
           <div class="imagenAutor">
             <img class="imagen" src="{{OwnerIcon}}" data-toggle="tooltip" title="{{Owner}}">
@@ -13,14 +14,14 @@
         </div>
       </div>
       <!-- https://github.com/lokesh/color-thief -->
-
-      <div class="mascaraColor hidden-sm" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 800px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
-
-       <div class="mascaraColorPhone visible-sm" style="background: -webkit-linear-gradient(bottom, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 300px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 100%);"></div>
-
+      <div class="mascaraColorPhone visible-sm" style="background: -webkit-linear-gradient(bottom, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 300px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 100%);"></div>
+      <div class="mascaraColor visible-md" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 500px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
+      <div class="mascaraColor visible-mediano" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 500px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
+      <div class="mascaraColor visible-grande" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 800px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
       <div class="image" style="background-image:url({{Nombre}})"></div>
-   </div>
- {{/flickrImages}}
+    </div>
+  </div>
+  {{/flickrImages}}
 </script>
 
 <script id="tpl-GoogleActivities" type="text/template">
