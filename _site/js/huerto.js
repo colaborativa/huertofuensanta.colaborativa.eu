@@ -1,5 +1,5 @@
 /* 
-  - Código que gestiona la inserción de fotos de un grupo de flickr como elementos HTML definidos a través
+  - Código que gestiona la inserción de fotos de un Grupo de FLICKR como elementos HTML definidos a través
   de la plantilla "templates/templates.html"
 
   - Descripción: 
@@ -11,29 +11,39 @@
     Las fotos se ordenan por la fecha en las que fueron tomadas.
 
   - Links de referencia:
-    http://www.flickr.com/services/api/explore/flickr.groups.pools.getPhotos
-    http://www.flickr.com/services/api/flickr.groups.pools.getPhotos.html
+    Cómo obtener información de las fotos de un grupo de Flickr:
+      http://www.flickr.com/services/api/explore/flickr.groups.pools.getPhotos
+      http://www.flickr.com/services/api/flickr.groups.pools.getPhotos.html
 
-    http://www.flickr.com/services/api/explore/flickr.photos.addTags
-    http://www.flickr.com/services/api/auth.oauth.html
+    Cómo añadir Tags: http://www.flickr.com/services/api/explore/flickr.photos.addTags
+    Cómo implementar oauth: http://www.flickr.com/services/api/auth.oauth.html
 
   - Problema con CORS:
     http://www.flickr.com/groups/api/discuss/72157629144244216/
-    Without CORS, the browser security model prevents the pixel data from being accessed from other domains. 
+    Without CORS, the browser security model prevents the pixel data from being accessed from other domains.
+
+  - EMBED.LY service:
+    Usamos el servicio embed.ly para extraer los colores dominantes de cada foto de Flickr, ya que CORS nos lo impedía.
+    Este servicio tiene una limitación de 5000 llamadas al mes por lo que hay que pensar en una alternativa. Por ejemplo
+    guardar los colores RGB de cada foto dentro de la info de flickr (TAGS) o en una Spreadsheet de Google. 
 
   - Autor: Colaborativa.eu
+  - Fecha: Agosto 2013
 
 */
+var DEBUG_HUERTO = 1;
 // DATOS DE ENTRADA:
 // Reemplazar por vuestros datos particulares
-var embed_api_key='b1afe35625df4ec2bb0a858fd9983152'; //44f41e05b6194f569a7db290062a48aa';
+var embed_api_key='b1afe35625df4ec2bb0a858fd9983152'; // Solicitar a través de http://embed.ly/ "Embed.ly service"
 var api_key='ee4bdc6841d42f90d9ca5e598e99d2f3'; // Clave API, solicitar a través de la web de Flickr
-var group_id='2233980%40N22'; // Identificador del grupo de Flickr
+var group_id='2233980%40N22'; // Identificador del grupo de Flickr "Huerto Fuensanta"
 var ocultarFlickrOwnerName = 'colaborativa.eu'; /* Si casi todas las fotos las ha insertado el mismo usuario entonces incluir 
 aqui el "ownerName" para no mostrarlo en las fotos ya que sería repetitivo */
 var htmlTag = '.carousel-inner'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
 var fileTemplate = '/templates/templates.html'; // Archivo donde se encuentra la plantilla con el HTML para las imágenes
-var flickrTemplateID = '#tpl-flickrimages';
+var flickrTemplateID = '#tpl-flickrimages'; /* Identificador de la plantilla de Mustache en donde se insertará la información
+sobre las imágenes de Flickr */
+
 // Definición de variables
 Date.locale = {
     es: {
@@ -41,6 +51,7 @@ Date.locale = {
        month_names_short: ['En', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
     }
 };
+// Construir URL para obtener imágenes de Flickr
 var url = 'http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos';
 url += '&api_key='+api_key;
 url += '&group_id='+group_id;
@@ -50,13 +61,13 @@ url += '&format=json&nojsoncallback=1';
 var stuff = []; 
 // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
-$.embedly.defaults.key = embed_api_key; //http://embed.ly/extract/pricing
-
+$.embedly.defaults.key = embed_api_key; //http://embed.ly/ Servicio Web para extraer Colores Dominantes en Fotos de Flickr
+// Llamada a la API de Flick
 var jqxhr = $.getJSON( url, function() {
-  console.log( "flickr success" );
+  if(DEBUG_HUERTO){ console.log( "flickr success" );}
 })
 .done(function(data) { 
-	console.log( "flickr second success ");
+	if(DEBUG_HUERTO){ console.log( "flickr second success ");}
 	//
 	function custom_sort(a, b) {
     return new Date(b.datetaken).getTime() - new Date(a.datetaken).getTime();
@@ -88,10 +99,8 @@ var jqxhr = $.getJSON( url, function() {
     var imageColors = new String(item.tags);
     if( imageColors.indexOf('r') != -1 && imageColors.indexOf('g') != -1 && imageColors.indexOf('b') != -1 ){
       var imageColorsArray = imageColors.split(' ');
-      console.log("Array " + imageColorsArray[0]+' '+ imageColorsArray[1] +' '+  imageColorsArray[2]);
       $.each(imageColorsArray, function(i,item){
         var str = new String(item);
-        console.log("Each " + str );
           if(str.indexOf('r') != -1){
             imageColorR = str.substr(str.indexOf('r')+1,str.length);
           }
@@ -103,7 +112,6 @@ var jqxhr = $.getJSON( url, function() {
           }
       });
     }
-    //
     var obj = {"ColorR": imageColorR,
                "ColorG": imageColorG,
                "ColorB": imageColorB,
@@ -112,7 +120,7 @@ var jqxhr = $.getJSON( url, function() {
                "Fecha": imageFechaFinal,
                "OwnerIcon": imageOwnerIcon,
                "Owner": imageOwner,
-               "Descripcion": imageDesc //.substr(0,imageDesc.length)                 
+               "Descripcion": imageDesc                  
              };
       stuff.push(obj);
   }); // End Each Item of Flickr 
@@ -136,7 +144,6 @@ var jqxhr = $.getJSON( url, function() {
         if((stuff.length - 1) == i){
                   // 3rd Step: Render Template with Values   
                   var flickrImages = {flickrImages: stuff}; 
-                  console.log(flickrImages);
                   /* TEMPLATING WITH MUSTACHE or HANDLERS */
                   $.get(fileTemplate, function(templates) { 
                           var source = $(templates).filter(flickrTemplateID).html();
@@ -150,15 +157,6 @@ var jqxhr = $.getJSON( url, function() {
                   // End 3rd Step
         } // End If Last Element
         // 4th Step: Write into Flickr Image Property Tag  as "R22 G33 B33"
-        /* http://api.flickr.com/services/rest/?method=flickr.photos.addTags&api_key=ee4bdc6841d42f90d9ca5e598e99d2f3c&photo_id=9403964488&tags=R49+G50+B51&format=json&nojsoncallback=1&auth_token=72157634956968380-6120809791baf7c8&api_sig=882d4f3193fede0bfbbb8660245cb13e
-'http://www.flickr.com/services/oauth/request_token'
-'?oauth_nonce=95613465'
-'&oauth_timestamp=1305586162'
-'&oauth_consumer_key='+api_key; //653e7a6ecc1d528c516cc8f92cf98611
-'&oauth_signature_method=HMAC-SHA1';
-'&oauth_version=1.0';
-'&oauth_signature=7w18YS2bONDPL%2FzgyzP5XTr5af4%3D
-'&oauth_callback='http%3A%2F%2Fwww.example.com*/
 
         // End 4th Step
         }); // end .progress
@@ -167,7 +165,6 @@ var jqxhr = $.getJSON( url, function() {
   }else{
     // 3rd Step: Render Template with Values   
         var flickrImages = {flickrImages: stuff}; 
-        console.log(flickrImages);
         /* TEMPLATING WITH MUSTACHE or HANDLERS */
         $.get(fileTemplate, function(templates) { 
         var source = $(templates).filter(flickrTemplateID).html();
@@ -180,67 +177,89 @@ var jqxhr = $.getJSON( url, function() {
         }); // End Get Template
   }
 })
-.fail(function() { console.log( "flickr error" ); })
+.fail(function() { if(DEBUG_HUERTO){ console.log( "flickr error" );} })
 .always(function() { console.log( "flickr complete" ); });
 // Set another completion function for the request above
-jqxhr.complete(function() { console.log( "flickr second complete" ); });
-   
- function hex2a(hex) {
-    var str = '';
-    for (var i = 0; i < hex.length; i += 2) {
-        var v = parseInt(hex.substr(i, 2), 16);
-        if (v) str += String.fromCharCode(v);
-    }
-    return str;
-}  
-
- /* 
-  INFORMACIÓN ADICIONAL DE UTILIDAD PARA EL DESARROLLADOR:
-
-  * Para iconos usar:  http://farm9.staticflickr.com/8251/buddyicons/50381188@N06.jpg
-  * Para fotos de un grupo usar: http://farm9.staticflickr.com/8113/8655193988_07b236521f_b.jpg
-  
-  * Salida JSON:
-  { "photos": { "page": 1, "pages": 1, "perpage": 100, "total": 58, 
-    "photo": [
-      { "id": "8677001289", "owner": "50381188@N06", "secret": "f0354915da", "server": "8254", 
-        "farm": 9, "title": "Huerto social y ecológico de la Fuensanta Córdoba 22-04-2012", 
-        "ispublic": 1, "isfriend": 0, "isfamily": 0, "ownername": "colaborativa.eu", 
-        "dateadded": "1374751235" },
-      { "id": "8678110340", "owner": "50381188@N06", "secret": "55097a9076", "server": "8253", 
-      "farm": 9, "title": "Huerto social y ecológico de la Fuensanta Córdoba 22-04-2012", 
-      "ispublic": 1, "isfriend": 0, "isfamily": 0, "ownername": "colaborativa.eu", 
-      "dateadded": "1374751234" },
-      ....
-  ] }, "stat": "ok" }
-
-  * URL: http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos&api_key=ee4bdc6841d42f90d9ca5e598e99d2f3
-  &group_id=2233980%40N22
-  &extras=@%2C+owner_name%2C+icon_server
-  &format=json&nojsoncallback=1
-  &api_sig=9c8bb3ae7ac1e2a593358e9eaadf42c3
-
-  * Estructura HTML:
-  <div class="carousel-inner">
-  <div class="item">
-          <img src="http://farm9.staticflickr.com/8113/8655193988_07b236521f_b.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Titulo imagen a la izquierda</h1>
-              <p class="lead"><span>Fecha de la imagen</span>. Descripción imagen a la izquierda.</p>
-            </div>
-          </div>
-        </div>
-  ....
-  </div>
-
-  * Datos API de Flickr:
-  huertofuensanta
-  Clave: ee4bdc6841d42f90d9ca5e598e99d2f3
-  Secreto: ce66d3877f4238c3
-*/
-
+jqxhr.complete(function() { if(DEBUG_HUERTO){ console.log( "flickr second complete" );} });
+ // Fin Llamada a la API de Flickr
 /*
+  - Código que inserta la información extraída de una SpreadSheet de Google en la plantilla "templates.html"
+  con id "#tpl-GoogleActivities".
+
+  - Descripción: 
+  
+  - Links de Referencia:
+    https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE&usp=sharing
+    http://disponibleencordoba.colaborativa.eu/
+    https://github.com/colaborativa/disponibleencordoba
+
+*/
+// DATOS DE ENTRADA: reemplazar por vuestros datos particulares.
+// Identificador de la SpreadSheet de Google (obtener de URL)
+var google_sh_id = '0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE'; 
+// Este es el TAG donde se insertarán los eventos del calendario
+var google_htmlTag = '#estapasando .container .row #actividadesfuturas'; 
+// Identificador de la template de mustache
+var googleTemplateID = '#tpl-GoogleActivities';
+var google_stuff = [];
+// Llamada a la función que extrae información de SpreadSheet
+google_GetSpreadsheet(google_sh_id, ActivitiesAdd);
+// Campos:  Orden,  Titulo,  Descripcion,  Organizador,  FechaInicio,  FechaFin,  Estado,  NAsistentes,  Contacto,  
+
+// ActivitiesAdd es la Callback una vez concluida la extracción de información de la SpreadSheet
+function ActivitiesAdd(features){
+   $.each(features, function(i, item){
+          var activityMes, Fecha_Fin_Str, Fecha_InicioStr;
+          var Fecha_Inicio = new Date(item.FechaInicio);
+          if(Fecha_Inicio != 'Invalid Date'){
+                activityMes = Date.locale['es'].month_names_short[Fecha_Inicio.getMonth()];
+                var hours = Fecha_Inicio.getHours()
+                var minutes = Fecha_Inicio.getMinutes()
+                if (minutes < 10){
+                  minutes = "0" + minutes
+                }
+                Fecha_InicioStr = hours + ':' + minutes+'h ' + Fecha_Inicio.getDate() + '-' + activityMes + '-' + Fecha_Inicio.getFullYear()+' ';
+          }else{
+                Fecha_InicioStr ="[Pendiente] ";
+          }     
+          var Fecha_Fin = new Date(item.FechaFin);
+          if(Fecha_Inicio != 'Invalid Date'){
+                activityMes = Date.locale['es'].month_names_short[Fecha_Fin.getMonth()];
+                var hours = Fecha_Inicio.getHours()
+                var minutes = Fecha_Inicio.getMinutes()
+                if (minutes < 10){
+                  minutes = "0" + minutes
+                }
+                Fecha_Fin_Str = hours + ':' + minutes+ 'h ' + Fecha_Fin.getDate() + '-' + activityMes + '-' + Fecha_Fin.getFullYear()+ ' ';
+          }else{
+                Fecha_Fin_Str ="[Pendiente] ";
+          } 
+          var obj = {"Nombre": item.Titulo, 
+                   "Descripcion": item.Descripcion, 
+                   "Organizador": item.Organizador,
+                   "NAsistentes": item.NAsistentes,
+                   "Estado": item.Estado,
+                   "Fecha_Inicio": Fecha_InicioStr,
+                   "Fecha_Fin": Fecha_Fin_Str
+                   };
+          google_stuff.push(obj);
+         }); // end each event of calendar
+         var GoogleActivities = {GoogleActivities: google_stuff, 
+                            "Url_Publica": "https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE#gid=0"
+                           };
+         // TEMPLATING WITH MUSTACHE
+         $.get(fileTemplate, function(templates) { 
+                var source = $(templates).filter(googleTemplateID).html();
+                var template = Handlebars.compile(source);
+                var result = template(GoogleActivities);
+                $(google_htmlTag).html(result);
+         });
+}
+/*
+
+    GOOGLE CALENDAR PUBLIC
+    EXTRACTING ACTIVITIES AS JSON AND INSERT THEM INTO WEB 
+    MAIN PROBLEM: TO EDIT THE CALENDAR A GOOGLE ACCOUNT IS NEEDED 
 
 https://www.googleapis.com/calendar/v3
   - Descripción:
@@ -259,7 +278,7 @@ https://www.googleapis.com/calendar/v3
   https://developers.google.com/google-apps/calendar/v3/reference/?hl=es#Events)
   ** https://www.googleapis.com/calendar/v3/calendars/urbanismodebarrio.com_uld0g0slrn1ms2h46njrmctp8s%40group.calendar.google.com/events/?key=AIzaSyBZpkN4-NjFMyzMoL6ow-24Vz4haQHckiI
 
-*/
+
 var google_api_key = 'AIzaSyBZpkN4-NjFMyzMoL6ow-24Vz4haQHckiI';
 var google_cal_id = 'urbanismodebarrio.com_uld0g0slrn1ms2h46njrmctp8s%40group.calendar.google.com';
 var google_cal_orderby = 'startTime';
@@ -317,14 +336,15 @@ var call_google_url = $.getJSON( google_url_events, function() {
     var GoogleEvents = {GoogleEvents: google_stuff, 
                         "Url_Publica": "http://www.google.com/calendar/embed?src=urbanismodebarrio.com_uld0g0slrn1ms2h46njrmctp8s%40group.calendar.google.com&ctz=Europe/Madrid"
                        };
-    /* TEMPLATING WITH MUSTACHE
-    $.get(fileTemplate, function(templates) { 
-        var template = $(templates).filter(googleTemplateID).html();
-        var output = Mustache.to_html(template, GoogleEvents);
-        $(google_htmlTag).html(output);
-    });*/
+   // TEMPLATING WITH MUSTACHE
+   // $.get(fileTemplate, function(templates) { 
+   //     var template = $(templates).filter(googleTemplateID).html();
+   //     var output = Mustache.to_html(template, GoogleEvents);
+   //     $(google_htmlTag).html(output);
+   // });
 })
 .fail(function() { console.log( "google error" ); })
 .always(function() { console.log( "google complete" ); });
 // Set another completion function for the request above
 call_google_url.complete(function() { console.log( "google second complete" ); });
+*/
