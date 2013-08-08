@@ -73,9 +73,9 @@ section {
 section{
   &.confondo{
     @include single-box-shadow(rgba(0,0,0,0.15), 0px, 0px, 25px, false, true);
-    .col-sm-6:last-child{
+    /*.col-sm-6:last-child{
       margin-top: 50px;
-    }
+    }*/
   }
 }
 

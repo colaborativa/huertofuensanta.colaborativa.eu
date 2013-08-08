@@ -155,10 +155,9 @@ section.confondo {
   -webkit-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.15);
-}
-/* line 76, ../sass/huerto.scss */
-section.confondo .col-sm-6:last-child {
-  margin-top: 50px;
+  /*.col-sm-6:last-child{
+    margin-top: 50px;
+  }*/
 }
 
 /* line 86, ../sass/huerto.scss */
