@@ -37,7 +37,7 @@
     <h3>Próximas actividades</h3>
     <ol>
         {{#GoogleActivities}}
-        <li><time datetime="{{Fecha_Inicio}}"> {{Fecha_Inicio}}</time>{{Nombre}}{{Descripcion}} en {{Localizacion}} organizada por {{Organizador}}</li>
+        <li class="actividad" toggle="popover" data-trigger="click" data-title="{{Nombre}}" data-content="{{Descripcion}} en {{Localizacion}} organizada por {{Organizador}}" data-placement="bottom"><time>{{Fecha_Rango}}</time> {{Nombre}}: {{Descripcion}} en {{Localizacion}} organizada por {{Organizador}}</li>
         {{/GoogleActivities}}
     </ol>
   </div>

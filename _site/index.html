@@ -19,7 +19,7 @@
   </head>
   <body>
     <!-- Carousel bootstrap para personalizar con Flickr-->
-    <div id="myCarousel" class="carousel slide carousel-fade" style="background-color: grey">
+    <div id="myCarousel" class="carousel slide carousel-fade" style="background-color: white">
       <!-- Template tpl-flickrimages AQUI! -->
       <div class="carousel-inner" id="carousel-innerTpl">
       </div>
@@ -66,49 +66,47 @@
 </div>
 <!-- navbar Resto-->
 
-<div class="navbar navbar-fixed-top hidden-sm" data-spy="affix" data-offset-top="0">
+<div class="navbar navbar-static-top hidden-sm" data-spy="affix" data-offset-top="345">
 
   <div class="container">
     <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
     <a href="/" class="navbar-brand">#HuertoFuensanta</a>
-    <div class="nav-collapse collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav">
+      
         
-          
-            <li class="active"><a href="/" class="active">Inicio</a></li>
-          
+          <li class="active"><a href="/" class="active">Inicio</a></li>
         
-          
-            <li><a href="/informacion/">Información</a></li>
-          
+      
         
-          
-            <li><a href="/gestion/">Gestión</a></li>
-          
+          <li><a href="/informacion/">Información</a></li>
         
-          
-            <li><a href="/actividades/">Actividades</a></li>
-          
+      
         
-          
-            <li><a href="/agradecimientos/">Agradecimientos</a></li>
-          
+          <li><a href="/gestion/">Gestión</a></li>
         
-      </ul>
-    </div>
+      
+        
+          <li><a href="/actividades/">Actividades</a></li>
+        
+      
+        
+          <li><a href="/agradecimientos/">Agradecimientos</a></li>
+        
+      
+    </ul>
   </div>
 </div>
     <section class="confondo" id="quees">
       <div class="container">
         <!-- Que es el huerto fuensanta -->
         <div class="row">
-          <div class="col-sm-7">
+          <div class="col-lg-7">
             <hgroup>
               <h1>¿Qué es el huerto fuensanta?</h1>
               <h2 class="subtitle">El Huerto Fuesanta recupera un espacio público abandonado del barrio de la Fuensanta en Córdoba</h2>
             </hgroup>
           </div>
-          <div class="col-sm-5">
+          <div class="col-lg-5">
           </div>
         </div>
         <div class="row">
@@ -117,11 +115,8 @@
               <h3>¿Cómo funciona?</h3>
               <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
               <div class="boton">
-                <div class="visible-sm">
-                  <a href="#" class="btn btn-block btn-large btn-default"><i class="icon-info-sign icon-large"></i> Ir a información</a>
-                </div>
                 <div class="hidden-sm">
-                  <a href="#" class="btn btn-large btn-default"><i class="icon-info-sign icon-large"></i> Ir a información</a>
+                  <a href="informacion/" class="btn btn-large btn-default"><i class="icon-info-sign icon-large"></i> Ir a información</a>
                 </div>
               </div>
             </div>
@@ -129,40 +124,25 @@
           <div class="col-sm-6">
             <div class="suscripcion-lista">
               <h3>¿Te apuntas?</h3>
-              <p>¿Quieres participar? El Huerto Fuensanta está abierto a todo el mundo, pásate un lunes por la tarde (invierno a partir de las 18:00 y en verano a partir de las 20:30) o <a data-toggle="modal" href="#myModal">apúntante a la lista de correo</a> para ponerte en contacto con nosotros ¡Bienvenido!</p>
-              <!-- Modal -->
-              <div class="modal fade" id="myModal">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                      <p>El Huerto Fuesanta se encuentra en el solar público de la calle Hernando de Magallanes, todos los días hay gente allí pero los Lunes por la tarde solemos reunirnos más gente. ¡Pásate y te contamos más!</p>
-                      <div class="input-group">
-                        <input class="form-control" id="appendedInputButton" type="email" value="introduce tu email">
-                        <span class="input-group-btn">
-                          <button class="btn btn-default" type="button">Forma parte</button>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Cierra la ventana</button>
-                    </div>
-                  </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-              </div><!-- /.modal -->
+              <p>¿Quieres participar? El Huerto Fuensanta está abierto a todo el mundo, pásate un lunes por la tarde (invierno a partir de las 18:00 y en verano a partir de las 20:30) o apúntante a la lista de correopara ponerte en contacto con nosotros ¡Bienvenido!</p>
+              <div class="boton">
+                <div class="input-group">
+                  <input class="form-control input-large" id="appendedInputButton" type="email" value="introduce tu email">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-large" type="button">Enviar</button>
+                  </span>
+                </div>
+              </div>
+              <div class="boton">
+                <div class="visible-sm">
+                  <a href="informacion/" class="btn btn-block btn-large btn-default"><i class="icon-info-sign icon-large"></i> Ir a información</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="mascaraFondo hidden-sm"></div>
-      <div class="imagenFondo hidden-sm"></div>
-      <div class="mascaraFondoPhone visible-sm"></div>
-      <div class="imagenFondoPhone visible-sm"></div>
     </section>
-
     <section class="sinfondo" id="gestion">
       <div class="container">
         <!-- La gestion en el huerto fuensanta -->
@@ -176,32 +156,12 @@
           <div class="col-12 col-sm-6">
             <div class="boton">
               <div class="visible-sm">
-                <a href="#" class="btn btn-block btn-large btn-default"><i class="icon-edit icon-large"></i> Ir a gestión</a>
+                <a href="gestion/" class="btn btn-block btn-large btn-default"><i class="icon-edit icon-large"></i> Ir a gestión</a>
               </div>
               <div class="hidden-sm">
-                <a href="#" id="botonCreditos" class="btn btn-large btn-default"><i class="icon-edit icon-large"></i> Ir a gestión</a>
+                <a href="gestion/" id="botonCreditos" class="btn btn-large btn-default"><i class="icon-edit icon-large"></i> Ir a gestión</a>
               </div>
             </div>
-            <!--
-            <div class="row" id="diario">
-              <div class="col-9">
-                <h3>Diario del #huertoFuensanta</h3>
-                <p>Aquí apuntamos las tareas de mantenimiento habituales. Todo el mundo puede editar el documento, ¿A qué esperas?</p>
-              </div>
-              <div class="col-3">
-                <img class="icono" src="img/icon_docs.png">
-              </div>
-            </div>
-            <div class="row" id="diario">
-              <div class="col-9">
-                <h3>Cuentas #HuertoFuensanta</h3>
-                <p>Aquí apuntamos las cuentas del huerto fuensanta, de qué dinero se dispone y en que se ha gastado.</p>
-              </div>
-              <div class="col-3">
-                <img class="icono" src="img/icon_spreadsheet.png">
-              </div>
-            </div>
-          -->
           </div>
         </div>
       </div>
@@ -211,32 +171,40 @@
       <div class="container">
         <!-- Esta pasando -->
         <div class="row" >
-          <div class="col-sm-6" id="actividadesfuturas">
+          <div class="col-lg-7" id="actividadesfuturas">
             <hgroup>
               <h1>Está pasando…</h1>
               <h2 class="subtitle">Numerosas actividades se organizan en el Huerto Fuensanta ¡Tu también puedes participar!</h2>
             </hgroup>
+          </div>
+          <div class="col-lg-5">
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-sm-6">
             <div class="descripcion">
               <h3>¿Puedo organizar una actividad en el huerto?</h3>
               <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+              <h3>¿Otra información?</h3>
+              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus</p>
             </div>
             <div class="boton">
-              <div class="visible-sm">
-                <a href="#" class="btn btn-block btn-large btn-default"><i class="icon-calendar icon-large"></i>  Ir a actividades</a>
-              </div>
               <div class="hidden-sm">
-                <a href="#" class="btn btn-large btn-default"><i class="icon-calendar icon-large"></i>  Ir a actividades</a>
+                <a href="actividades/" class="btn btn-large btn-default"><i class="icon-calendar icon-large"></i>  Ir a actividades</a>
               </div>
             </div>
           </div>
           <div class="col-sm-6">
             <!-- Template tpl-GoogleEvents AQUI! -->
             <div id="actividadesfuturasTpl"></div> 
+            <div class="boton">
+              <div class="visible-sm">
+                <a href="actividades/" class="btn btn-block btn-large btn-default"><i class="icon-calendar icon-large"></i>  Ir a actividades</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="mascaraFondo" ></div>
-      <div class="imagenFondo" style="background: url(http://farm3.staticflickr.com/2841/9033255329_3b0206398b_k.jpg)"></div>
     </section>
     <section class="sinfondo" id="gestion">
       <div class="container">
@@ -250,10 +218,10 @@
           <div class="col-sm-6">
             <div class="boton">
               <div class="visible-sm">
-                <a href="#" class="btn btn-block btn-large btn-default"><i class="icon-smile icon-large"></i> Ir a agradecimientos</a>
+                <a href="agradecimientos/" class="btn btn-block btn-large btn-default"><i class="icon-thumbs-up icon-large"></i> Ir a agradecimientos</a>
               </div>
               <div class="hidden-sm">
-                <a href="#" id="botonCreditos" class="btn btn-large btn-default"><i class="icon-smile icon-large"></i> Ir a agradecimientos</a>
+                <a href="agradecimientos/" id="botonCreditos" class="btn btn-large btn-default"><i class="icon-thumbs-up icon-large"></i> Ir a agradecimientos</a>
               </div>
             </div>
           </div>
@@ -278,6 +246,9 @@
     <script src="/js/color.js"></script>
     <script src='https://www.google.com/jsapi'></script>
     <script src='/js/reqwest.js'></script>
+    <script src="/js/vendor/moment.min.js"></script>
+    <script src="/js/vendor/twix.min.js"></script>
+    <script src="/js/vendor/lang/es.js"></script>
     <!-- Nuestros Javascript -->
     <script src="/js/google-drive-spreadsheet.js"></script>
     <script src="/js/huerto.js"></script>
@@ -287,10 +258,9 @@
           // carousel demo
           $('#myCarousel').carousel({
               interval: 30000
-            })
+          });
         })
       }(window.jQuery)
     </script>
-    
   </body>
 </html>
