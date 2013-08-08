@@ -26,6 +26,11 @@ html body{
   font-family: helvetica;
   font-size: 16px;
   line-height: 24px;
+  //space for fixed navar
+  margin-top: 50px;
+}
+.modal-dialog{
+  padding-top: 80px;
 }
 .navbar{
   margin-bottom: 0px;
@@ -57,7 +62,7 @@ section {
   }
   &{
     padding-top: 70px;
-    padding-bottom: 70px;
+    padding-bottom: 90px;
   }
 }
 .icono{
@@ -68,8 +73,48 @@ section {
 section{
   &.confondo{
     @include single-box-shadow(rgba(0,0,0,0.15), 0px, 0px, 25px, false, true);
+    .col-sm-6:last-child{
+      margin-top: 50px;
+    }
   }
 }
+
+// estilos para los botones //
+// especifico una anchura determinada para todos los botones en las vistas tablet, mediana y grande
+.boton{
+  .hidden-sm{
+    .btn{
+      margin-top: 20px;
+      width: 320px;
+    }
+  }
+}
+// en las secciones sin fondo los botones van a la derecha y con margen superior
+.sinfondo{
+  .boton{
+    .hidden-sm{
+      .btn{
+        float: right;
+        margin-top: 45px;
+      }
+    }
+  }
+}
+// estilos para el boton
+.boton{
+  .btn-default{
+    color: black;
+    font-family: latoregular;
+    background-color: transparent;
+    i{
+      margin-right: 10px;
+    }
+    &:hover{
+      background-color: silver;
+    }
+  }
+}
+
 
 // Pies de imagen del slideshow superior
 .pieImagenContainer{
@@ -489,11 +534,7 @@ section{
 }
 
 
-#botonCreditos{
-  margin-top: 80px;
-  width: 340px;
-  float: right;
-}
+
 
 /* navegador actividades */
 /**/
@@ -557,7 +598,6 @@ section{
 .footer {
   text-align: left;
   padding: 30px 0;
-  margin-top: 70px;
   border-top: 1px solid #e5e5e5;
   background-color: #fff;
 }

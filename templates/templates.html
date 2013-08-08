@@ -7,17 +7,25 @@
           <div class="imagenAutor">
             <img class="imagen" src="{{OwnerIcon}}" data-toggle="tooltip" title="{{Owner}}">
           </div>
+          <!-- for the text color http://24ways.org/2010/calculating-color-contrast/ 
+          /*function getContrastYIQ(hexcolor){
+            var r = parseInt(hexcolor.substr(0,2),16);
+            var g = parseInt(hexcolor.substr(2,2),16);
+            var b = parseInt(hexcolor.substr(4,2),16);
+            var yiq = ((r*299)+(g*587)+(b*114))/1000;
+            return (yiq >= 128) ? 'black' : 'white';
+          }*/
+          -->
           <div class="textoAutor" style="color: white">
             <p class="texto"><span class="titulo"> {{Titulo}}</span>. <span class="fecha">{{Fecha}}</span>. <span>{{Descripcion}}</span></p>
           </div>
-          <!-- for the text color http://24ways.org/2010/calculating-color-contrast/ -->
         </div>
       </div>
       <!-- https://github.com/lokesh/color-thief -->
       <div class="mascaraColorPhone visible-sm" style="background: -webkit-linear-gradient(bottom, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 300px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 100%);"></div>
-      <div class="mascaraColor visible-md" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 500px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
-      <div class="mascaraColor visible-mediano" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 500px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
-      <div class="mascaraColor visible-grande" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 800px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
+      <div class="mascaraColor visible-md" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 20px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 100px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 500px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
+      <div class="mascaraColor visible-mediano" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 500px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 580px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
+      <div class="mascaraColor visible-grande" style="background: -webkit-linear-gradient(left, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 20px, rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 800px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
       <div class="image" style="background-image:url({{Nombre}})"></div>
     </div>
   </div>
@@ -32,6 +40,5 @@
         <li><time datetime="{{Fecha_Inicio}}"> {{Fecha_Inicio}}</time>{{Nombre}}{{Descripcion}} en {{Localizacion}} organizada por {{Organizador}}</li>
         {{/GoogleActivities}}
     </ol>
-    <a href="{{Url_Publica}}"> Ver todo el calendario aquí </a>
   </div>
 </script>

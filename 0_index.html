@@ -1,3 +1,9 @@
+---
+title: Inicio
+slug: inicio
+icono: icon-home
+permalink: /
+---
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,77 +33,7 @@
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
     <!-- include navbar -->
-    <!-- navbar Phone-->
-<div class="navbar navbar-fixed-top visible-sm">
-  <div class="container">
-    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-    <a href="/" class="navbar-brand visible-sm">#HuertoFuensanta</a>
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <div class="nav-collapse collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav">
-        
-          
-            <li class="active"><a href="/" class="active">Inicio</a></li>
-          
-        
-          
-            <li><a href="/informacion/">Información</a></li>
-          
-        
-          
-            <li><a href="/gestion/">Gestión</a></li>
-          
-        
-          
-            <li><a href="/actividades/">Actividades</a></li>
-          
-        
-          
-            <li><a href="/agradecimientos/">Agradecimientos</a></li>
-          
-        
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- navbar Resto-->
-
-<div class="navbar navbar-fixed-top hidden-sm" data-spy="affix" data-offset-top="0">
-
-  <div class="container">
-    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-    <a href="/" class="navbar-brand">#HuertoFuensanta</a>
-    <div class="nav-collapse collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav">
-        
-          
-            <li class="active"><a href="/" class="active">Inicio</a></li>
-          
-        
-          
-            <li><a href="/informacion/">Información</a></li>
-          
-        
-          
-            <li><a href="/gestion/">Gestión</a></li>
-          
-        
-          
-            <li><a href="/actividades/">Actividades</a></li>
-          
-        
-          
-            <li><a href="/agradecimientos/">Agradecimientos</a></li>
-          
-        
-      </ul>
-    </div>
-  </div>
-</div>
+    {% include _navbar.html %}
     <section class="confondo" id="quees">
       <div class="container">
         <!-- Que es el huerto fuensanta -->
@@ -259,11 +195,7 @@
       </div>
     </section>
     <!-- include footer -->
-    <footer class="footer">
-	<div class="container">
-	    <p class="creditosTecnicos">Créditos técnicos: Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et</p>
-	</div>
-</footer>
+    {% include _footer.html %}
   </div>
     <!-- Le javascript
     ================================================== -->

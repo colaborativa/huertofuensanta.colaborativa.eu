@@ -39,7 +39,7 @@ var api_key='ee4bdc6841d42f90d9ca5e598e99d2f3'; // Clave API, solicitar a travé
 var group_id='2233980%40N22'; // Identificador del grupo de Flickr "Huerto Fuensanta"
 var ocultarFlickrOwnerName = 'colaborativa.eu'; /* Si casi todas las fotos las ha insertado el mismo usuario entonces incluir 
 aqui el "ownerName" para no mostrarlo en las fotos ya que sería repetitivo */
-var htmlTag = '.carousel-inner'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
+var htmlTag = '#carousel-innerTpl'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
 var fileTemplate = '/templates/templates.html'; // Archivo donde se encuentra la plantilla con el HTML para las imágenes
 var flickrTemplateID = '#tpl-flickrimages'; /* Identificador de la plantilla de Mustache en donde se insertará la información
 sobre las imágenes de Flickr */
@@ -181,7 +181,7 @@ jqxhr.complete(function() { if(DEBUG_HUERTO){ console.log( "flickr second comple
 // Identificador de la SpreadSheet de Google (obtener de URL)
 var google_sh_id = '0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE'; 
 // Este es el TAG donde se insertarán los eventos del calendario
-var google_htmlTag = '#estapasando .container .row #actividadesfuturas'; 
+var google_htmlTag = '#actividadesfuturasTpl';
 // Identificador de la template de mustache
 var googleTemplateID = '#tpl-GoogleActivities';
 var google_stuff = [];
