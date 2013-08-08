@@ -205,6 +205,8 @@ function ActivitiesAdd(features){
    $.each(features, function(i, item){
           var activityMes, Fecha_Fin_Str, Fecha_InicioStr;
           var Fecha_Inicio = new Date(item.FechaInicio);
+          var Fecha_Rango;
+          var Fecha_RangoStr;
           if(Fecha_Inicio != 'Invalid Date'){
                 activityMes = Date.locale['es'].month_names_short[Fecha_Inicio.getMonth()];
                 var hours = Fecha_Inicio.getHours()
@@ -214,10 +216,10 @@ function ActivitiesAdd(features){
                 }
                 Fecha_InicioStr = hours + ':' + minutes+'h ' + Fecha_Inicio.getDate() + '-' + activityMes + '-' + Fecha_Inicio.getFullYear()+' ';
           }else{
-                Fecha_InicioStr ="[Pendiente] ";
+                Fecha_InicioStr ="[Fecha pendiente] ";
           }     
           var Fecha_Fin = new Date(item.FechaFin);
-          if(Fecha_Inicio != 'Invalid Date'){
+          if(Fecha_Fin != 'Invalid Date'){
                 activityMes = Date.locale['es'].month_names_short[Fecha_Fin.getMonth()];
                 var hours = Fecha_Inicio.getHours()
                 var minutes = Fecha_Inicio.getMinutes()
@@ -226,15 +228,22 @@ function ActivitiesAdd(features){
                 }
                 Fecha_Fin_Str = hours + ':' + minutes+ 'h ' + Fecha_Fin.getDate() + '-' + activityMes + '-' + Fecha_Fin.getFullYear()+ ' ';
           }else{
-                Fecha_Fin_Str ="[Pendiente] ";
+                Fecha_Fin_Str ="[Fecha pendiente] ";
           } 
+          if(Fecha_Fin != 'Invalid Date' && Fecha_Inicio != 'Invalid Date'){
+            Fecha_Rango = moment.twix(Fecha_Inicio, Fecha_Fin);
+            Fecha_RangoStr = Fecha_Rango.format({monthFormat: "MMMM", weekdayFormat: "DDD", twentyFourHour: true, dayFormat: "D", groupMeridiems: true});
+          } else {
+            Fecha_RangoStr = "[Fecha pendiente] ";
+          }
           var obj = {"Nombre": item.Titulo, 
                    "Descripcion": item.Descripcion, 
                    "Organizador": item.Organizador,
                    "NAsistentes": item.NAsistentes,
                    "Estado": item.Estado,
                    "Fecha_Inicio": Fecha_InicioStr,
-                   "Fecha_Fin": Fecha_Fin_Str
+                   "Fecha_Fin": Fecha_Fin_Str,
+                   "Fecha_Rango" : Fecha_RangoStr
                    };
           google_stuff.push(obj);
          }); // end each event of calendar
@@ -247,6 +256,7 @@ function ActivitiesAdd(features){
                 var template = Handlebars.compile(source);
                 var result = template(GoogleActivities);
                 $(google_htmlTag).html(result);
+                $('.actividad').popover();
          });
 }
 /*
