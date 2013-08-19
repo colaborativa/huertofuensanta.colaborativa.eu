@@ -1,1 +1,2 @@
+titulo: Huerto Fuenstanta
 exclude: [ "sass", "CNAME", "config.rb", "README.md", "LICENSE", "_assets", "Gemfile", "Gemfile.lock", "rakefile" ]

@@ -1,0 +1,61 @@
+<html lang="es">
+  <head>
+  <!-- include head -->
+  {% include _head.html%}
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  <!-- include navbar -->
+  {% include _navbar.html %}
+    <!-- Subhead -->
+    <section class="cabecera confondo">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <hgroup>
+              <h1>{{ page.cabecera }}</h1>
+              <h2 class="subtitle">{{ page.cabecera-subtitulo }}</h2>
+            </hgroup>
+          </div>
+          <div class="col-lg-5">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="secundaria">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <hgroup>
+              <h1>{{page.titulo}}</h1>
+              <h2 class="subtitle">{{page.subtitulo}}</h2>
+            </hgroup>
+            <div id="diario">
+              <h3>{{page.diario.titulo}}</h3>
+              <p>{{page.diario.descripcion}}</p>
+              <div class="embebido">
+                <div class="marco"></div><iframe src='{{page.diario.link.url}}'></iframe>
+                <small><a href="{{page.diario.link.url}}">{{page.diario.link.titulo}}</a></small>
+              </div>
+            </div>
+            <div id="cuentas">
+              <h3>{{page.cuentas.titulo}}</h3>
+              <p>{{page.cuentas.descripcion}}</p>
+              <div class="embebido">
+                <div class="marco"></div><iframe src='{{page.cuentas.link.url}}'></iframe>
+                <small><a href="{{page.cuentas.link.url}}">{{page.cuentas.link.titulo}}</a></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- include footer -->
+    {% include _footer.html %}
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="{{ page.base_url }}js/jquery.js"></script>
+    <script src="{{ page.base_url }}js/huerto.js"></script>
+  </body>
+</html>
