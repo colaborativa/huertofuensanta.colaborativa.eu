@@ -16,6 +16,7 @@
     <!-- include navbar -->
     {% include _navbar.html %}
     <section class="principal confondo" id="quees">
+      <button name="button" id="authorize-button"> Autorizar Google Calls </button>
       <div class="container">
         <!-- Que es el huerto fuensanta -->
         <div class="row">
@@ -187,6 +188,9 @@
     <!-- Nuestros Javascript -->
     <script src="/js/google-drive-spreadsheet.js"></script>
     <script src="/js/huerto.js"></script>
+    <!-- Gestión Grupo de Google  -->
+    <script src="/js/google-groups.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
     <script>
       !function ($) {
         $(function(){
