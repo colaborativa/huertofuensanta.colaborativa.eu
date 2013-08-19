@@ -8,8 +8,10 @@
 
     http://stackoverflow.com/questions/10317638/inserting-file-to-google-drive-through-api/13985931#13985931
 
-    PENDING: FOLLOW WITH PREVIOUS LINK AND READ AGAIN STACKOVERFLOW POST,
-        IT MUST BE  
+    ***** PENDING ******* 
+    FOLLOW WITH PREVIOUS LINK AND READ AGAIN STACKOVERFLOW POST,
+    IT MUST BE CHANGED THE CODE BELOW AND SIMPLIFY ACCORDING TO INSTRUCTIONS.
+    
     Form of the File: https://developers.google.com/drive/v2/reference/files#resource
 
     -Notas
