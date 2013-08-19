@@ -40,7 +40,7 @@ var group_id='2233980%40N22'; // Identificador del grupo de Flickr "Huerto Fuens
 var ocultarFlickrOwnerName = 'colaborativa.eu'; /* Si casi todas las fotos las ha insertado el mismo usuario entonces incluir 
 aqui el "ownerName" para no mostrarlo en las fotos ya que sería repetitivo */
 var htmlTag = '#carousel-innerTpl'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
-var fileTemplate = '/templates/templates.html'; // Archivo donde se encuentra la plantilla con el HTML para las imágenes
+var fileTemplate = 'templates/templates.html'; // Archivo donde se encuentra la plantilla con el HTML para las imágenes
 var flickrTemplateID = '#tpl-flickrimages'; /* Identificador de la plantilla de Mustache en donde se insertará la información
 sobre las imágenes de Flickr */
 
