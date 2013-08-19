@@ -11,7 +11,7 @@ var go_groups_api_key = 'AIzaSyBZpkN4-NjFMyzMoL6ow-24Vz4haQHckiI';
 	      // https://google-api-javascript-client.googlecode.com/hg/samples/authSample.html
 	      // In your Developer Console project, add a JavaScript origin that corresponds to the domain
 	      // where you will be running the script.
-	      var clientId = '627451701463'; // 12 characters
+	      var clientId = 'colaborativa.eu:mj-14sn3a-x6fjkq5yhgf84'; // 12 characters
 
 	      // Enter the API key from the Google Develoepr Console - to handle any unauthenticated
 	      // requests in the code.
