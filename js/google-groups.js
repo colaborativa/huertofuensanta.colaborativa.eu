@@ -37,7 +37,7 @@
 
 
   function handleAuthResult(authResult) {
-  	console.log("authResult: "+authResult);
+  	//console.log("authResult: "+authResult);
     var authorizeButton = document.getElementById('authorize-button');
     if (authResult && !authResult.error) {
       authorizeButton.style.visibility = 'hidden';
