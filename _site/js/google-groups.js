@@ -18,14 +18,14 @@ var go_groups_api_key = 'AIzaSyBZpkN4-NjFMyzMoL6ow-24Vz4haQHckiI';
 	      // The provided key works for this sample only when run from
 	      // https://google-api-javascript-client.googlecode.com/hg/samples/authSample.html
 	      // To use in your own application, replace this API key with your own.
-	      var apiKey = 'AIzaSyBZpkN4-NjFMyzMoL6ow-24Vz4haQHckiI';
+	      var groups_apiKey = 'AIzaSyBZpkN4-NjFMyzMoL6ow-24Vz4haQHckiI';
 
 	      // https://developers.google.com/admin-sdk/groups-settings/auth
 	      var scopes = 'https://www.googleapis.com/auth/apps.groups.settings';
 
 	      // Use a button to handle authentication the first time.
 	      function handleClientLoad() {
-	        gapi.client.setApiKey(apiKey);
+	        gapi.client.setApiKey(groups_apiKey);
 	        window.setTimeout(checkAuth,1);
 	      }
 
