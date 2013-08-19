@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+  <!-- include head -->
+  {% include _head.html%}
+  </head>
+  <body>
+    <!-- Carousel bootstrap para personalizar con Flickr-->
+    <div id="myCarousel" class="carousel slide carousel-fade" style="background-color: white">
+      <!-- Template tpl-flickrimages AQUI! -->
+      <div class="carousel-inner" id="carousel-innerTpl">
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+    <!-- include navbar -->
+    {% include _navbar.html %}
+    <section class="principal confondo" id="quees">
+      <button name="button" id="authorize-button"> Autorizar Google Calls </button>
+      <div class="container">
+        <!-- Que es el huerto fuensanta -->
+        <div class="row">
+          <div class="col-sm-9 col-lg-8">
+            {% for node in site.pages %}
+              {% if node.slug == "informacion" %}
+                <hgroup>
+                  <h1>{{ node.cabecera }}</h1>
+                  <h2 class="subtitle">{{ node.cabecera-subtitulo }}</h2>
+                </hgroup>
+              {% else %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="col-sm-3 col-lg-4">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-lg-6">
+            <div class="descripcion">
+              <h3>¿Cómo funciona?</h3>
+              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+              <div class="boton hidden-sm">
+                <div>
+                  <a href="informacion/" class="btn btn-lg btn-default"><i class="icon-info-sign icon-large"></i> Ir a información</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-6">
+            <div class="suscripcion-lista">
+              <h3>¿Te apuntas?</h3>
+              <p>¿Quieres participar? El Huerto Fuensanta está abierto a todo el mundo, pásate un lunes por la tarde (invierno a partir de las 18:00 y en verano a partir de las 20:30) o apúntante a la lista de correopara ponerte en contacto con nosotros ¡Bienvenido!</p>
+              <div class="formulario">
+                <div class="input-group">
+                  <input class="form-control input-lg" id="appendedInputButton" type="email" value="introduce tu email">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-lg" type="button">Enviar</button>
+                  </span>
+                </div>
+              </div>
+              <hr class="visible-sm" >
+              <div class="boton">
+                <div class="visible-sm">
+                  <a href="informacion/" class="btn btn-block btn-lg btn-default"><i class="icon-info-sign icon-large"></i> Ir a información</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="principal sinfondo" id="gestion">
+      <div class="container">
+        <!-- La gestion en el huerto fuensanta -->
+        <div class="row" >
+          <div class="col-12 col-sm-6 col-lg-7">
+            {% for node in site.pages %}
+              {% if node.slug == "gestion" %}
+                <hgroup>
+                  <h1>{{ node.cabecera }}</h1>
+                  <h2 class="subtitle">{{ node.cabecera-subtitulo }}</h2>
+                </hgroup>
+              {% else %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="col-12 col-sm-6 col-lg-5">
+            <div class="boton">
+              <div class="visible-sm">
+                <a href="gestion/" class="btn btn-block btn-lg btn-default"><i class="icon-edit icon-large"></i> Ir a gestión</a>
+              </div>
+              <div class="hidden-sm">
+                <a href="gestion/" id="botonCreditos" class="btn btn-lg btn-default"><i class="icon-edit icon-large"></i> Ir a gestión</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="principal confondo" id="estapasando" >
+      <div class="container">
+        <!-- Esta pasando -->
+        <div class="row" >
+          <div class="col-sm-9 col-lg-8" id="actividadesfuturas">
+            {% for node in site.pages %}
+              {% if node.slug == "actividades" %}
+                <hgroup>
+                  <h1>{{ node.cabecera }}</h1>
+                  <h2 class="subtitle">{{ node.cabecera-subtitulo }}</h2>
+                </hgroup>
+              {% else %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="col-sm-3 col-lg-4">
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-sm-6 col-lg-6">
+            <div class="descripcion">
+              <h3>¿Puedo organizar una actividad en el huerto?</h3>
+              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+              <h3>¿Otra información?</h3>
+              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus</p>
+            </div>
+            <div class="boton hidden-sm">
+              <div>
+                <a href="actividades/" class="btn btn-lg btn-default"><i class="icon-calendar icon-large"></i>  Ir a actividades</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-6">
+            <!-- Template tpl-GoogleEvents AQUI! limitando a las ultimas 5 actividades -->
+            <div id="actividadesfuturasTpl"></div> 
+            <div class="boton">
+              <div class="visible-sm">
+                <a href="actividades/" class="btn btn-block btn-lg btn-default"><i class="icon-calendar icon-large"></i>  Ir a actividades</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="principal sinfondo" id="gestion">
+      <div class="container">
+        <div class="row" >
+          <div class="col-12 col-sm-6 col-lg-7">
+            {% for node in site.pages %}
+              {% if node.slug == "agradecimientos" %}
+                <hgroup>
+                  <h1>{{ node.cabecera }}</h1>
+                  <h2 class="subtitle">{{ node.cabecera-subtitulo }}</h2>
+                </hgroup>
+              {% else %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="col-12 col-sm-6 col-lg-5">
+            <div class="boton">
+              <div class="visible-sm">
+                <a href="agradecimientos/" class="btn btn-block btn-lg btn-default"><i class="icon-thumbs-up icon-large"></i> Ir a agradecimientos</a>
+              </div>
+              <div class="hidden-sm">
+                <a href="agradecimientos/" id="botonCreditos" class="btn btn-lg btn-default"><i class="icon-thumbs-up icon-large"></i> Ir a agradecimientos</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- include footer -->
+    {% include _footer.html %}
+  </div>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <!-- script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script-->
+    <script src="http://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
+    <script src="{{ page.base_url }}js/bootstrap.js"></script>
+    <script src="{{ page.base_url }}js/handlebars.js"></script>
+    <script src="{{ page.base_url }}js/color.js"></script>
+    <script src='https://www.google.com/jsapi'></script>
+    <script src="{{ page.base_url }}js/reqwest.js"></script>
+    <script src="{{ page.base_url }}js/vendor/moment.min.js"></script>
+    <script src="{{ page.base_url }}js/vendor/twix.min.js"></script>
+    <script src="{{ page.base_url }}js/vendor/lang/es.js"></script>
+    <!-- Nuestros Javascript -->
+    <script src="{{ page.base_url }}js/google-drive-spreadsheet.js"></script>
+    <script src="{{ page.base_url }}js/huerto.js"></script>
+    <script>
+      !function ($) {
+        $(function(){
+          // carousel demo
+          $('#myCarousel').carousel({
+              interval: 30000
+          });
+        })
+      }(window.jQuery)
+    </script>
+  </body>
+</html>

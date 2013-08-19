@@ -1,0 +1,50 @@
+<html lang="es">
+  <head>
+  <!-- include head -->
+  {% include _head.html%}
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  <!-- include navbar -->
+  {% include _navbar.html %}
+    <!-- Subhead -->
+    <section class="cabecera confondo">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <hgroup>
+              <h1>{{ page.cabecera }}</h1>
+              <h2 class="subtitle">{{ page.cabecera-subtitulo }}</h2>
+            </hgroup>
+          </div>
+          <div class="col-lg-5">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="secundaria">
+      <div class="container">
+      <!-- Docs nav -->
+      <div class="row">
+        <div class="col-lg-12">
+          <hgroup>
+            <h1>{{page.titulo}}</h1>
+            <h2 class="subtitle">{{page.subtitulo}}</h2>
+          </hgroup>
+          {% for agradecimiento in page.agradecimientos %}
+            <hr>
+            <h3>{{agradecimiento.titulo}}</h3>
+            <p class="lead">{{agradecimiento.descripcion}}</p>
+            <p>{% for agradecido in agradecimiento.gracias %}{% if forloop.last %} y <span>{{agradecido}}</span>.{% else %}<span>{{agradecido}}</span>, {% endif %} {% endfor %}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!-- include footer -->
+    {% include _footer.html %}
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ page.base_url }}js/jquery.js"></script>
+    <script src="{{ page.base_url }}js/huerto.js"></script>
+  </body>
+</html>

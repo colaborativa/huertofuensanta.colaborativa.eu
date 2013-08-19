@@ -1,6 +1,7 @@
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
-@import "sidebar";
+//@import "sidebar";
+@import "compass/typography/vertical_rhythm";
 
 @mixin whiteGradientBackgroundHorizontal{
 background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.0) 60%, rgba(255,255,255,0) 100%); /* FF3.6+ */
@@ -11,65 +12,370 @@ background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0.
 background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0.95) 40%,rgba(255,255,255,0.0) 60%,rgba(255,255,255,0) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 }
-
 @mixin whiteGradientBackgroundVertical{
 background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0,rgba(255,255,255,0.0) 380px,rgba(255,255,255,1.0) 480px,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
 }
+
+@mixin typographyPhone{
+  //typography vertical rythm - Goldenratio
+  $base-font-size: 16px;
+  $base-line-height: 24px;
+  $h1-size: 35px;
+  $h2subheader-size: 21.632px;
+  $h3-size: 25.888px;
+  $small-size: 13.370px;
+  $relative-font-sizing: false;
+  @include establish-baseline;
+  html, body{
+    $font-unit: $base-font-size;
+  }
+  section {
+    &.principal{
+      @include rhythm(0, 3, 3, 0, $base-font-size);
+    }
+    &.cabecera{
+      @include rhythm(0, 6, 5, 0, $base-font-size);
+    }
+    &.secundaria{
+      @include rhythm(0, 2, 3, 0, $base-font-size);
+    }
+    &.secundaria hgroup{
+      @include rhythm(0, 0, 1, 0, $base-font-size);
+    }
+    &.secundaria .listaCalendario{
+      @include rhythm(0, 0, 2, 0, $base-font-size);
+    }
+    h1{
+      @include adjust-font-size-to($h1-size, 1.75);
+      @include rhythm(0, 0, 0, 0.25, $base-font-size);
+    }
+    h2.subtitle{
+      @include adjust-font-size-to($h2subheader-size, 1.25);
+      @include rhythm(0, 0, 0, 0, $base-font-size);
+    }
+    &.confondo hgroup{
+      @include rhythm(0, 0, 0, 1, $base-font-size);
+    }
+    h3{
+      @include adjust-font-size-to($h3-size, 1.25);
+      @include rhythm(0.75, 0, 0, 0.25, $base-font-size);
+    }
+    ol{
+      @include leading-border();
+      @include rhythm(0.5, 0, 0, 0, $base-font-size);
+    }
+    li{
+      @include adjust-font-size-to($base-font-size,1.6);
+      @include trailing-border();
+      @include rhythm(0, 0, 0, 0, $base-font-size);
+    }
+    p{
+      @include adjust-font-size-to($base-font-size);
+      @include rhythm(0, 0, 0, 0.75, $base-font-size);
+    }
+    small{
+      top: rhythm(0.25);
+      @include adjust-font-size-to($small-size);
+    }
+    .embebido{
+      @include rhythm(1.25, 0, 0, 2, $base-font-size);
+    }
+    hr{
+      @include rhythm(1.25, 0, 0, 0, $base-font-size);
+    }
+    .formulario{
+      @include rhythm(1, 0, 0, 0, $base-font-size);
+    }
+    &.secundaria .boton{
+      @include rhythm(1.5, 0, 0, 0, $base-font-size);
+    }
+    &.confondo .boton{
+      @include rhythm(2.5, 0, 0, 0, $base-font-size);
+    }
+    &.sinfondo .boton{
+      @include rhythm(1.5, 0, 0, 0, $base-font-size);
+    }
+    .barralateral{
+      @include rhythm(0, 0, 0, 2, $base-font-size);
+    }
+  }
+  footer{
+    p{
+      @include adjust-font-size-to($base-font-size, 1);
+      @include rhythm(0, 1, 2, 0, $base-font-size);
+    }
+  }
+  //typography vertical rythm - Goldenratio
+}
+
+@mixin typographyRest{
+  //typography vertical rythm - Goldenratio
+  $base-font-size: 16px;
+  $base-line-height: 24px;
+  $h1-size: 35px;
+  $h2subheader-size: 21.632px;
+  $h3-size: 25.888px;
+  $small-size: 13.370px;
+  $relative-font-sizing: false;
+  @include establish-baseline;
+  html, body{
+    $font-unit: $base-font-size;
+  }
+  section {
+    &.principal{
+      @include rhythm(0, 2, 2, 0, $base-font-size);
+    }
+    &.cabecera{
+      @include rhythm(0, 6, 5, 0, $base-font-size);
+    }
+    &.secundaria{
+      @include rhythm(0, 2, 3, 0, $base-font-size);
+    }
+    &.secundaria hgroup{
+      @include rhythm(0, 0, 1, 0, $base-font-size);
+    }
+    &.secundaria .listaCalendario{
+      @include rhythm(0, 0, 2, 0, $base-font-size);
+    }
+    h1{
+      @include adjust-font-size-to($h1-size, 1.75);
+      @include rhythm(0, 0, 0, 0.25, $base-font-size);
+    }
+    h2.subtitle{
+      @include adjust-font-size-to($h2subheader-size, 1.25);
+      @include rhythm(0, 0, 0, 0, $base-font-size);
+    }
+    &.sinfondo{
+      min-height: rhythm(12, $base-font-size);
+    }
+    &.confondo hgroup{
+      @include rhythm(0, 0, 0, 1, $base-font-size);
+    }
+    h3{
+      @include adjust-font-size-to($h3-size, 1.25);
+      @include rhythm(0.75, 0, 0, 0.25, $base-font-size);
+    }
+    ol{
+      @include leading-border();
+      @include rhythm(0.5, 0, 0, 0, $base-font-size);
+    }
+    li{
+      @include adjust-font-size-to($base-font-size,1.6);
+      @include trailing-border();
+      @include rhythm(0, 0, 0, 0, $base-font-size);
+    }
+    p{
+      @include adjust-font-size-to($base-font-size);
+      @include rhythm(0, 0, 0, 0.5, $base-font-size);
+    }
+    small{
+      top: rhythm(0.25);
+      @include adjust-font-size-to($small-size);
+    }
+    .embebido{
+      @include rhythm(1.25, 0, 0, 3, $base-font-size);
+    }
+    hr{
+      @include rhythm(1.25, 0, 0, 0, $base-font-size);
+    }
+    .formulario{
+      @include rhythm(1.5, 0, 0, 0, $base-font-size);
+    }
+    &.secundaria .boton{
+      @include rhythm(1.5, 0, 0, 0, $base-font-size);
+    }
+    &.confondo .boton{
+      @include rhythm(1.5, 0, 0, 0, $base-font-size);
+    }
+    &.sinfondo .boton{
+      @include rhythm(1.5, 0, 0, 0, $base-font-size);
+    }
+    .barralateral{
+      @include rhythm(0, 0, 0, 2, $base-font-size);
+    }
+  }
+  footer{
+    p{
+      @include adjust-font-size-to($base-font-size, 1);
+      @include rhythm(0, 1, 2, 0, $base-font-size);
+    }
+  }
+  //typography vertical rythm - Goldenratio
+}
+
+/* Base styles */
+$colorLinks: #669433;
 
 /* Carousel base class */
 $carouselHeight: 690px/2;
 $imageCaptionSize: 80px;
 
-
 /* general styles Fonts and text sizes */
 html body{
   font-family: helvetica;
-  font-size: 16px;
-  line-height: 24px;
+}
+.barralateral{
+  ul{
+    background-color: lighten($colorLinks, 50%);
+    @include border-radius(8px, 8px);
+    li{
+      &:first-child a:hover{
+        @include border-top-right-radius(8px);
+        @include border-top-left-radius(8px);
+      }
+      &:last-child a:hover{
+        @include border-bottom-right-radius(8px);
+        @include border-bottom-left-radius(8px);
+      }
+      border: none;
+      a:link, a:visited, a:active{
+        color: lighten(rgb(51,51,51),20%);
+      }
+      a:hover{
+        background-color: lighten($colorLinks, 40%);
+      }
+    }
+  }
+}
+.embebido{
+  $altura: 500px;
+  position: relative;
+  .marco{
+    width:100%;
+    height: $altura;
+    @include border-radius(8px, 8px);
+    @include single-box-shadow(rgba(0,0,0,0.25), 0px, 0px, 15px, false, true);
+    border: 1px solid grey;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    pointer-events: none;
+  }
+  iframe{
+    pointer-events: auto;
+    position: relative;
+    width:100%;
+    border:none;
+    height: $altura;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+  }
+  small{
+    position: relative;
+  }
+}
+
+input {
+  -webkit-appearance: none;
 }
 .navbar{
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 1000;
+  .navbar-brand{
+    font-family: latoregular;
+  }
   margin-bottom: 0px;
   background-color: #fff;
   &.affix, &.navbar-fixed-top {
     @include box-shadow(rgba(0,0,0,0.3) 0px 0px 15px);
   }
+  li a:link, li a:visited {
+    color: #aaa;
+    &:hover{
+      color: #888;
+    }
+  }
+  li.active a, li.active a:hover{
+    color: darken($colorLinks, 5%);
+    background-color: white;
+  }
 }
 section {
+  &.confondo{
+    @include single-box-shadow(rgba(0,0,0,0.15), 0px, 0px, 25px, false, true);
+    background-color: #F8F8F8;
+  }
+  a:link, a:visited, a:active{
+    color: $colorLinks;
+    &:hover{
+      font-style: underline;
+    }
+  }
   h1{
     font-family: latoregular;
     font-weight: normal;
-    font-size: 40px;
-    margin-bottom: 0px;
   }
   h2.subtitle{
-    margin-top: 10px;
-    font-family: helvetica;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 25px;
-    color: #999999;
+    font-family: latoregular;
+    color: #888;
   }
   h3{
     font-family: latoregular;
     font-weight: normal;
-    font-size: 25px;
-    margin-bottom: 10px;
-  }
-  &{
-    padding-top: 70px;
-    padding-bottom: 70px;
   }
 }
-.icono{
-  width: 100px;
-  padding-top: 25px;
-  float: right;
-}
-section{
-  &.confondo{
-    @include single-box-shadow(rgba(0,0,0,0.15), 0px, 0px, 25px, false, true);
+
+
+// estilos para los botones //
+// especifico una anchura determinada para todos los botones en las vistas tablet, mediana y grande
+.boton.hidden-sm{
+  .btn{
+    width: 320px;
   }
 }
+// en las secciones sin fondo los botones van a la derecha y con margen superior
+.sinfondo{
+  .boton .hidden-sm{
+    .btn{
+      width: 320px;
+      float: right;
+    }
+  }
+}
+// para el phone separamos el boton un poco más
+@media (max-width: 767px) {
+}
+// estilos para el boton
+.boton{
+  .btn-lg{
+    font-family: latoregular;
+    font-weight: normal;
+  }
+  .btn-default{
+    color: white;
+    font-family: latoregular;
+    background-color: $colorLinks;
+    border-color: $colorLinks;
+    i{
+      margin-right: 10px;
+    }
+    &:hover{
+      background-color: lighten($colorLinks,5%);
+    }
+  }
+}
+.formulario{
+  .input-group{
+    .input-lg{
+      border-color: #ddd;
+      @include box-shadow(rgba(0,0,0,0) 0px 0px 0px);
+    }
+    .input-group-btn > button{
+      font-weight: normal;
+      background-color: #ddd;
+      border-color: #ddd;
+      color: grey;
+      &:hover{
+        background-color: lighten(#ddd,5%);
+      }
+    }
+  }
+}
+
 
 // Pies de imagen del slideshow superior
 .pieImagenContainer{
@@ -121,21 +427,29 @@ section{
 }
 
 
-
+// Media queries //
 //Phone
 @media (max-width: 767px) {
+  @include typographyPhone;
+  .visible-mediano{
+    display: none;
+  }
+  .visible-grande{
+    display:none;
+  }
   footer .creditosTecnicos{
     padding: 15px;
   }
   section.confondo{
     @include single-box-shadow(rgba(0,0,0,0.5), 0px, 0px, 25px, false, true);
-    padding-bottom: 0px;
   }
   .carousel{
     margin-top: 50px;
     .carousel-inner{
       height:420px;
-      width:100%;
+      .itemContenedor{
+        width:100%;
+      }
       .item {
         .mascaraColorPhone{
           width:100%;
@@ -174,12 +488,21 @@ section{
 }
 //Tablets
 @media (min-width: 768px) and (max-width: 990px) {
+  @include typographyRest;
+  .visible-mediano{
+    display: none;
+  }
+  .visible-grande{
+    display:none;
+  }
   .mascaraColor{
     width: 768px;
     margin-left: -(768px)/2;
   }
   .carousel-inner{
     height:$carouselHeight;
+  }
+  .itemContenedor{
     width:728px;
   }
   .image{
@@ -200,13 +523,22 @@ section{
 }
 //Normal screens
 @media (min-width: 991px) and (max-width: 1199px) {
+  @include typographyRest;
+  .visible-mediano{
+    display: block;
+  }
+  .visible-grande{
+    display:none;
+  }
   .mascaraColor{
-    width: 980px;
-    margin-left: -(980px)/2;
+    width: 990px;
+    margin-left: -(990px)/2;
   }
   .carousel-inner{
     height:$carouselHeight;
-    width:940px;
+  }
+  .itemContenedor{
+    width: 990px;
   }
   .image{
     height:$carouselHeight;
@@ -226,13 +558,22 @@ section{
 }
 //Big screens
 @media (min-width: 1200px) {
+  @include typographyRest;
+  .visible-mediano{
+    display: none;
+  }
+  .visible-grande{
+    display: block;
+  }
   .mascaraColor{
     width: 1200px;
     margin-left: -(1200px)/2;
   }
   .carousel-inner{
     height:$carouselHeight;
-    width:1200px;
+  }
+  .itemContenedor{
+    width: 1200px;
   }
   .image {
     height:$carouselHeight;
@@ -255,7 +596,12 @@ section{
   margin-bottom: 0px;
   overflow: hidden;
   .item {
+    width:100%;
     overflow: hidden;
+    .itemContenedor{
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   .mascaraColor{
     z-index: 2;
@@ -272,8 +618,7 @@ section{
     height: 100%;
   }
   .carousel-inner{
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
   }
 }
 
@@ -331,187 +676,41 @@ section{
 }
 
 
-
-/* Mapa centrado */
-#quees{
-  @include clearfix;
-  overflow: hidden;
-  .imagenFondo{
-    background: url(/img/planoHuertoFuensanta.png);
-    background-repeat: no-repeat;
-    background-position: center center !important;
-    background-color: rgb(245,243,233);
-    @media (max-width: 767px) {
-      background-size: auto 100% !important;
-      left: 186px;
-    }
-    //Normal screens
-    @media (min-width: 768px) and (max-width: 980px) {
-      background-size: 980px auto !important;
-      left: 240px;
-    }
-    //Big screens
-    @media (min-width: 1200px) {
-      background-size: 1200px auto !important;
-      left: 250px;
-    }
-  }
-  .imagenFondoPhone{
-    position: relative;
-    background: url(/img/planoHuertoFuensanta.png);
-    background-repeat: no-repeat;
-    background-position: center center !important;
-    width: 100%;
-    height: 490px;
-    z-index: -800;
-  }
-  .mascaraFondoPhone{
-    position: relative;
-    @include whiteGradientBackgroundVertical;
-    width: 100%;
-    height: 490px;
-    top:0px;
-    background-color: rgba(255,255,255,0.5);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -500;
-  }
-  .notaMapaPhone{
-    @include box-shadow(rgba(0,0,0,0.4) 0px 0px 5px);
-    @include border-radius( 10px, 10px);
-    @include box-sizing (border-box);
-    background-color: white;
-    padding: 20px;
-    position: absolute;
-    bottom: 50px;
-    width: 320px;
-    left: 50%;
-    margin-left: -160px;
-  }
-}
-
 /* lista calendario */
-#estapasando{
-  .listaCalendario{
-    ol{
-      margin: 0px;
-      list-style: none;
-      list-style-position: inside;
-      border-top: 1px solid rgba(black,0.4);
-      li{
-        /*texttruncation*/
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        /**/
-        line-height: 2.25em;
-        border-bottom: 1px solid rgba(black,0.2);
-        &:last-child{
-          border-bottom: 1px solid rgba(black,0.4);
-        }
+.listaCalendario{
+  .popover{
+    max-width: none;
+    left:0px;
+    min-height: 110px;
+  }
+  ol{
+    margin-left: 0px;
+    padding-left: 0px;
+    list-style: none;
+    list-style-position: inside;
+    border-color: rgba(black,0.4);
+    li{
+      time{
+        font-style: italic;
       }
-    }
-    a{
-      line-height: 2.25em;
-    }
-  }
-}
-/* visor de imagenes */
-section{
-  position: relative;
-  .imagenFondo{
-    top:0px;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -800;
-    -webkit-background-size: 100% auto!important;
-    background-size: 100% auto!important;
-    background-position: center center;
-    background-repeat: no-repeat;
-    //Tablets
-    @media (max-width: 989px) {
-      -webkit-background-size: auto 100%!important;
-      background-size: auto 100%!important;
-    }
-    //Normal screens
-    @media (min-width: 990px) {
-      -webkit-background-size: 100% auto!important;
-      background-size: 100% auto!important;
-    }
-  }
-  .mascaraFondo{
-    top:0px;
-    background-color: rgba(255,255,255,0.5);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -500;
-    @include whiteGradientBackgroundHorizontal;
-  }
-}
-
-
-#botonCreditos{
-  margin-top: 80px;
-  width: 340px;
-  float: right;
-}
-
-/* navegador actividades */
-/**/
-/* posicionamiento del boton */
-#estapasando{
-  .row{
-    position: relative;
-    .span6:last-child{
-      position: absolute;
-      bottom: 0px;
-      right: 0px;
-    }
-  }
-}
-/* estilos del boton */
-.navegadorActividades{
-  @include box-sizing (border-box);
-  width:100%;
-  padding:0px;
-  margin:0px;
-  .btn-group{
-    width:100%;
-    .btn{
-      font-size: 16px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-    .btn.retroceder, .btn.avanzar{
-      @include box-sizing (border-box);
-      width:15%;
-      
-    }
-    .btn.titulo{
-      @include box-sizing (border-box);
-      width:70%;
       /*texttruncation*/
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       /**/
+      border-color: rgba(black,0.2);
+      &:last-child{
+        border-color: rgba(black,0.4);
+      }
+      &.pasada{
+        opacity: 0.3;
+      }
     }
   }
+  a{
+    line-height: 2.25em;
+  }
 }
-.navbar{
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  z-index: 2000;
-}
-
-
-
-
-
 
 
 
@@ -521,39 +720,20 @@ section{
 .footer {
   text-align: left;
   padding: 30px 0;
-  margin-top: 70px;
   border-top: 1px solid #e5e5e5;
   background-color: #fff;
-}
-.footer p {
-  margin-bottom: 0;
-  color: #777;
-}
-.footer-links {
-  margin: 10px 0;
-}
-.footer-links li {
-  display: inline;
-  padding: 0 2px;
-}
-.footer-links li:first-child {
-  padding-left: 0;
-}
-
-
-
-
-/* Logo optimization */
-#logo{
-  position: absolute;
-  bottom: 100px;
-  width: 100%;
-  height: 80px;
-  background-color: white;
-  -webkit-border-radius: 6px;
-   -moz-border-radius: 6px;
-        border-radius: 6px;
-  h1, p{
-    display: none;
+  p {
+    margin-bottom: 0;
+    color: #777;
+  }
+  .footer-links {
+    margin: 10px 0;
+    li {
+      display: inline;
+      padding: 0 2px;
+    }
+    li:first-child {
+      padding-left: 0;
+    }
   }
 }

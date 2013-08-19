@@ -1,0 +1,55 @@
+<html lang="es">
+  <head>
+  <!-- include head -->
+  {% include _head.html%}
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  <!-- include navbar -->
+  {% include _navbar.html %}
+    <!-- Subhead -->
+    <section class="cabecera confondo">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <hgroup>
+              <h1>{{ page.cabecera }}</h1>
+              <h2 class="subtitle">{{ page.cabecera-subtitulo }}</h2>
+            </hgroup>
+          </div>
+          <div class="col-lg-5">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="secundaria">
+      <div class="container">
+        <!-- Docs nav -->
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="barralateral">
+              <ul class="nav nav-stacked">
+                {% for navegacion in page.navegacion %}
+                <li><a href="{{ navegacion.url }}">{{ navegacion.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <hgroup>
+              <h1>{{page.titulo}}</h1>
+              <h2 class="subtitle">{{page.subtitulo}}</h2>
+            </hgroup>
+            {{content}}
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- include footer -->
+    {% include _footer.html %}
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ page.base_url }}js/jquery.js"></script>
+    <script src="{{ page.base_url }}js/huerto.js"></script>
+  </body>
+</html>
