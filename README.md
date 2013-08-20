@@ -28,3 +28,21 @@ Para unirse a la lista de correo del Huerto Fuensanta no es necesario tener una 
  - Para visitar el grupo https://groups.google.com/d/forum/huertofuensanta?hl=es 
  - Para publicar una entrada en este grupo, envía un correo electrónico a huertofuensanta@googlegroups.com 
  - Para anular tu suscripción a este grupo, envía un correo electrónico a huertofuensanta+unsubscribe@googlegroups.com 
+ 
+## Subscripción automática a la lista de correo de Google huertofuensanta@googlegroups.com
+
+Queremos que la subscripción a la lista de google se realice de forma automática desde la página principal del Huerto con tan sólo introducir el email y hacer click. Por ello hemos realizado una investigación de la API de Google disponible para gestionar un google group de manera que podamos implementarlo de forma programática. 
+
+El único requisito que hemos impuesto es que la subscripción pueda realizarse directamente desde cliente en lenguaje, por ejemplo, Javascript ya que no disponemos de servidor para alojar la página Web del Huerto y además nos gustaría consumir el mínimo de recursos posibles.
+
+La API de Google se encuentra dividida en varias partes, la documentación es bastante farragosa y apenas se disponen de ejemplos prácticos de aplicación que sirvan de guía. Los recursos disponibles son:
+
+- [GAPI o Google APIs Client Library for Javascript](https://code.google.com/p/google-api-javascript-client): manual de uso de la librería GAPI para Javascript. Funciones disponibles en Javascript muy adecuada en nuestro caso al ser un lenguaje cliente pero que se encuentra incompleta y en desarrollo.
+- [APIs Explorer](https://developers.google.com/apis-explorer/#p/): estas son las funciones accesibles a través de la librería Javascript cliente GAPI. Desgraciadamente no existe la función de añadir un nuevo miembro a un grupo de google.
+- [ADMIN SDK](https://developers.google.com/admin-sdk/): conjunto de funciones accesibles a través de llamadas POST a la URL https://www.googleapis.com/. Las librerías se encuentran disponibles en lenguaje python, java y .net. Habría que implementar llamadas POST en Javascript para poder usar las funciones de acceso y modificación de grupos de google. La librería Javascript GAPI no funciona con estas funciones.
+- [Google Apps Provisioning API](https://developers.google.com/google-apps/provisioning (DEPRECATED)): esta API está *deprecated* por lo que se desaconseja su uso. Las funciones son accesibles a través de llamadas POST a la URL https://apps-apis.google.com/, además pueden invocarse a través de la GAPI Javascript.  No la utilizamos ya que dejará de estar disponible en los próximos meses y será reemplazada por la Admin SDK.
+
+La conclusión es que por ahora no existe una forma de añadir un nuevo miembro a un grupo de Google en lenguaje cliente. Quedamos a la espera de que la librería GAPI siga evolucionando e implemente estas funciones.
+
+Adicionalmente hemos encontrado dificultades con el protocolo de autorización OATH2.0. Después de conseguir obtener un token de autorización a través de Javascript usando los datos proporcionados por la [consola de gestión de Apps](https://code.google.com/apis/console/#project:425984504337), al trascurrir cierto tiempo el token siempre expirará (incluso el número de refrescos de token está limitado) y la operación no será totalmente transparente al usuario de nuestra página Web ya que tendrá que aceptar el acceso. Nos gustaría poder eliminar está interrelación y una vez obtenemos el token evitar su expiración. Habrá que retomar este punto una vez que la GAPI implemente la función de añadir un nuevo miembro.
+
