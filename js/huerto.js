@@ -63,6 +63,7 @@ var stuff = [];
 // and remember the jqxhr object for this request
 $.embedly.defaults.key = embed_api_key; //http://embed.ly/ Servicio Web para extraer Colores Dominantes en Fotos de Flickr
 // Llamada a la API de Flick
+console.log(url);
 var jqxhr = $.getJSON( url, function() {
   if(DEBUG_HUERTO){ console.log( "flickr success" );}
 })
@@ -107,7 +108,7 @@ var jqxhr = $.getJSON( url, function() {
                "Descripcion": imageDesc};
     stuff.push(obj);
   }); // End Each Item of Flickr 
-  // 2nd Step: Get dominant colors from SpreadSheets
+  // 2nd Step: Get dominant colors from SpreadSheets key=0ApaZkqgevJCgdG1DMVIxdUtGQ1lpUGFvLWZnNTgxX1E
   var google_sh_id_colors = '0ApaZkqgevJCgdG1DMVIxdUtGQ1lpUGFvLWZnNTgxX1E'; 
   // Este es el TAG donde se insertarán los eventos del calendario
   var google_stuff_colors = [];
