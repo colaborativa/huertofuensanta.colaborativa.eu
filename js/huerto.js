@@ -77,7 +77,7 @@ var jqxhr = $.getJSON( url, function() {
 	your_array.sort(custom_sort);
   // 1st Step: Get Pictures INFO from FLICKR
  	$.each(your_array, function(i, item){
- 		var imageName = "http://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_b.jpg"
+ 		var imageName = "http://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_c.jpg"; // c medium 800, 800 on longest side
  		var imageTitle = item.title;
  		var imageOwnerIcon =  'http://farm' + item.iconfarm+ '.staticflickr.com/'+ item.iconserver+ '/buddyicons/'+ item.owner +'.jpg';
  		var imageOwner = '';

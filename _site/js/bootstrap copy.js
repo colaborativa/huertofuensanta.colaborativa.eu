@@ -286,7 +286,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== 
+ * ======================================================================== */
 
 
 +function ($) { "use strict";
@@ -482,7 +482,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   })
 
 }(window.jQuery);
-*/
+
 /* ========================================================================
  * Bootstrap: collapse.js v3.0.0
  * http://twbs.github.com/bootstrap/javascript.html#collapse
