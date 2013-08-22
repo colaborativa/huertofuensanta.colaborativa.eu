@@ -42,7 +42,6 @@
         	var firstImage = $(htmlTag).find('img');
         	firstImage.attr('src',firstImage.attr('lazy-load-src'));
         	firstImage.attr('class','');
-        	firstImage[0].style.visibility = 'hidden';
         }); // End Get Template
 
 	} // end backImageAdd function
