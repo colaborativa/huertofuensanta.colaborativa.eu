@@ -14,7 +14,6 @@
                             '2': ['ColorG','colorg'],
                             '3': ['ColorB','colorb']};
 	google_GetSpreadsheet(google_sh_id_colors, headerTitlesColors, 4, backImageAdd);
-	console.log("informacion");
 	function backImageAdd(ImageColors){
 		var htmlTag = '.cabecera .row'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
 		var fileTemplate = '../templates/templates.html'; // Archivo donde se encuentra la plantilla con el HTML para las imágenes
@@ -31,18 +30,19 @@
                "Nombre": ImageColors[randomnumber]["Imagen"]
         };
 		//$('.row').append(html_text);
-		console.log(randomnumber + " " + selectedImage);
+		//console.log(randomnumber + " " + selectedImage);
 		/* TEMPLATING WITH MUSTACHE or HANDLERS */
         $.get(fileTemplate, function(templates) { 
 	        var source = $(templates).filter(informacionTemplateID).html();
 	        var template = Handlebars.compile(source);
 	        var result = template(selectedImage);
-	        console.log(result);
+	        //console.log(result);
 	        $(htmlTag).html(result); 
 	        // Pre-Load first Image (previous and next)
         	var firstImage = $(htmlTag).find('img');
         	firstImage.attr('src',firstImage.attr('lazy-load-src'));
         	firstImage.attr('class','');
+        	firstImage[0].style.visibility = 'hidden';
         }); // End Get Template
 
 	} // end backImageAdd function
