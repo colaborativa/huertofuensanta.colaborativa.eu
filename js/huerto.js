@@ -155,8 +155,12 @@ var jqxhr = $.getJSON( url, function() {
         var result = template(flickrImages);
         //console.log(result);
         $(htmlTag).html(result);
-        var object = $(htmlTag + ' div')[0];    
+        var object = $(htmlTag + ' div')[0];   
         $(object).addClass('active');
+        // Pre-Load first Image (previous and next)
+        var firstImage = $(htmlTag).find('img');
+        firstImage[1].src = firstImage[1].getAttribute('lazy-load-src'); 
+        loadPrevNexImages();
       }); // End Get Template
    } // End ColorAdd Function
    // xnd Step: End
@@ -264,45 +268,53 @@ function ActivitiesAdd(features){
  *
  *
  *  MYCAROUSEL FUNCTIONS
- *
+ *  http://stackoverflow.com/questions/12697216/bootstrap-carousel-lazy-load
  *
 **/
-$('#myCarousel').on("slid", function(e) {
-    console.log("slide");
-    //SCROLLING LEFT
-    var prevItem = $('.active.item', this).prev('.item');// Get the right item
+$('#myCarousel').bind("slid", function(event) {
+    loadPrevNexImages();
+});
+function loadPrevNexImages(){
+
+  var that = $('#myCarousel');
+  //SCROLLING LEFT
+    console.log("SLIDE");
+    var prevItem = $('.active.item', that).prev('.item');// Get the right item
 
     //Account for looping to LAST image
     if(!prevItem.length){
-        prevItem = $('.active.item', this).siblings(":last");
+        prevItem = $('.active.item', that).siblings(":last");
     }
 
     //Get image selector
     prevImage = prevItem.find('img');
-
+    console.log(prevImage);
     //Remove class to not load again - probably unnecessary
-    if(prevImage[1].getAttribute('class') == 'lazy-load'){
+    if(prevImage.hasClass('lazy-load') ){
         prevImage.removeClass('lazy-load');
         prevImage[1].src = prevImage[1].getAttribute('lazy-load-src');
+        console.log( prevImage[1].src);
     }
 
     //SCROLLING RIGHT
-    var nextItem = $('.active.item', this).next('.item');
+    var nextItem = $('.active.item', that).next('.item');
 
     //Account for looping to FIRST image
     if(!nextItem.length){
-        nextItem = $('.active.item', this).siblings(":first");
+        nextItem = $('.active.item', that).siblings(":first");
     }
 
     //Get image selector
     nextImage = nextItem.find('img');
 
     //Remove class to not load again - probably unnecessary
-    if(nextImage[1].getAttribute('class') == 'lazy-load'){
+    if(nextImage.hasClass('lazy-load') ){
         nextImage.removeClass('lazy-load');
         nextImage[1].src = nextImage[1].getAttribute('lazy-load-src');
+        console.log(nextImage[1].src);
     }
-});
+}
+
 /*
 
     GOOGLE CALENDAR PUBLIC
