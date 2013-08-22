@@ -31,6 +31,7 @@
   - Fecha: Agosto 2013
 
 */
+(function() {
 var DEBUG_HUERTO = 0;
 // DATOS DE ENTRADA:
 // Reemplazar por vuestros datos particulares
@@ -118,7 +119,7 @@ var jqxhr = $.getJSON( url, function() {
                             '3': ['ColorB','colorb']};
   // Llamada a la función que extrae información de SpreadSheet
   google_GetSpreadsheet(google_sh_id_colors, headerTitlesColors, 4, ColorsAdd);
-  google_SetSpreadsheet(google_sh_id_colors, null, null, null);
+  //google_SetSpreadsheet(google_sh_id_colors, null, null, null);
   function ColorsAdd(colors){
       $.each(stuff, function(i,image){
         var imageFound = false;
@@ -285,36 +286,29 @@ function loadPrevNexImages(){
     if(!prevItem.length){
         prevItem = $('.active.item', that).siblings(":last");
     }
-
     //Get image selector
     prevImage = prevItem.find('img');
-    console.log(prevImage);
     //Remove class to not load again - probably unnecessary
     if(prevImage.hasClass('lazy-load') ){
         prevImage.removeClass('lazy-load');
         prevImage[1].src = prevImage[1].getAttribute('lazy-load-src');
-        console.log( prevImage[1].src);
     }
-
     //SCROLLING RIGHT
     var nextItem = $('.active.item', that).next('.item');
-
     //Account for looping to FIRST image
     if(!nextItem.length){
         nextItem = $('.active.item', that).siblings(":first");
     }
-
     //Get image selector
     nextImage = nextItem.find('img');
-
     //Remove class to not load again - probably unnecessary
     if(nextImage.hasClass('lazy-load') ){
         nextImage.removeClass('lazy-load');
         nextImage[1].src = nextImage[1].getAttribute('lazy-load-src');
-        console.log(nextImage[1].src);
     }
 }
 
+})(); // END OF FILE
 /*
 
     GOOGLE CALENDAR PUBLIC

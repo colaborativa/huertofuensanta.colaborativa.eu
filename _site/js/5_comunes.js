@@ -1,5 +1,11 @@
+/**
+ *
+ *
+ *  FUNCIONES COMUNES A TODOS LOS HTML
+ *
+ *
+ */
 /*
-
     - Link de Referencia:
     https://developers.google.com/drive/v2/reference/files/update
     https://developers.google.com/gdata/samples/spreadsheet_sample?hl=es
@@ -17,9 +23,8 @@
     -Notas
     No olvidar ir a "archivo"->"hacer publico en la web" en la Spreadsheet para
     que pueda ser accesible via la URL
-
 */
-var DEBUG_GOOGLE = 0;
+var DEBUG_COMUNES = 0;
 // Función Auxiliar
 // --------------------
 // Esta función extrae la información de la spreadsheet de Google Drive con el `id` especificado. 
@@ -73,7 +78,7 @@ function google_SetSpreadsheet(fileId, fileMetadata, fileData, callback) {
 /*
 */
 function google_GetSpreadsheet(id, headerTitlesName,headerTitlesNumber, callback) {
-    if( DEBUG_GOOGLE) { console.log("function google_GetSpreadsheet");}
+    if( DEBUG_COMUNES) { console.log("function google_GetSpreadsheet");}
     // Chequear que `reqwest` existe para así poder comunicarnos con Google Drive.
     if (typeof reqwest === 'undefined'){
         console.log("CSV: reqwest required for mmg_csv_url");
@@ -82,7 +87,7 @@ function google_GetSpreadsheet(id, headerTitlesName,headerTitlesNumber, callback
     // Se encargará de extraer cada fila de la spreadsheet, localizar cada columna (título, dirección, etc.)
     // y almacenar todos los datos en la variable array `features`.
     function response(x) { // Callback
-        if( DEBUG_GOOGLE) { console.log("function response "+x);}
+        if( DEBUG_COMUNES) { console.log("function response "+x);}
         //console.log(  JSON.stringify(x));
         var features = []; // This array stores the spreadsheet values
         // Chequear que los datos son válidos antes de continuar.

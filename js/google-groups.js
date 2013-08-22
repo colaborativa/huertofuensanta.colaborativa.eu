@@ -19,6 +19,7 @@ Adicionalmente hemos encontrado dificultades con el protocolo de autorización O
 
 
 */
+(function() {
   // Based on Sample Code provided by:
   // https://code.google.com/p/google-api-javascript-client/source/browse/samples/authSample.html
   //	<!-- Nuestros Javascript -->
@@ -113,3 +114,4 @@ function makeApiCall() {
 	
 	console.log("OK!!!");
   }*/
+})();
