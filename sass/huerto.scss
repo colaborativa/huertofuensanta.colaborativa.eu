@@ -359,19 +359,21 @@ section {
   }
 }
 .formulario{
-  .input-group{
-    .input-lg{
-      border-color: #ddd;
+  a{
+    border-color: #ddd;
+    @include box-shadow(rgba(0,0,0,0) 0px 0px 0px);
+    font-weight: normal;
+    background-color: #eee;
+    border-color: #ddd;
+    color: grey;
+    &:link, &:visited, &:active{
       @include box-shadow(rgba(0,0,0,0) 0px 0px 0px);
-    }
-    .input-group-btn > button{
-      font-weight: normal;
-      background-color: #ddd;
-      border-color: #ddd;
       color: grey;
-      &:hover{
-        background-color: lighten(#ddd,5%);
-      }
+    }
+    &:hover{
+      border-color: #ddd;
+      background-color: darken(#eee,10%);
+      color: grey;
     }
   }
 }
