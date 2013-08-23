@@ -35,34 +35,19 @@
 var DEBUG_HUERTO = 0;
 // DATOS DE ENTRADA:
 // Reemplazar por vuestros datos particulares
-var embed_api_key='b1afe35625df4ec2bb0a858fd9983152'; // Solicitar a través de http://embed.ly/ "Embed.ly service"
-var api_key='ee4bdc6841d42f90d9ca5e598e99d2f3'; // Clave API, solicitar a través de la web de Flickr
-var group_id='2233980%40N22'; // Identificador del grupo de Flickr "Huerto Fuensanta"
 var ocultarFlickrOwnerName = 'colaborativa.eu'; /* Si casi todas las fotos las ha insertado el mismo usuario entonces incluir 
 aqui el "ownerName" para no mostrarlo en las fotos ya que sería repetitivo */
-var htmlTag = '#carousel-innerTpl'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
-var fileTemplate = 'templates/templates.html'; // Archivo donde se encuentra la plantilla con el HTML para las imágenes
-var flickrTemplateID = '#tpl-flickrimages'; /* Identificador de la plantilla de Mustache en donde se insertará la información
-sobre las imágenes de Flickr */
-
-// Definición de variables
-Date.locale = {
-    es: {
-       month_names: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-       month_names_short: ['En', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
-    }
-};
 // Construir URL para obtener imágenes de Flickr
 var url = 'http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos';
-url += '&api_key='+api_key;
-url += '&group_id='+group_id;
+url += '&api_key='+flickr_api_key;
+url += '&group_id='+flickr_group_id;
 url += '&extras=description%2Cdate_taken%2C+owner_name%2C+icon_server%2C+views%2C+tags';
 url += '&per_page=500'; // by default 50
 url += '&format=json&nojsoncallback=1';
 var stuff = []; 
 // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
-$.embedly.defaults.key = embed_api_key; //http://embed.ly/ Servicio Web para extraer Colores Dominantes en Fotos de Flickr
+$.embedly.defaults.key = flickr_embed_api_key; //http://embed.ly/ Servicio Web para extraer Colores Dominantes en Fotos de Flickr
 // Llamada a la API de Flick
 console.log(url);
 var jqxhr = $.getJSON( url, function() {
@@ -110,15 +95,10 @@ var jqxhr = $.getJSON( url, function() {
     stuff.push(obj);
   }); // End Each Item of Flickr 
   // 2nd Step: Get dominant colors from SpreadSheets key=0ApaZkqgevJCgdG1DMVIxdUtGQ1lpUGFvLWZnNTgxX1E
-  var google_sh_id_colors = '0ApaZkqgevJCgdG1DMVIxdUtGQ1lpUGFvLWZnNTgxX1E'; 
-  // Este es el TAG donde se insertarán los eventos del calendario
+    // Este es el TAG donde se insertarán los eventos del calendario
   var google_stuff_colors = [];
-  var headerTitlesColors = {'0': ['Imagen', 'nombredelaimagen'],
-                            '1': ['ColorR','colorr'],
-                            '2': ['ColorG','colorg'],
-                            '3': ['ColorB','colorb']};
   // Llamada a la función que extrae información de SpreadSheet
-  google_GetSpreadsheet(google_sh_id_colors, headerTitlesColors, 4, ColorsAdd);
+  google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, ColorsAdd);
   //google_SetSpreadsheet(google_sh_id_colors, null, null, null);
   function ColorsAdd(colors){
       $.each(stuff, function(i,image){
@@ -150,16 +130,16 @@ var jqxhr = $.getJSON( url, function() {
       // 4th Step: Render Template with Values   
       var flickrImages = {flickrImages: stuff}; 
       /* TEMPLATING WITH MUSTACHE or HANDLERS */
-      $.get(fileTemplate, function(templates) { 
+      $.get(mustacheTemplateFile, function(templates) { 
         var source = $(templates).filter(flickrTemplateID).html();
         var template = Handlebars.compile(source);
         var result = template(flickrImages);
         //console.log(result);
-        $(htmlTag).html(result);
-        var object = $(htmlTag + ' div')[0];   
+        $(carouselHtmlTag).html(result);
+        var object = $(carouselHtmlTag + ' div')[0];   
         $(object).addClass('active');
         // Pre-Load first Image (previous and next)
-        var firstImage = $(htmlTag).find('img');
+        var firstImage = $(carouselHtmlTag).find('img');
         firstImage[1].src = firstImage[1].getAttribute('lazy-load-src'); 
         loadPrevNexImages(); // load two previous and next images
       }); // End Get Template
@@ -185,27 +165,11 @@ jqxhr.complete(function() { if(DEBUG_HUERTO){ console.log( "flickr second comple
 */
 // DATOS DE ENTRADA: reemplazar por vuestros datos particulares.
 // Identificador de la SpreadSheet de Google (obtener de URL)
-var google_sh_id = '0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE'; 
-// Este es el TAG donde se insertarán los eventos del calendario
-var google_htmlTag = '#actividadesfuturasTpl';
-// Identificador de la template de mustache
-var googleTemplateID = '#tpl-GoogleActivities';
-var google_stuff = [];
-var headerTitles = {
-    '0': ['Orden', 'númerodeactividad'],
-    '1': ['Titulo','títuloactividad'],
-    '2': ['Descripcion','descripción'],
-    '3': ['Organizador','organizador'],  
-    '4': ['FechaInicio','fechayhorainicio'],
-    '5': ['FechaFin','fechayhorafin'],  
-    '6': ['Estado','estado'],
-    '7': ['NAsistentes','númerodeasistentes'],
-    '8': ['Contacto','datosdecontacto'] ,
-};
-// Llamada a la función que extrae información de SpreadSheet
-google_GetSpreadsheet(google_sh_id, headerTitles, 9, ActivitiesAdd);
-// Campos:  Orden,  Titulo,  Descripcion,  Organizador,  FechaInicio,  FechaFin,  Estado,  NAsistentes,  Contacto,  
 
+// Llamada a la función que extrae información de SpreadSheet
+google_GetSpreadsheet(activitiesGoogle_sh_id, activitiesHeaderTitles, 9, ActivitiesAdd);
+// Campos:  Orden,  Titulo,  Descripcion,  Organizador,  FechaInicio,  FechaFin,  Estado,  NAsistentes,  Contacto,  
+var activitiesGoogle_stuff = [];
 // ActivitiesAdd es la Callback una vez concluida la extracción de información de la SpreadSheet
 function ActivitiesAdd(features){
    $.each(features, function(i, item){
@@ -251,17 +215,17 @@ function ActivitiesAdd(features){
                    "Fecha_Fin": Fecha_Fin_Str,
                    "Fecha_Rango" : Fecha_RangoStr
                    };
-          google_stuff.push(obj);
+          activitiesGoogle_stuff.push(obj);
          }); // end each event of calendar
-         var GoogleActivities = {GoogleActivities: google_stuff, 
-                            "Url_Publica": "https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE#gid=0"
-                           };
+         var GoogleActivities = {GoogleActivities: activitiesGoogle_stuff, 
+                                 "Url_Publica":    activitiesGoogle_url
+         };
          // TEMPLATING WITH MUSTACHE
-         $.get(fileTemplate, function(templates) { 
-                var source = $(templates).filter(googleTemplateID).html();
+         $.get(mustacheTemplateFile, function(templates) { 
+                var source = $(templates).filter(activitiesGoogleTemplateID).html();
                 var template = Handlebars.compile(source);
                 var result = template(GoogleActivities);
-                $(google_htmlTag).html(result);
+                $(activitiesGoogle_htmlTag).html(result);
                 $('.actividad').popover();
          });
 }
@@ -276,7 +240,6 @@ $('#myCarousel').bind("slid", function(event) {
     loadPrevNexImages();
 });
 function loadPrevNexImages(){
-
   var that = $('#myCarousel');
    //SCROLLING LEFT
     //console.log("SLIDE");
@@ -330,10 +293,8 @@ function loadPrevNexImages(){
         nextNextImage.removeClass('lazy-load');
         nextNextImage[1].src = nextNextImage[1].getAttribute('lazy-load-src');
        // console.log("next next " + nextNextImage[1].src);
-    }
-       
+    }      
 }
-
 })(); // END OF FILE
 /*
 

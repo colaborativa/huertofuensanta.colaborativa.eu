@@ -30,13 +30,28 @@
             <h1>{{page.titulo}}</h1>
             <h2 class="subtitle">{{page.subtitulo}}</h2>
           </hgroup>
-          {% for agradecimiento in page.agradecimientos %}
-            <hr>
-            <h3>{{agradecimiento.titulo}}</h3>
-            <p class="lead">{{agradecimiento.descripcion}}</p>
-            <p>{% for agradecido in agradecimiento.gracias %}{% if forloop.last %} y <span>{{agradecido}}</span>.{% else %}<span>{{agradecido}}</span>, {% endif %} {% endfor %}</p>
-          {% endfor %}
         </div>
+      </div>
+      {% for agradecimiento in page.agradecimientos %}
+      <div class="agradecimiento">
+        <hr>
+        <div class="row">
+          <div class="col-lg-9">
+            <h3>{{agradecimiento.titulo}}</h3>
+          </div>
+          <div class="col-lg-3">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <p>{{agradecimiento.descripcion}}</p>
+          </div>
+          <div class="col-lg-6">
+            <p>{% for agradecido in agradecimiento.gracias %}{% if forloop.last %} y <span>{{agradecido}}</span>.{% else %}<span>{{agradecido}}</span>, {% endif %} {% endfor %}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
       </div>
     </section>
     <!-- include footer -->
@@ -48,6 +63,8 @@
         <!-- Dependencias de Google y flickr  -->
     <script src='https://www.google.com/jsapi'></script>
     <script src="{{ page.base_url }}js/reqwest.js"></script>
+    <script src="{{ page.base_url }}js/handlebars.js"></script>
+    <script src="{{ page.base_url }}js/6_comunes_headers.js"></script>
     <script src="{{ page.base_url }}js/5_comunes.js"></script>
     <script src="{{ page.base_url }}js/4_agradecimientos.js"></script>
   </body>
