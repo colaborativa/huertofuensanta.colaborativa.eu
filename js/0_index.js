@@ -161,7 +161,7 @@ var jqxhr = $.getJSON( url, function() {
         // Pre-Load first Image (previous and next)
         var firstImage = $(htmlTag).find('img');
         firstImage[1].src = firstImage[1].getAttribute('lazy-load-src'); 
-        loadPrevNexImages();
+        loadPrevNexImages(); // load two previous and next images
       }); // End Get Template
    } // End ColorAdd Function
    // xnd Step: End
@@ -278,20 +278,32 @@ $('#myCarousel').bind("slid", function(event) {
 function loadPrevNexImages(){
 
   var that = $('#myCarousel');
-  //SCROLLING LEFT
-    console.log("SLIDE");
+   //SCROLLING LEFT
+    //console.log("SLIDE");
     var prevItem = $('.active.item', that).prev('.item');// Get the right item
-
     //Account for looping to LAST image
     if(!prevItem.length){
         prevItem = $('.active.item', that).siblings(":last");
     }
     //Get image selector
-    prevImage = prevItem.find('img');
+    var prevImage = prevItem.find('img');
     //Remove class to not load again - probably unnecessary
     if(prevImage.hasClass('lazy-load') ){
         prevImage.removeClass('lazy-load');
         prevImage[1].src = prevImage[1].getAttribute('lazy-load-src');
+    }
+    var prevPrevItem = prevItem.prev('.item');// Get the right item
+    //Account for looping to LAST image
+    if(!prevPrevItem.length){
+        prevPrevItem = $('.active.item', that).siblings(":last");
+    }
+    //Get image selector
+    var prevPrevImage = prevPrevItem.find('img');
+    //Remove class to not load again - probably unnecessary
+    if(prevPrevImage.hasClass('lazy-load') ){
+        prevPrevImage.removeClass('lazy-load');
+        prevPrevImage[1].src = prevPrevImage[1].getAttribute('lazy-load-src');
+        //console.log("prev prev " + prevPrevImage[1].src);
     }
     //SCROLLING RIGHT
     var nextItem = $('.active.item', that).next('.item');
@@ -300,12 +312,26 @@ function loadPrevNexImages(){
         nextItem = $('.active.item', that).siblings(":first");
     }
     //Get image selector
-    nextImage = nextItem.find('img');
+    var nextImage = nextItem.find('img');
     //Remove class to not load again - probably unnecessary
     if(nextImage.hasClass('lazy-load') ){
         nextImage.removeClass('lazy-load');
         nextImage[1].src = nextImage[1].getAttribute('lazy-load-src');
     }
+    var nextNextItem = nextItem.next('.item');
+    //Account for looping to FIRST image
+    if(!nextNextItem.length){
+        nextNextItem = $('.active.item', that).siblings(":first");
+    }
+    //Get image selector
+    var nextNextImage = nextNextItem.find('img');
+    //Remove class to not load again - probably unnecessary
+    if(nextNextImage.hasClass('lazy-load') ){
+        nextNextImage.removeClass('lazy-load');
+        nextNextImage[1].src = nextNextImage[1].getAttribute('lazy-load-src');
+       // console.log("next next " + nextNextImage[1].src);
+    }
+       
 }
 
 })(); // END OF FILE
