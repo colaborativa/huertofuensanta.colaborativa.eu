@@ -98,7 +98,7 @@ var jqxhr = $.getJSON( url, function() {
     // Este es el TAG donde se insertarán los eventos del calendario
   var google_stuff_colors = [];
   // Llamada a la función que extrae información de SpreadSheet
-  google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, ColorsAdd);
+  google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, ColorsAdd, 0);
   //google_SetSpreadsheet(google_sh_id_colors, null, null, null);
   function ColorsAdd(colors){
       $.each(stuff, function(i,image){
@@ -167,36 +167,38 @@ jqxhr.complete(function() { if(DEBUG_HUERTO){ console.log( "flickr second comple
 // Identificador de la SpreadSheet de Google (obtener de URL)
 
 // Llamada a la función que extrae información de SpreadSheet
-google_GetSpreadsheet(activitiesGoogle_sh_id, activitiesHeaderTitles, 9, ActivitiesAdd);
+google_GetSpreadsheet(activitiesGoogle_sh_id, activitiesHeaderTitles, 9, ActivitiesAdd, 1);
 // Campos:  Orden,  Titulo,  Descripcion,  Organizador,  FechaInicio,  FechaFin,  Estado,  NAsistentes,  Contacto,  
 var activitiesGoogle_stuff = [];
 // ActivitiesAdd es la Callback una vez concluida la extracción de información de la SpreadSheet
 function ActivitiesAdd(features){
    $.each(features, function(i, item){
           var activityMes, Fecha_Fin_Str, Fecha_InicioStr;
-          var Fecha_Inicio = new Date(item.FechaInicio);
+          var parts = item.FechaInicio.split(/\//);
+          var Fecha_Inicio = new Date(parts[1] + '/'+parts[0] +'/'+ parts[2]);
           var Fecha_Rango;
           var Fecha_RangoStr;
           if(Fecha_Inicio != 'Invalid Date'){
-                activityMes = Date.locale['es'].month_names_short[Fecha_Inicio.getMonth()];
+                activityMes = Date.locale['es'].month_names_short[Fecha_Inicio.getUTCMonth()]; // Day of the month = Month UK format
                 var hours = Fecha_Inicio.getHours()
                 var minutes = Fecha_Inicio.getMinutes()
                 if (minutes < 10){
                   minutes = "0" + minutes
                 }
-                Fecha_InicioStr = hours + ':' + minutes+'h ' + Fecha_Inicio.getDate() + '-' + activityMes + '-' + Fecha_Inicio.getFullYear()+' ';
+                Fecha_InicioStr = hours + ':' + minutes+'h ' + (Fecha_Inicio.getUTCDate()) + '-' + activityMes + '-' + Fecha_Inicio.getFullYear()+' ';
           }else{
                 Fecha_InicioStr ="[Fecha pendiente] ";
           }     
-          var Fecha_Fin = new Date(item.FechaFin);
+          parts = item.FechaFin.split(/\//);
+          var Fecha_Fin = new Date(parts[1] + '/'+parts[0] +'/'+ parts[2]);
           if(Fecha_Fin != 'Invalid Date'){
-                activityMes = Date.locale['es'].month_names_short[Fecha_Fin.getMonth()];
-                var hours = Fecha_Inicio.getHours()
-                var minutes = Fecha_Inicio.getMinutes()
+                activityMes = Date.locale['es'].month_names_short[Fecha_Fin.getUTCMonth()];
+                var hours = Fecha_Fin.getHours()
+                var minutes = Fecha_Fin.getMinutes()
                 if (minutes < 10){
                   minutes = "0" + minutes
                 }
-                Fecha_Fin_Str = hours + ':' + minutes+ 'h ' + Fecha_Fin.getDate() + '-' + activityMes + '-' + Fecha_Fin.getFullYear()+ ' ';
+                Fecha_Fin_Str = hours + ':' + minutes+ 'h ' + (Fecha_Fin.getUTCDate()) + '-' + activityMes + '-' + Fecha_Fin.getFullYear()+ ' ';
           }else{
                 Fecha_Fin_Str ="[Fecha pendiente] ";
           } 

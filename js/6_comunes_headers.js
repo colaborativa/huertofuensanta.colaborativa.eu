@@ -32,7 +32,7 @@ var cabeceraSegundo_htmlTag = '.cabecera .row'; // Este es el TAG donde se inser
  *	Google Spreadsheet with Activities
  *
  */
-var activitiesGoogle_sh_id = '0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE'; 
+var activitiesGoogle_sh_id =  '0ApaZkqgevJCgdDNrM0RaX3RhaDEzVGhGcEo5allQaHc'; //'0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE'; //
 // Este es el TAG donde se insertarán los eventos del calendario
 var activitiesGoogle_htmlTag = '#actividadesfuturasTpl';
 // Identificador de la template de mustache
@@ -48,7 +48,7 @@ var activitiesHeaderTitles = {
     '7': ['NAsistentes','númerodeasistentes'],
     '8': ['Contacto','datosdecontacto'] ,
 };
-var activitiesGoogle_url = "https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE#gid=0";
+var activitiesGoogle_url = "https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdDNrM0RaX3RhaDEzVGhGcEo5allQaHc#gid=0";
 /* 
  *	Flickr 
  *

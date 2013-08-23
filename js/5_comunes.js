@@ -9,7 +9,7 @@ var DEBUG_COMUNES = 0;
 // Get dominant colors from SpreadSheets
 function getImageColorsCabeceraSegunda(){
     var google_stuff_colors = [];
-    google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, backImageAdd);
+    google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, backImageAdd, 0);
     function backImageAdd(ImageColors){
         var randomnumber=Math.floor(Math.random()*(ImageColors.length));
         //
@@ -44,7 +44,7 @@ function getImageColorsCabeceraSegunda(){
  * @param {File} fileData File object to read data from.
  * @param {Function} callback Callback function to call when the request is complete.
  */
- function google_GetSpreadsheet(id, headerTitlesName,headerTitlesNumber, callback) {
+ function google_GetSpreadsheet(id, headerTitlesName, headerTitlesNumber, callback, startRow) {
     if( DEBUG_COMUNES) { console.log("function google_GetSpreadsheet");}
     // Chequear que `reqwest` existe para así poder comunicarnos con Google Drive.
     if (typeof reqwest === 'undefined'){
@@ -58,11 +58,14 @@ function getImageColorsCabeceraSegunda(){
         var features = []; // This array stores the spreadsheet values
         // Chequear que los datos son válidos antes de continuar.
         if (!x || !x.feed) return features;
+         //console.log(JSON.stringify(x.feed));
         // Bucle for para cada fila de la spreadsheet, que corresponde con un edificio abandonado.
-        for (var i = 0; i < x.feed.entry.length; i++) {                             
+        for (var i = startRow; i < x.feed.entry.length; i++) { // skyp first line                            
            var entry = x.feed.entry[i];
            var obj = {}; // Object
+          
            for(var y = 0; y < headerTitlesNumber; y++){
+                //console.log(y + " " + headerTitlesName[y][0]);
                 var titleName = headerTitlesName[y][0];
                 var titleValue= 'gsx$'+headerTitlesName[y][1];
                 obj[titleName] = entry[titleValue].$t;
