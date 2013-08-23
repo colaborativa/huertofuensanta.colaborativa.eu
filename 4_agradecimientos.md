@@ -4,6 +4,7 @@ slug: agradecimientos
 icono: icon-smile
 permalink: agradecimientos/
 layout: 4_agradecimientos
+base_url: "../"
 
 cabecera: "¡Gracias por todo!"
 cabecera-subtitulo: "El Huerto Fuensanta es posible gracias al trabajo y la colaboración de muchas personas y organizaciones"

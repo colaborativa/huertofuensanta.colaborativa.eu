@@ -4,6 +4,7 @@ slug: informacion
 icono: icon-info-sign
 permalink: informacion/
 layout: 1_informacion
+base_url: "../"
 
 cabecera: "¿Qué es el huerto fuensanta?"
 cabecera-subtitulo: "Numerosas actividades se organizan en el Huerto Fuensanta ¡Tu también puedes participar!"

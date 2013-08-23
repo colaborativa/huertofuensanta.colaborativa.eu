@@ -9,7 +9,7 @@
     <!-- Subhead -->
     <section class="cabecera confondo">
       <div class="container">
-        <div class="row">
+        <div class="row"> 
           <div class="col-lg-7">
             <hgroup>
               <h1>{{ page.cabecera }}</h1>
@@ -50,6 +50,12 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ page.base_url }}js/jquery.js"></script>
-    <script src="{{ page.base_url }}js/huerto.js"></script>
+        <!-- Dependencias de Google - Flickr - mustache (handlebars)-->
+    <script src='https://www.google.com/jsapi'></script>
+    <script src="{{ page.base_url }}js/reqwest.js"></script>
+    <script src="{{ page.base_url }}js/handlebars.js"></script>
+    <script src="{{ page.base_url }}js/6_comunes_headers.js"></script>
+    <script src="{{ page.base_url }}js/5_comunes.js"></script>
+    <script src="{{ page.base_url }}js/1_informacion.js"></script>
   </body>
 </html>

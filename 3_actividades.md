@@ -4,6 +4,7 @@ slug: actividades
 icono: icon-calendar
 permalink: actividades/
 layout: 3_actividades
+base_url: "../"
 
 cabecera: "Está pasando"
 cabecera-subtitulo: "El Huerto Fuesanta recupera un espacio público abandonado del barrio de la Fuensanta en Córdoba"

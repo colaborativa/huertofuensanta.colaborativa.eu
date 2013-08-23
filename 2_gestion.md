@@ -4,6 +4,7 @@ slug: gestion
 icono: icon-edit
 permalink: gestion/
 layout: 2_gestion
+base_url: "../"
 
 cabecera: "Participa en la gestión"
 cabecera-subtitulo: "Toda la gestión del huerto se recoge en el diario y las cuentas del huerto, la información es abierta y con acceso público"
