@@ -214,7 +214,6 @@ $colorLinks: #669433;
 
 /* Carousel base class */
 $carouselHeight: 690px/2;
-$imageCaptionSize: 80px;
 
 /* general styles Fonts and text sizes */
 html body{
@@ -342,6 +341,7 @@ section {
     }
   }
 }
+
 // para el phone separamos el boton un poco más
 @media (max-width: 767px) {
 }
@@ -364,6 +364,8 @@ section {
     }
   }
 }
+
+
 .formulario{
   a{
     border-color: #ddd;
@@ -413,7 +415,6 @@ section {
       text-align: right;
       display: block;
       @include box-sizing (border-box);
-      padding-right: 20px;
       .texto{
         padding-right: 20px;
         margin-bottom: 0px;
@@ -438,6 +439,7 @@ section {
 // Media queries //
 //Phone
 @media (max-width: 767px) {
+  $imageCaptionSize: 60px;
   @include typographyPhone;
   .visible-mediano{
     display: none;
@@ -474,10 +476,12 @@ section {
           .pieImagen{
             padding-bottom: 30px;
             .textoAutor{
-              padding-right: 70px;
               width: auto;
+              padding-right: $imageCaptionSize + 30px;
             }
-            .imagenAutor{
+            .imagen{
+              width: $imageCaptionSize;
+              height: $imageCaptionSize;
             }
           }
         }
@@ -496,6 +500,7 @@ section {
 }
 //Tablets
 @media (min-width: 768px) and (max-width: 990px) {
+  $imageCaptionSize: 50px;
   @include typographyRest;
   .visible-mediano{
     display: none;
@@ -525,12 +530,17 @@ section {
     width: 364px;
     top: 0px;
     .textoAutor{
-      width: 364px - $imageCaptionSize;
+      width: 364px - $imageCaptionSize - 30px;
+    }
+    .imagen{
+      width: $imageCaptionSize;
+      height: $imageCaptionSize;
     }
   }
 }
 //Normal screens
 @media (min-width: 991px) and (max-width: 1199px) {
+  $imageCaptionSize: 55px;
   @include typographyRest;
   .visible-mediano{
     display: block;
@@ -560,12 +570,17 @@ section {
     width: 480px;
     top: 0px;
     .textoAutor{
-      width: 480px - $imageCaptionSize;
+      width: 480px - $imageCaptionSize - 30px;
+    }
+    .imagen{
+      width: $imageCaptionSize;
+      height: $imageCaptionSize;
     }
   }
 }
 //Big screens
 @media (min-width: 1200px) {
+  $imageCaptionSize: 60px;
   @include typographyRest;
   .visible-mediano{
     display: none;
@@ -595,7 +610,11 @@ section {
     width: 570px;
     top: 0px;
     .textoAutor{
-      width: 570px - $imageCaptionSize;
+      width: 570px - $imageCaptionSize - 30px;
+    }
+    .imagen{
+      width: $imageCaptionSize;
+      height: $imageCaptionSize;
     }
   }
 }
