@@ -226,25 +226,20 @@ section h3 {
 /* line 402, ../sass/huerto.scss */
 .pieImagenContainer .pieImagen .imagenAutor {
   float: right;
-}
-/* line 404, ../sass/huerto.scss */
-.pieImagenContainer .pieImagen .imagenAutor .imagen {
   border: 2px solid white;
   -webkit-border-radius: 50% 50%;
   -moz-border-radius: 50% / 50%;
   border-radius: 50% / 50%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
-  background-position: center center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+}
+/* line 408, ../sass/huerto.scss */
+.pieImagenContainer .pieImagen .imagenAutor .imagen {
   background-color: gray;
 }
-/* line 414, ../sass/huerto.scss */
+/* line 412, ../sass/huerto.scss */
 .pieImagenContainer .pieImagen .textoAutor {
   text-align: right;
   display: block;
@@ -252,7 +247,7 @@ section h3 {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 418, ../sass/huerto.scss */
+/* line 416, ../sass/huerto.scss */
 .pieImagenContainer .pieImagen .textoAutor .texto {
   padding-right: 20px;
   margin-bottom: 0px;
@@ -263,11 +258,11 @@ section h3 {
   border-top-style: none;
   border-left-style: none;
 }
-/* line 427, ../sass/huerto.scss */
+/* line 425, ../sass/huerto.scss */
 .pieImagenContainer .pieImagen .textoAutor .texto .titulo {
   font-family: latobold;
 }
-/* line 430, ../sass/huerto.scss */
+/* line 428, ../sass/huerto.scss */
 .pieImagenContainer .pieImagen .textoAutor .texto .fecha {
   font-family: latoitalic;
 }
@@ -457,50 +452,50 @@ section h3 {
     margin-bottom: 0px;
   }
 
-  /* line 444, ../sass/huerto.scss */
+  /* line 442, ../sass/huerto.scss */
   .visible-mediano {
     display: none;
   }
 
-  /* line 447, ../sass/huerto.scss */
+  /* line 445, ../sass/huerto.scss */
   .visible-grande {
     display: none;
   }
 
-  /* line 450, ../sass/huerto.scss */
+  /* line 448, ../sass/huerto.scss */
   footer .creditosTecnicos {
     padding: 15px;
   }
 
-  /* line 453, ../sass/huerto.scss */
+  /* line 451, ../sass/huerto.scss */
   section.confondo {
     -webkit-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.5);
     box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.5);
   }
 
-  /* line 456, ../sass/huerto.scss */
+  /* line 454, ../sass/huerto.scss */
   .carousel {
     margin-top: 50px;
   }
-  /* line 458, ../sass/huerto.scss */
+  /* line 456, ../sass/huerto.scss */
   .carousel .carousel-inner {
     height: 420px;
   }
-  /* line 460, ../sass/huerto.scss */
+  /* line 458, ../sass/huerto.scss */
   .carousel .carousel-inner .itemContenedor {
     width: 100%;
   }
-  /* line 463, ../sass/huerto.scss */
+  /* line 461, ../sass/huerto.scss */
   .carousel .carousel-inner .item {
     height: 420px;
     width: 100%;
   }
-  /* line 464, ../sass/huerto.scss */
+  /* line 462, ../sass/huerto.scss */
   .carousel .carousel-inner .item .mascaraColorPhone {
     width: 100%;
   }
-  /* line 467, ../sass/huerto.scss */
+  /* line 465, ../sass/huerto.scss */
   .carousel .carousel-inner .item .pieImagenContainer {
     width: 100%;
     height: auto;
@@ -513,21 +508,21 @@ section h3 {
     padding-left: 20px;
     padding-right: 20px;
   }
-  /* line 476, ../sass/huerto.scss */
+  /* line 474, ../sass/huerto.scss */
   .carousel .carousel-inner .item .pieImagenContainer .pieImagen {
     padding-bottom: 30px;
   }
-  /* line 478, ../sass/huerto.scss */
+  /* line 476, ../sass/huerto.scss */
   .carousel .carousel-inner .item .pieImagenContainer .pieImagen .textoAutor {
     width: auto;
     padding-right: 90px;
   }
-  /* line 482, ../sass/huerto.scss */
+  /* line 480, ../sass/huerto.scss */
   .carousel .carousel-inner .item .pieImagenContainer .pieImagen .imagen {
     width: 60px;
     height: 60px;
   }
-  /* line 490, ../sass/huerto.scss */
+  /* line 488, ../sass/huerto.scss */
   .carousel .carousel-inner .item .image {
     width: 100%;
     height: 420px;
@@ -728,33 +723,33 @@ section h3 {
     margin-bottom: 0px;
   }
 
-  /* line 505, ../sass/huerto.scss */
+  /* line 503, ../sass/huerto.scss */
   .visible-mediano {
     display: none;
   }
 
-  /* line 508, ../sass/huerto.scss */
+  /* line 506, ../sass/huerto.scss */
   .visible-grande {
     display: none;
   }
 
-  /* line 511, ../sass/huerto.scss */
+  /* line 509, ../sass/huerto.scss */
   .mascaraColor {
     width: 768px;
     margin-left: -384px;
   }
 
-  /* line 515, ../sass/huerto.scss */
+  /* line 513, ../sass/huerto.scss */
   .carousel-inner {
     height: 345px;
   }
 
-  /* line 518, ../sass/huerto.scss */
+  /* line 516, ../sass/huerto.scss */
   .itemContenedor {
     width: 728px;
   }
 
-  /* line 521, ../sass/huerto.scss */
+  /* line 519, ../sass/huerto.scss */
   .image {
     height: 345px;
     -webkit-background-size: auto 100%;
@@ -765,18 +760,18 @@ section h3 {
     background-repeat: no-repeat;
   }
 
-  /* line 527, ../sass/huerto.scss */
+  /* line 525, ../sass/huerto.scss */
   .pieImagenContainer {
     height: 345px;
     left: 50%;
     width: 364px;
     top: 0px;
   }
-  /* line 532, ../sass/huerto.scss */
+  /* line 530, ../sass/huerto.scss */
   .pieImagenContainer .textoAutor {
     width: 284px;
   }
-  /* line 535, ../sass/huerto.scss */
+  /* line 533, ../sass/huerto.scss */
   .pieImagenContainer .imagen {
     width: 50px;
     height: 50px;
@@ -971,33 +966,33 @@ section h3 {
     margin-bottom: 0px;
   }
 
-  /* line 545, ../sass/huerto.scss */
+  /* line 543, ../sass/huerto.scss */
   .visible-mediano {
     display: block;
   }
 
-  /* line 548, ../sass/huerto.scss */
+  /* line 546, ../sass/huerto.scss */
   .visible-grande {
     display: none;
   }
 
-  /* line 551, ../sass/huerto.scss */
+  /* line 549, ../sass/huerto.scss */
   .mascaraColor {
     width: 990px;
     margin-left: -495px;
   }
 
-  /* line 555, ../sass/huerto.scss */
+  /* line 553, ../sass/huerto.scss */
   .carousel-inner {
     height: 345px;
   }
 
-  /* line 558, ../sass/huerto.scss */
+  /* line 556, ../sass/huerto.scss */
   .itemContenedor {
     width: 990px;
   }
 
-  /* line 561, ../sass/huerto.scss */
+  /* line 559, ../sass/huerto.scss */
   .image {
     height: 345px;
     -webkit-background-size: 70% auto;
@@ -1008,18 +1003,18 @@ section h3 {
     background-repeat: no-repeat;
   }
 
-  /* line 567, ../sass/huerto.scss */
+  /* line 565, ../sass/huerto.scss */
   .pieImagenContainer {
     height: 345px;
     left: 50%;
     width: 480px;
     top: 0px;
   }
-  /* line 572, ../sass/huerto.scss */
+  /* line 570, ../sass/huerto.scss */
   .pieImagenContainer .textoAutor {
     width: 395px;
   }
-  /* line 575, ../sass/huerto.scss */
+  /* line 573, ../sass/huerto.scss */
   .pieImagenContainer .imagen {
     width: 55px;
     height: 55px;
@@ -1214,33 +1209,33 @@ section h3 {
     margin-bottom: 0px;
   }
 
-  /* line 585, ../sass/huerto.scss */
+  /* line 583, ../sass/huerto.scss */
   .visible-mediano {
     display: none;
   }
 
-  /* line 588, ../sass/huerto.scss */
+  /* line 586, ../sass/huerto.scss */
   .visible-grande {
     display: block;
   }
 
-  /* line 591, ../sass/huerto.scss */
+  /* line 589, ../sass/huerto.scss */
   .mascaraColor {
     width: 1200px;
     margin-left: -600px;
   }
 
-  /* line 595, ../sass/huerto.scss */
+  /* line 593, ../sass/huerto.scss */
   .carousel-inner {
     height: 345px;
   }
 
-  /* line 598, ../sass/huerto.scss */
+  /* line 596, ../sass/huerto.scss */
   .itemContenedor {
     width: 1200px;
   }
 
-  /* line 601, ../sass/huerto.scss */
+  /* line 599, ../sass/huerto.scss */
   .image {
     height: 345px;
     -webkit-background-size: 900px auto;
@@ -1251,39 +1246,39 @@ section h3 {
     background-repeat: no-repeat;
   }
 
-  /* line 607, ../sass/huerto.scss */
+  /* line 605, ../sass/huerto.scss */
   .pieImagenContainer {
     height: 345px;
     left: 50%;
     width: 570px;
     top: 0px;
   }
-  /* line 612, ../sass/huerto.scss */
+  /* line 610, ../sass/huerto.scss */
   .pieImagenContainer .textoAutor {
     width: 480px;
   }
-  /* line 615, ../sass/huerto.scss */
+  /* line 613, ../sass/huerto.scss */
   .pieImagenContainer .imagen {
     width: 60px;
     height: 60px;
   }
 }
-/* line 622, ../sass/huerto.scss */
+/* line 620, ../sass/huerto.scss */
 .carousel {
   margin-bottom: 0px;
   overflow: hidden;
 }
-/* line 625, ../sass/huerto.scss */
+/* line 623, ../sass/huerto.scss */
 .carousel .item {
   width: 100%;
   overflow: hidden;
 }
-/* line 628, ../sass/huerto.scss */
+/* line 626, ../sass/huerto.scss */
 .carousel .item .itemContenedor {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 633, ../sass/huerto.scss */
+/* line 631, ../sass/huerto.scss */
 .carousel .mascaraColor {
   z-index: 2;
   top: 0px;
@@ -1291,7 +1286,7 @@ section h3 {
   position: absolute;
   height: 100%;
 }
-/* line 640, ../sass/huerto.scss */
+/* line 638, ../sass/huerto.scss */
 .carousel .mascaraColorPhone {
   z-index: 2;
   top: 0px;
@@ -1299,12 +1294,12 @@ section h3 {
   position: absolute;
   height: 100%;
 }
-/* line 647, ../sass/huerto.scss */
+/* line 645, ../sass/huerto.scss */
 .carousel .carousel-inner {
   width: 100%;
 }
 
-/* line 652, ../sass/huerto.scss */
+/* line 650, ../sass/huerto.scss */
 .carousel-control {
   position: absolute;
   top: 40%;
@@ -1329,13 +1324,13 @@ section h3 {
   border: 0;
   z-index: 10;
 }
-/* line 675, ../sass/huerto.scss */
+/* line 673, ../sass/huerto.scss */
 .carousel-control.left, .carousel-control.right {
   background-color: transparent;
   background-image: none !important;
 }
 
-/* line 681, ../sass/huerto.scss */
+/* line 679, ../sass/huerto.scss */
 .carousel.carousel-fade .item {
   -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 1s ease-in-out;
@@ -1344,7 +1339,7 @@ section h3 {
   transition: opacity 1s ease-in-out;
 }
 
-/* line 689, ../sass/huerto.scss */
+/* line 687, ../sass/huerto.scss */
 .carousel.carousel-fade .active.left,
 .carousel.carousel-fade .active.right {
   left: 0;
@@ -1353,26 +1348,26 @@ section h3 {
   filter: alpha(opacity=0);
 }
 
-/* line 696, ../sass/huerto.scss */
+/* line 694, ../sass/huerto.scss */
 .carousel.carousel-fade .next,
 .carousel.carousel-fade .prev {
   left: 0;
   z-index: 1;
 }
 
-/* line 701, ../sass/huerto.scss */
+/* line 699, ../sass/huerto.scss */
 .carousel.carousel-fade .carousel-control {
   z-index: 3;
 }
 
 /* lista calendario */
-/* line 708, ../sass/huerto.scss */
+/* line 706, ../sass/huerto.scss */
 .listaCalendario .popover {
   max-width: none;
   left: 0px;
   min-height: 110px;
 }
-/* line 713, ../sass/huerto.scss */
+/* line 711, ../sass/huerto.scss */
 .listaCalendario ol {
   margin-left: 0px;
   padding-left: 0px;
@@ -1380,7 +1375,7 @@ section h3 {
   list-style-position: inside;
   border-color: rgba(0, 0, 0, 0.4);
 }
-/* line 719, ../sass/huerto.scss */
+/* line 717, ../sass/huerto.scss */
 .listaCalendario ol li {
   /*texttruncation*/
   white-space: nowrap;
@@ -1389,47 +1384,47 @@ section h3 {
   /**/
   border-color: rgba(0, 0, 0, 0.2);
 }
-/* line 720, ../sass/huerto.scss */
+/* line 718, ../sass/huerto.scss */
 .listaCalendario ol li time {
   font-style: italic;
 }
-/* line 729, ../sass/huerto.scss */
+/* line 727, ../sass/huerto.scss */
 .listaCalendario ol li:last-child {
   border-color: rgba(0, 0, 0, 0.4);
 }
-/* line 732, ../sass/huerto.scss */
+/* line 730, ../sass/huerto.scss */
 .listaCalendario ol li.pasada {
   opacity: 0.3;
 }
-/* line 737, ../sass/huerto.scss */
+/* line 735, ../sass/huerto.scss */
 .listaCalendario a {
   line-height: 2.25em;
 }
 
 /* Footer
 -------------------------------------------------- */
-/* line 747, ../sass/huerto.scss */
+/* line 745, ../sass/huerto.scss */
 .footer {
   text-align: left;
   padding: 30px 0;
   border-top: 1px solid #e5e5e5;
   background-color: #fff;
 }
-/* line 752, ../sass/huerto.scss */
+/* line 750, ../sass/huerto.scss */
 .footer p {
   margin-bottom: 0;
   color: #777;
 }
-/* line 756, ../sass/huerto.scss */
+/* line 754, ../sass/huerto.scss */
 .footer .footer-links {
   margin: 10px 0;
 }
-/* line 758, ../sass/huerto.scss */
+/* line 756, ../sass/huerto.scss */
 .footer .footer-links li {
   display: inline;
   padding: 0 2px;
 }
-/* line 762, ../sass/huerto.scss */
+/* line 760, ../sass/huerto.scss */
 .footer .footer-links li:first-child {
   padding-left: 0;
 }
