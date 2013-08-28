@@ -1,21 +1,21 @@
 /* Carousel base class */
 /* line 7, ../sass/carousel.scss */
-.carousel {
+.carousel, .imagenfondo {
   margin-bottom: 0px;
   overflow: hidden;
 }
 /* line 10, ../sass/carousel.scss */
-.carousel .item {
+.carousel .item, .imagenfondo .item {
   width: 100%;
   overflow: hidden;
 }
 /* line 13, ../sass/carousel.scss */
-.carousel .item .itemContenedor {
+.carousel .item .itemContenedor, .imagenfondo .item .itemContenedor {
   margin-left: auto;
   margin-right: auto;
 }
 /* line 18, ../sass/carousel.scss */
-.carousel .mascaraColor {
+.carousel .mascaraColor, .imagenfondo .mascaraColor {
   z-index: 2;
   top: 0px;
   left: 50%;
@@ -23,7 +23,7 @@
   height: 100%;
 }
 /* line 25, ../sass/carousel.scss */
-.carousel .mascaraColorPhone {
+.carousel .mascaraColorPhone, .imagenfondo .mascaraColorPhone {
   z-index: 2;
   top: 0px;
   left: 0px;
@@ -31,11 +31,25 @@
   height: 100%;
 }
 /* line 32, ../sass/carousel.scss */
-.carousel .carousel-inner {
+.carousel .carousel-inner, .imagenfondo .carousel-inner {
   width: 100%;
 }
 
 /* line 37, ../sass/carousel.scss */
+.imagenfondo {
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  z-index: -100;
+}
+
+/* line 44, ../sass/carousel.scss */
+section.cabecera {
+  padding-bottom: 0px;
+  height: 395px;
+}
+
+/* line 49, ../sass/carousel.scss */
 .carousel-control {
   position: absolute;
   top: 40%;
@@ -60,13 +74,13 @@
   border: 0;
   z-index: 10;
 }
-/* line 60, ../sass/carousel.scss */
+/* line 72, ../sass/carousel.scss */
 .carousel-control.left, .carousel-control.right {
   background-color: transparent;
   background-image: none !important;
 }
 
-/* line 66, ../sass/carousel.scss */
+/* line 78, ../sass/carousel.scss */
 .carousel.carousel-fade .item {
   -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 1s ease-in-out;
@@ -75,7 +89,7 @@
   transition: opacity 1s ease-in-out;
 }
 
-/* line 74, ../sass/carousel.scss */
+/* line 86, ../sass/carousel.scss */
 .carousel.carousel-fade .active.left,
 .carousel.carousel-fade .active.right {
   left: 0;
@@ -84,25 +98,25 @@
   filter: alpha(opacity=0);
 }
 
-/* line 81, ../sass/carousel.scss */
+/* line 93, ../sass/carousel.scss */
 .carousel.carousel-fade .next,
 .carousel.carousel-fade .prev {
   left: 0;
   z-index: 1;
 }
 
-/* line 86, ../sass/carousel.scss */
+/* line 98, ../sass/carousel.scss */
 .carousel.carousel-fade .carousel-control {
   z-index: 3;
 }
 
-/* line 91, ../sass/carousel.scss */
+/* line 103, ../sass/carousel.scss */
 .pieImagenContainer {
   z-index: 4;
   position: absolute;
   display: table;
 }
-/* line 95, ../sass/carousel.scss */
+/* line 107, ../sass/carousel.scss */
 .pieImagenContainer .pieImagen {
   display: table-cell;
   vertical-align: middle;
@@ -112,7 +126,7 @@
   overflow: hidden;
   *zoom: 1;
 }
-/* line 102, ../sass/carousel.scss */
+/* line 114, ../sass/carousel.scss */
 .pieImagenContainer .pieImagen .imagenAutor {
   float: right;
   border: 2px solid white;
@@ -124,11 +138,11 @@
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
   overflow: hidden;
 }
-/* line 108, ../sass/carousel.scss */
+/* line 120, ../sass/carousel.scss */
 .pieImagenContainer .pieImagen .imagenAutor .imagen {
   background-color: gray;
 }
-/* line 112, ../sass/carousel.scss */
+/* line 124, ../sass/carousel.scss */
 .pieImagenContainer .pieImagen .textoAutor {
   text-align: right;
   display: block;
@@ -136,7 +150,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 116, ../sass/carousel.scss */
+/* line 128, ../sass/carousel.scss */
 .pieImagenContainer .pieImagen .textoAutor .texto {
   padding-right: 20px;
   margin-bottom: 0px;
@@ -147,38 +161,74 @@
   border-top-style: none;
   border-left-style: none;
 }
-/* line 125, ../sass/carousel.scss */
+/* line 137, ../sass/carousel.scss */
 .pieImagenContainer .pieImagen .textoAutor .texto .titulo {
   font-family: latobold;
 }
-/* line 128, ../sass/carousel.scss */
+/* line 140, ../sass/carousel.scss */
 .pieImagenContainer .pieImagen .textoAutor .texto .fecha {
   font-family: latoitalic;
 }
 
 @media (max-width: 767px) {
-  /* line 140, ../sass/carousel.scss */
+  /* line 152, ../sass/carousel.scss */
+  section.cabecera {
+    padding-top: 80px;
+    padding-bottom: 0px;
+    height: 510px;
+  }
+
+  /* line 157, ../sass/carousel.scss */
+  .imagenfondo {
+    height: 460px;
+  }
+  /* line 159, ../sass/carousel.scss */
+  .imagenfondo .item {
+    height: 460px;
+    width: 100%;
+  }
+  /* line 160, ../sass/carousel.scss */
+  .imagenfondo .item .itemContenedor {
+    width: 100%;
+  }
+  /* line 163, ../sass/carousel.scss */
+  .imagenfondo .item .mascaraColorPhone {
+    width: 100%;
+  }
+  /* line 168, ../sass/carousel.scss */
+  .imagenfondo .item .image {
+    width: 100%;
+    height: 460px;
+    -webkit-background-size: 130% auto;
+    -moz-background-size: 130% auto;
+    -o-background-size: 130% auto;
+    background-size: 130% auto;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+  }
+
+  /* line 177, ../sass/carousel.scss */
   .carousel {
     margin-top: 50px;
   }
-  /* line 142, ../sass/carousel.scss */
+  /* line 179, ../sass/carousel.scss */
   .carousel .carousel-inner {
     height: 420px;
   }
-  /* line 144, ../sass/carousel.scss */
+  /* line 181, ../sass/carousel.scss */
   .carousel .carousel-inner .itemContenedor {
     width: 100%;
   }
-  /* line 147, ../sass/carousel.scss */
+  /* line 184, ../sass/carousel.scss */
   .carousel .carousel-inner .item {
     height: 420px;
     width: 100%;
   }
-  /* line 148, ../sass/carousel.scss */
+  /* line 185, ../sass/carousel.scss */
   .carousel .carousel-inner .item .mascaraColorPhone {
     width: 100%;
   }
-  /* line 151, ../sass/carousel.scss */
+  /* line 188, ../sass/carousel.scss */
   .carousel .carousel-inner .item .pieImagenContainer {
     width: 100%;
     height: auto;
@@ -191,21 +241,21 @@
     padding-left: 20px;
     padding-right: 20px;
   }
-  /* line 160, ../sass/carousel.scss */
+  /* line 197, ../sass/carousel.scss */
   .carousel .carousel-inner .item .pieImagenContainer .pieImagen {
     padding-bottom: 30px;
   }
-  /* line 162, ../sass/carousel.scss */
+  /* line 199, ../sass/carousel.scss */
   .carousel .carousel-inner .item .pieImagenContainer .pieImagen .textoAutor {
     width: auto;
     padding-right: 90px;
   }
-  /* line 166, ../sass/carousel.scss */
+  /* line 203, ../sass/carousel.scss */
   .carousel .carousel-inner .item .pieImagenContainer .pieImagen .imagen {
     width: 60px;
     height: 60px;
   }
-  /* line 174, ../sass/carousel.scss */
+  /* line 211, ../sass/carousel.scss */
   .carousel .carousel-inner .item .image {
     width: 100%;
     height: 420px;
@@ -218,165 +268,200 @@
   }
 }
 @media (min-width: 768px) and (max-width: 990px) {
-  /* line 188, ../sass/carousel.scss */
+  /* line 226, ../sass/carousel.scss */
   .visible-mediano {
     display: none;
   }
 
-  /* line 191, ../sass/carousel.scss */
+  /* line 229, ../sass/carousel.scss */
   .visible-grande {
     display: none;
   }
 
-  /* line 194, ../sass/carousel.scss */
+  /* line 232, ../sass/carousel.scss */
   .mascaraColor {
     width: 768px;
     margin-left: -384px;
   }
 
-  /* line 198, ../sass/carousel.scss */
+  /* line 236, ../sass/carousel.scss */
   .carousel-inner {
     height: 345px;
   }
 
-  /* line 201, ../sass/carousel.scss */
+  /* line 239, ../sass/carousel.scss */
   .itemContenedor {
     width: 728px;
   }
 
-  /* line 204, ../sass/carousel.scss */
+  /* line 242, ../sass/carousel.scss */
   .image {
     height: 345px;
     -webkit-background-size: auto 100%;
     -moz-background-size: auto 100%;
     -o-background-size: auto 100%;
     background-size: auto 100%;
-    background-position: left center;
     background-repeat: no-repeat;
   }
 
-  /* line 210, ../sass/carousel.scss */
+  /* line 248, ../sass/carousel.scss */
+  .carousel .image {
+    background-position: left center;
+  }
+
+  /* line 253, ../sass/carousel.scss */
+  .imagenfondo .itemContenedor {
+    width: 100%;
+  }
+  /* line 256, ../sass/carousel.scss */
+  .imagenfondo .image {
+    background-position: right center;
+  }
+
+  /* line 260, ../sass/carousel.scss */
   .pieImagenContainer {
     height: 345px;
     left: 50%;
     width: 364px;
     top: 0px;
   }
-  /* line 215, ../sass/carousel.scss */
+  /* line 265, ../sass/carousel.scss */
   .pieImagenContainer .textoAutor {
     width: 284px;
   }
-  /* line 218, ../sass/carousel.scss */
+  /* line 268, ../sass/carousel.scss */
   .pieImagenContainer .imagen {
     width: 50px;
     height: 50px;
   }
 }
 @media (min-width: 991px) and (max-width: 1199px) {
-  /* line 227, ../sass/carousel.scss */
+  /* line 277, ../sass/carousel.scss */
   .visible-mediano {
     display: block;
   }
 
-  /* line 230, ../sass/carousel.scss */
+  /* line 280, ../sass/carousel.scss */
   .visible-grande {
     display: none;
   }
 
-  /* line 233, ../sass/carousel.scss */
+  /* line 283, ../sass/carousel.scss */
   .mascaraColor {
     width: 990px;
     margin-left: -495px;
   }
 
-  /* line 237, ../sass/carousel.scss */
+  /* line 287, ../sass/carousel.scss */
   .carousel-inner {
     height: 345px;
   }
 
-  /* line 240, ../sass/carousel.scss */
+  /* line 290, ../sass/carousel.scss */
   .itemContenedor {
     width: 990px;
   }
 
-  /* line 243, ../sass/carousel.scss */
+  /* line 293, ../sass/carousel.scss */
   .image {
     height: 345px;
     -webkit-background-size: 70% auto;
     -moz-background-size: 70% auto;
     -o-background-size: 70% auto;
     background-size: 70% auto;
-    background-position: left center;
     background-repeat: no-repeat;
   }
 
-  /* line 249, ../sass/carousel.scss */
+  /* line 299, ../sass/carousel.scss */
+  .carousel .image {
+    background-position: left center;
+  }
+
+  /* line 304, ../sass/carousel.scss */
+  .imagenfondo .itemContenedor {
+    width: 100%;
+  }
+  /* line 307, ../sass/carousel.scss */
+  .imagenfondo .image {
+    background-position: right center;
+  }
+
+  /* line 311, ../sass/carousel.scss */
   .pieImagenContainer {
     height: 345px;
     left: 50%;
     width: 480px;
     top: 0px;
   }
-  /* line 254, ../sass/carousel.scss */
+  /* line 316, ../sass/carousel.scss */
   .pieImagenContainer .textoAutor {
     width: 395px;
   }
-  /* line 257, ../sass/carousel.scss */
+  /* line 319, ../sass/carousel.scss */
   .pieImagenContainer .imagen {
     width: 55px;
     height: 55px;
   }
 }
 @media (min-width: 1200px) {
-  /* line 266, ../sass/carousel.scss */
+  /* line 328, ../sass/carousel.scss */
   .visible-mediano {
     display: none;
   }
 
-  /* line 269, ../sass/carousel.scss */
+  /* line 331, ../sass/carousel.scss */
   .visible-grande {
     display: block;
   }
 
-  /* line 272, ../sass/carousel.scss */
+  /* line 334, ../sass/carousel.scss */
   .mascaraColor {
     width: 1200px;
     margin-left: -600px;
   }
 
-  /* line 276, ../sass/carousel.scss */
+  /* line 338, ../sass/carousel.scss */
   .carousel-inner {
     height: 345px;
   }
 
-  /* line 279, ../sass/carousel.scss */
+  /* line 341, ../sass/carousel.scss */
   .itemContenedor {
     width: 1200px;
   }
 
-  /* line 282, ../sass/carousel.scss */
+  /* line 344, ../sass/carousel.scss */
   .image {
     height: 345px;
     -webkit-background-size: 900px auto;
     -moz-background-size: 900px auto;
     -o-background-size: 900px auto;
     background-size: 900px auto;
-    background-position: left center;
     background-repeat: no-repeat;
   }
 
-  /* line 288, ../sass/carousel.scss */
+  /* line 350, ../sass/carousel.scss */
+  .carousel .image {
+    background-position: left center;
+  }
+
+  /* line 355, ../sass/carousel.scss */
+  .imagenfondo .image {
+    background-position: right center;
+  }
+
+  /* line 360, ../sass/carousel.scss */
   .pieImagenContainer {
     height: 345px;
     left: 50%;
     width: 570px;
     top: 0px;
   }
-  /* line 293, ../sass/carousel.scss */
+  /* line 365, ../sass/carousel.scss */
   .pieImagenContainer .textoAutor {
     width: 480px;
   }
-  /* line 296, ../sass/carousel.scss */
+  /* line 368, ../sass/carousel.scss */
   .pieImagenContainer .imagen {
     width: 60px;
     height: 60px;

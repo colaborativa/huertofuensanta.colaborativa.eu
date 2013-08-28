@@ -4,7 +4,7 @@
 /* Carousel base class */
 $carouselHeight: 690px/2;
 
-.carousel {
+.carousel, .imagenfondo {
   margin-bottom: 0px;
   overflow: hidden;
   .item {
@@ -32,6 +32,18 @@ $carouselHeight: 690px/2;
   .carousel-inner{
     width: 100%;
   }
+}
+
+.imagenfondo{
+  width:100%;
+  position: absolute;
+  top:50px;
+  z-index: -100;
+}
+
+section.cabecera{
+  padding-bottom: 0px;
+  height: $carouselHeight + 50px;
 }
 
 .carousel-control {
@@ -137,6 +149,31 @@ $carouselHeight: 690px/2;
 //Phone
 @media (max-width: 767px) {
   $imageCaptionSize: 60px;
+  section.cabecera{
+    padding-top: 80px;
+    padding-bottom: 0px;
+    height:460px + 50px;
+  }
+  .imagenfondo{
+    height:460px;
+    .item {
+      .itemContenedor{
+       width:100%;
+      }
+      .mascaraColorPhone{
+        width:100%;
+      }
+      height:460px;
+      width:100%;
+      .image{
+        width: 100%;
+        height:460px;
+        @include background-size(130% auto);
+        background-position: center bottom;
+        background-repeat: no-repeat;
+      }
+    }
+  }
   .carousel{
     margin-top: 50px;
     .carousel-inner{
@@ -182,6 +219,7 @@ $carouselHeight: 690px/2;
     }
   }
 }
+
 //Tablets
 @media (min-width: 768px) and (max-width: 990px) {
   $imageCaptionSize: 50px;
@@ -204,8 +242,20 @@ $carouselHeight: 690px/2;
   .image{
     height:$carouselHeight;
     @include background-size(auto 100%);
-    background-position: left center;
     background-repeat: no-repeat;
+  }
+  .carousel{
+    .image {
+      background-position: left center;
+    }
+  }
+  .imagenfondo{
+    .itemContenedor{
+      width:100%;
+    }
+    .image {
+      background-position: right center;
+    }
   }
   .pieImagenContainer{
     height:$carouselHeight;
@@ -243,8 +293,20 @@ $carouselHeight: 690px/2;
   .image{
     height:$carouselHeight;
     @include background-size(70% auto);
-    background-position: left center;
     background-repeat: no-repeat;
+  }
+  .carousel{
+    .image {
+      background-position: left center;
+    }
+  }
+  .imagenfondo{
+    .itemContenedor{
+      width:100%;
+    }
+    .image {
+      background-position: right center;
+    }
   }
   .pieImagenContainer{
     height:$carouselHeight;
@@ -282,9 +344,19 @@ $carouselHeight: 690px/2;
   .image {
     height:$carouselHeight;
     @include background-size(900px auto);
-    background-position: left center;
     background-repeat: no-repeat;
   }
+  .carousel{
+    .image {
+      background-position: left center;
+    }
+  }
+  .imagenfondo{
+    .image {
+      background-position: right center;
+    }
+  }
+
   .pieImagenContainer{
     height:$carouselHeight;
     left: 50%;

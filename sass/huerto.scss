@@ -55,7 +55,6 @@ input {
       @include rhythm(0, 3, 3, 0, $base-font-size);
     }
     &.cabecera{
-      @include rhythm(0, 6, 5, 0, $base-font-size);
     }
     &.secundaria{
       @include rhythm(0, 2, 3, 0, $base-font-size);
@@ -211,6 +210,9 @@ input {
     &.secundaria .boton{
       @include rhythm(1.5, 0, 0, 0, $base-font-size);
     }
+    &.cabecera.confondo{
+      @include rhythm(0, 6, 0, 0, $base-font-size);
+    }
     &.confondo .boton{
       @include rhythm(1.5, 0, 0, 0, $base-font-size);
     }
@@ -320,7 +322,9 @@ input {
 section {
   &.confondo{
     @include single-box-shadow(rgba(0,0,0,0.15), 0px, 0px, 25px, false, true);
-    background-color: #F8F8F8;
+    &.gris{
+      background-color: #F8F8F8;
+    }
   }
   a:link, a:visited, a:active{
     color: $colorLinks;
