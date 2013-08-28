@@ -1,7 +1,8 @@
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
-//@import "sidebar";
 @import "compass/typography/vertical_rhythm";
+@import "carousel";
+
 
 @mixin whiteGradientBackgroundHorizontal{
 background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.0) 60%, rgba(255,255,255,0) 100%); /* FF3.6+ */
@@ -12,9 +13,29 @@ background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0.
 background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0.95) 40%,rgba(255,255,255,0.0) 60%,rgba(255,255,255,0) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 }
+
+
 @mixin whiteGradientBackgroundVertical{
 background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0,rgba(255,255,255,0.0) 380px,rgba(255,255,255,1.0) 480px,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
 }
+
+
+
+
+/* Base styles */
+//
+//
+
+$colorLinks: #669433;
+
+html body{
+  font-family: helvetica;
+}
+
+input {
+  -webkit-appearance: none;
+}
+
 
 @mixin typographyPhone{
   //typography vertical rythm - Goldenratio
@@ -209,16 +230,10 @@ background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0,rgba(255,255,2
   //typography vertical rythm - Goldenratio
 }
 
-/* Base styles */
-$colorLinks: #669433;
 
-/* Carousel base class */
-$carouselHeight: 690px/2;
 
-/* general styles Fonts and text sizes */
-html body{
-  font-family: helvetica;
-}
+
+
 .barralateral{
   ul{
     background-color: lighten($colorLinks, 50%);
@@ -242,6 +257,9 @@ html body{
     }
   }
 }
+
+
+
 .embebido{
   $altura: 500px;
   position: relative;
@@ -272,9 +290,9 @@ html body{
   }
 }
 
-input {
-  -webkit-appearance: none;
-}
+
+
+
 .navbar{
   top: 0px;
   left: 0px;
@@ -341,10 +359,6 @@ section {
     }
   }
 }
-
-// para el phone separamos el boton un poco más
-@media (max-width: 767px) {
-}
 // estilos para el boton
 .boton{
   .btn-lg{
@@ -366,6 +380,7 @@ section {
 }
 
 
+/* formulario email */
 .formulario{
   a{
     border-color: #ddd;
@@ -385,321 +400,6 @@ section {
     }
   }
 }
-
-
-// Pies de imagen del slideshow superior
-.pieImagenContainer{
-  z-index: 4;
-  position: absolute;
-  display: table;
-  .pieImagen{
-    display: table-cell;
-    vertical-align: middle;
-    font-size: 16px;
-    line-height: 24px;
-    font-family: latoregular;
-    @include clearfix;
-    .imagenAutor{
-      float:right;
-      border: 2px solid white;
-      @include border-radius(50%, 50%);
-      @include box-shadow(rgba(0,0,0,0.3) 0px 0px 5px);
-      overflow: hidden;
-      .imagen{
-        background-color: rgb(128,128,128);
-      }
-    }
-    .textoAutor{
-      text-align: right;
-      display: block;
-      @include box-sizing (border-box);
-      .texto{
-        padding-right: 20px;
-        margin-bottom: 0px;
-        padding-bottom: 0px;
-        border-width: 1px;
-        border-style: solid;
-        border-bottom-style: none;
-        border-top-style: none;
-        border-left-style: none;
-        .titulo{
-          font-family: latobold;
-        }
-        .fecha{
-          font-family: latoitalic;
-        }
-      }
-    }
-  }
-}
-
-
-// Media queries //
-//Phone
-@media (max-width: 767px) {
-  $imageCaptionSize: 60px;
-  @include typographyPhone;
-  .visible-mediano{
-    display: none;
-  }
-  .visible-grande{
-    display:none;
-  }
-  footer .creditosTecnicos{
-    padding: 15px;
-  }
-  section.confondo{
-    @include single-box-shadow(rgba(0,0,0,0.5), 0px, 0px, 25px, false, true);
-  }
-  .carousel{
-    margin-top: 50px;
-    .carousel-inner{
-      height:420px;
-      .itemContenedor{
-        width:100%;
-      }
-      .item {
-        .mascaraColorPhone{
-          width:100%;
-        }
-        .pieImagenContainer{
-          width:100%;
-          height: auto;
-          vertical-align: bottom;
-          bottom: 0px;
-          left: 0px;
-          @include box-sizing (border-box);
-          padding-left: 20px;
-          padding-right: 20px;
-          .pieImagen{
-            padding-bottom: 30px;
-            .textoAutor{
-              width: auto;
-              padding-right: $imageCaptionSize + 30px;
-            }
-            .imagen{
-              width: $imageCaptionSize;
-              height: $imageCaptionSize;
-            }
-          }
-        }
-        height:420px;
-        width:100%;
-        .image{
-          width: 100%;
-          height:420px;
-          @include background-size(150% auto);
-          background-position: center top;
-          background-repeat: no-repeat;
-        }
-      }
-    }
-  }
-}
-//Tablets
-@media (min-width: 768px) and (max-width: 990px) {
-  $imageCaptionSize: 50px;
-  @include typographyRest;
-  .visible-mediano{
-    display: none;
-  }
-  .visible-grande{
-    display:none;
-  }
-  .mascaraColor{
-    width: 768px;
-    margin-left: -(768px)/2;
-  }
-  .carousel-inner{
-    height:$carouselHeight;
-  }
-  .itemContenedor{
-    width:728px;
-  }
-  .image{
-    height:$carouselHeight;
-    @include background-size(auto 100%);
-    background-position: left center;
-    background-repeat: no-repeat;
-  }
-  .pieImagenContainer{
-    height:$carouselHeight;
-    left: 50%;
-    width: 364px;
-    top: 0px;
-    .textoAutor{
-      width: 364px - $imageCaptionSize - 30px;
-    }
-    .imagen{
-      width: $imageCaptionSize;
-      height: $imageCaptionSize;
-    }
-  }
-}
-//Normal screens
-@media (min-width: 991px) and (max-width: 1199px) {
-  $imageCaptionSize: 55px;
-  @include typographyRest;
-  .visible-mediano{
-    display: block;
-  }
-  .visible-grande{
-    display:none;
-  }
-  .mascaraColor{
-    width: 990px;
-    margin-left: -(990px)/2;
-  }
-  .carousel-inner{
-    height:$carouselHeight;
-  }
-  .itemContenedor{
-    width: 990px;
-  }
-  .image{
-    height:$carouselHeight;
-    @include background-size(70% auto);
-    background-position: left center;
-    background-repeat: no-repeat;
-  }
-  .pieImagenContainer{
-    height:$carouselHeight;
-    left: 50%;
-    width: 480px;
-    top: 0px;
-    .textoAutor{
-      width: 480px - $imageCaptionSize - 30px;
-    }
-    .imagen{
-      width: $imageCaptionSize;
-      height: $imageCaptionSize;
-    }
-  }
-}
-//Big screens
-@media (min-width: 1200px) {
-  $imageCaptionSize: 60px;
-  @include typographyRest;
-  .visible-mediano{
-    display: none;
-  }
-  .visible-grande{
-    display: block;
-  }
-  .mascaraColor{
-    width: 1200px;
-    margin-left: -(1200px)/2;
-  }
-  .carousel-inner{
-    height:$carouselHeight;
-  }
-  .itemContenedor{
-    width: 1200px;
-  }
-  .image {
-    height:$carouselHeight;
-    @include background-size(900px auto);
-    background-position: left center;
-    background-repeat: no-repeat;
-  }
-  .pieImagenContainer{
-    height:$carouselHeight;
-    left: 50%;
-    width: 570px;
-    top: 0px;
-    .textoAutor{
-      width: 570px - $imageCaptionSize - 30px;
-    }
-    .imagen{
-      width: $imageCaptionSize;
-      height: $imageCaptionSize;
-    }
-  }
-}
-
-.carousel {
-  margin-bottom: 0px;
-  overflow: hidden;
-  .item {
-    width:100%;
-    overflow: hidden;
-    .itemContenedor{
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-  .mascaraColor{
-    z-index: 2;
-    top: 0px;
-    left: 50%;
-    position: absolute;
-    height: 100%;
-  }
-  .mascaraColorPhone{
-    z-index: 2;
-    top: 0px;
-    left: 0px;
-    position: absolute;
-    height: 100%;
-  }
-  .carousel-inner{
-    width: 100%;
-  }
-}
-
-.carousel-control {
-  position: absolute;
-  top: 40%;
-  width: 50px;
-  font-family: latohairline;
-  line-height: 30px;
-  color: white;
-  text-align: center;
-  background: #222;
-  border: 3px solid white;
-  -webkit-border-radius: 23px;
-  -moz-border-radius: 23px;
-  border-radius: 23px;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-  height: 80px;
-  margin-top: 0;
-  font-size: 120px;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
-  background-color: transparent;
-  background-image: none!important;
-  border: 0;
-  z-index: 10;
-  &.left, &.right{
-    background-color: transparent;
-    background-image: none!important;
-  }
-}
-
-.carousel.carousel-fade .item {
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -ms-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-}
-.carousel.carousel-fade .active.left,
-.carousel.carousel-fade .active.right {
-  left: 0;
-  z-index: 2;
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-.carousel.carousel-fade .next,
-.carousel.carousel-fade .prev {
-  left: 0;
-  z-index: 1;
-}
-
-.carousel.carousel-fade .carousel-control {
-  z-index: 3;
-}
-
 
 /* lista calendario */
 .listaCalendario{
@@ -739,9 +439,7 @@ section {
 
 
 
-/* Footer
--------------------------------------------------- */
-
+/* Footer */
 .footer {
   text-align: left;
   padding: 30px 0;
@@ -760,5 +458,49 @@ section {
     li:first-child {
       padding-left: 0;
     }
+  }
+}
+
+
+
+// Media queries //
+//Phone
+@media (max-width: 767px) {
+  @include typographyPhone;
+  .visible-mediano{
+    display: none;
+  }
+  .visible-grande{
+    display:none;
+  }
+}
+//Tablets
+@media (min-width: 768px) and (max-width: 990px) {
+  @include typographyRest;
+  .visible-mediano{
+    display: none;
+  }
+  .visible-grande{
+    display:none;
+  }
+}
+//Normal screens
+@media (min-width: 991px) and (max-width: 1199px) {
+  @include typographyRest;
+  .visible-mediano{
+    display: block;
+  }
+  .visible-grande{
+    display:none;
+  }
+}
+//Big screens
+@media (min-width: 1200px) {
+  @include typographyRest;
+  .visible-mediano{
+    display: none;
+  }
+  .visible-grande{
+    display: block;
   }
 }

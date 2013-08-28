@@ -27,7 +27,7 @@ var colorsHeaderTitles = {'0': ['Imagen', 'nombredelaimagen'],
                             '2': ['ColorG','colorg'],
                             '3': ['ColorB','colorb']};
 var cabeceraSegundoTemplateID = '#tpl-CabeceraSegundoNivel'; // Identificador de la plantilla de Mustache en donde se insertará la información
-var cabeceraSegundo_htmlTag = '.cabecera .row'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
+var cabeceraSegundo_htmlTag = '.imagenfondo'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
 /* 
  *	Google Spreadsheet with Activities
  *
