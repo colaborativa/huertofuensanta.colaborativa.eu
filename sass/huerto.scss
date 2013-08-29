@@ -37,6 +37,19 @@ input {
 }
 
 
+.principal.confondo#estapasando{
+  background-image: url("../img/actividades_estatico.jpg");
+  @include background-size(1950px auto);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.principal.confondo#quees{
+  background-image: #d9d9d7;
+
+}
+
+
 @mixin typographyPhone{
   //typography vertical rythm - Goldenratio
   $base-font-size: 16px;
@@ -477,6 +490,27 @@ section {
   .visible-grande{
     display:none;
   }
+  .principal.confondo#quees{
+      position:relative;
+      background-image: none;
+      overflow: hidden;
+      hgroup{
+        padding-bottom: 28%;
+      }
+  }
+  .principal.confondo#quees:after{
+    content:"";
+    position:absolute;
+    top:-11%;
+    left:0;
+    right:0;
+    bottom:0;
+    background-image: url("../img/mapa_estatico.jpg");
+    @include background-size(2550px auto);
+    background-position: top center;
+    background-repeat: no-repeat;
+    z-index:-200;
+  }
 }
 //Tablets
 @media (min-width: 768px) and (max-width: 990px) {
@@ -486,6 +520,24 @@ section {
   }
   .visible-grande{
     display:none;
+  }
+  .principal.confondo#quees{
+      position:relative;
+      background-image: none;
+      overflow: hidden;
+  }
+  .principal.confondo#quees:after{
+    content:"";
+    position:absolute;
+    top:-290px;
+    left:0;
+    right:-550px;
+    bottom:0;
+    background-image: url("../img/mapa_estatico.jpg");
+    @include background-size(2550px auto);
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index:-200;
   }
 }
 //Normal screens
@@ -497,6 +549,24 @@ section {
   .visible-grande{
     display:none;
   }
+  .principal.confondo#quees{
+      position:relative;
+      background-image: none;
+      overflow: hidden;
+  }
+  .principal.confondo#quees:after{
+    content:"";
+    position:absolute;
+    top:-240px;
+    left:0;
+    right:-470px;
+    bottom:0;
+    background-image: url("../img/mapa_estatico.jpg");
+    @include background-size(2550px auto);
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index:-200;
+  }
 }
 //Big screens
 @media (min-width: 1200px) {
@@ -506,5 +576,23 @@ section {
   }
   .visible-grande{
     display: block;
+  }
+  .principal.confondo#quees{
+      position:relative;
+      background-image: none;
+      overflow: hidden;
+  }
+  .principal.confondo#quees:after{
+    content:"";
+    position:absolute;
+    top:-240px;
+    left:0;
+    right:-640px;
+    bottom:0;
+    background-image: url("../img/mapa_estatico.jpg");
+    @include background-size(2550px auto);
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index:-200;
   }
 }
