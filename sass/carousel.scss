@@ -1,5 +1,6 @@
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
+@import "animations";
 
 /* Carousel base class */
 $carouselHeight: 690px/2;
@@ -368,6 +369,57 @@ section.cabecera{
     .imagen{
       width: $imageCaptionSize;
       height: $imageCaptionSize;
+    }
+  }
+}
+
+
+
+.cabecera.confondo hgroup{
+  -webkit-animation:fadeIn 1000ms ease 1500ms both;
+  -moz-animation:fadeIn 1000ms ease 1500ms both;
+  animation:fadeIn 1000ms ease 1500ms both;
+}
+
+.imagenfondo .item{
+  -webkit-animation:fadeIn 500ms ease 500ms both;
+  -moz-animation:fadeIn 500ms ease 500ms both;
+  animation:fadeIn 500ms ease 500ms both;
+}
+.imagenfondo .item img{
+  -webkit-animation:fadeIn 1000ms ease 1000ms both;
+  -moz-animation:fadeIn 1000ms ease 1000ms both;
+  animation:fadeIn 1000ms ease 1000ms both;
+}
+
+.carousel.fade
+{
+  opacity: 1;
+  .item {
+    -moz-transition: opacity ease-in-out .7s;
+    -o-transition: opacity ease-in-out .7s;
+    -webkit-transition: opacity ease-in-out .7s;
+    transition: opacity ease-in-out .7s;
+    left: 0 !important;
+    opacity: 0;
+    top:0;
+    position:absolute;
+    width: 100%;
+    display:block !important;
+    z-index:1;
+    &:first-child{
+        top:auto;
+        position:relative;
+    }
+
+    &.active
+    {
+      opacity: 1;
+      -moz-transition: opacity ease-in-out .7s;
+      -o-transition: opacity ease-in-out .7s;
+      -webkit-transition: opacity ease-in-out .7s;
+      transition: opacity ease-in-out .7s;
+      z-index:2;
     }
   }
 }
