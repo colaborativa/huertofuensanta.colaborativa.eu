@@ -165,84 +165,9 @@ jqxhr.complete(function() { if(DEBUG_HUERTO){ console.log( "flickr second comple
 // DATOS DE ENTRADA: reemplazar por vuestros datos particulares.
 // Identificador de la SpreadSheet de Google (obtener de URL)
 
-// Llamada a la función que extrae información de SpreadSheet
-google_GetSpreadsheet(activitiesGoogle_sh_id, activitiesHeaderTitles, 9, ActivitiesAdd, 1);
+getListActivitiesIntoTemplate(activitiesGoogle_sh_id, activitiesHeaderTitles, activitiesGoogle_htmlTag);
 // Campos:  Orden,  Titulo,  Descripcion,  Organizador,  FechaInicio,  FechaFin,  Estado,  NAsistentes,  Contacto,  
-var activitiesGoogle_stuff = [];
-// ActivitiesAdd es la Callback una vez concluida la extracción de información de la SpreadSheet
-function ActivitiesAdd(features){
-   $.each(features, function(i, item){
-          var activityMes, Fecha_Fin_Str, Fecha_InicioStr;
-          var parts = item.FechaInicio.split(/\//);
-          var Fecha_Inicio = new Date(parts[1] + '/'+parts[0] +'/'+ parts[2]);
-          var Fecha_Rango;
-          var EstiloStr = ""; // "pasada" when older than current date
-          var Fecha_RangoStr;
-          if(Fecha_Inicio != 'Invalid Date'){
-                activityMes = Date.locale['es'].month_names_short[Fecha_Inicio.getUTCMonth()]; // Day of the month = Month UK format
-                var hours = Fecha_Inicio.getHours()
-                var minutes = Fecha_Inicio.getMinutes()
-                if (minutes < 10){
-                  minutes = "0" + minutes
-                }
-                Fecha_InicioStr = hours + ':' + minutes+'h ' + (Fecha_Inicio.getUTCDate()) + '-' + activityMes + '-' + Fecha_Inicio.getFullYear()+' ';
-          }else{
-                Fecha_InicioStr ="[Fecha pendiente] ";
-          }     
-          parts = item.FechaFin.split(/\//);
-          var Fecha_Fin = new Date(parts[1] + '/'+parts[0] +'/'+ parts[2]);
-          if(Fecha_Fin != 'Invalid Date'){
-                activityMes = Date.locale['es'].month_names_short[Fecha_Fin.getUTCMonth()];
-                var hours = Fecha_Fin.getHours()
-                var minutes = Fecha_Fin.getMinutes()
-                if (minutes < 10){
-                  minutes = "0" + minutes
-                }
-                Fecha_Fin_Str = hours + ':' + minutes+ 'h ' + (Fecha_Fin.getUTCDate()) + '-' + activityMes + '-' + Fecha_Fin.getFullYear()+ ' ';
-          }else{
-                Fecha_Fin_Str ="[Fecha pendiente] ";
-          } 
-          if(Fecha_Fin != 'Invalid Date' && Fecha_Inicio != 'Invalid Date'){
-            Fecha_Rango = moment.twix(Fecha_Inicio, Fecha_Fin);
-            Fecha_RangoStr = Fecha_Rango.format({monthFormat: "MMMM", weekdayFormat: "DDD", twentyFourHour: true, dayFormat: "D", groupMeridiems: true});
-            var currentDate = new Date(); // Get current Date
-            if ( currentDate > Fecha_Fin){
-              EstiloStr = "pasada";
-            }
-          } else {
-            Fecha_RangoStr = "[Fecha pendiente] ";
-          }
-          var obj = {"Nombre": item.Titulo, 
-                   "Descripcion": item.Descripcion, 
-                   "Organizador": item.Organizador,
-                   "NAsistentes": item.NAsistentes,
-                   "Estado": item.Estado,
-                   "Fecha_Inicio": Fecha_InicioStr,
-                   "Fecha_Fin": Fecha_Fin_Str,
-                   "Fecha_Rango" : Fecha_RangoStr,
-                   "Fecha_Inicio_Date": Fecha_Inicio,
-                   "Estilo":EstiloStr
-          };   
-         activitiesGoogle_stuff.push(obj);
-         }); // end each event of calendar
-        function custom_sort(a, b) {
-            a = new Date(a.Fecha_Inicio_Date);
-            b = new Date(b.Fecha_Inicio_Date);
-            return a<b ? -1 : a>b ? 1 : 0;
-         }  
-         activitiesGoogle_stuff.sort(custom_sort);
-         var GoogleActivities = {GoogleActivities: activitiesGoogle_stuff, 
-                                 "Url_Publica":    activitiesGoogle_url
-         };
-         // TEMPLATING WITH MUSTACHE
-         $.get(mustacheTemplateFile, function(templates) { 
-                var source = $(templates).filter(activitiesGoogleTemplateID).html();
-                var template = Handlebars.compile(source);
-                var result = template(GoogleActivities);
-                $(activitiesGoogle_htmlTag).html(result);
-                $('.actividad').popover();
-         });
-}
+
 /**
  *
  *
