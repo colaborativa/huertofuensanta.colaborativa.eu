@@ -8,7 +8,7 @@
 
 // ActivitiesAdd es la Callback una vez concluida la extracción de información de la SpreadSheet
 // Llamada a la función que extrae información de SpreadSheet
-function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag){
+function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
     google_GetSpreadsheet(sh_id, HeaderTitles, 9, ActivitiesAdd, 1);
     function ActivitiesAdd(features){
       var activitiesGoogle_stuff = [];
@@ -43,16 +43,17 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag){
               }else{
                     Fecha_Fin_Str ="[Fecha pendiente] ";
               } 
+              var currentDate = new Date(); 
               if(Fecha_Fin != 'Invalid Date' && Fecha_Inicio != 'Invalid Date'){
                 Fecha_Rango = moment.twix(Fecha_Inicio, Fecha_Fin);
                 Fecha_RangoStr = Fecha_Rango.format({monthFormat: "MMMM", weekdayFormat: "DDD", twentyFourHour: true, dayFormat: "D", groupMeridiems: true});
-                var currentDate = new Date(); // Get current Date
                 if ( currentDate > Fecha_Fin){
                   EstiloStr = "pasada";
                 }
               } else {
                 Fecha_RangoStr = "[Fecha pendiente] ";
               }
+              if( bAll == true){
               var obj = {"Nombre": item.Titulo, 
                        "Descripcion": item.Descripcion, 
                        "Organizador": item.Organizador,
@@ -63,17 +64,36 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag){
                        "Fecha_Rango" : Fecha_RangoStr,
                        "Fecha_Inicio_Date": Fecha_Inicio,
                        "Estilo":EstiloStr
-              };   
+                      };   
              activitiesGoogle_stuff.push(obj);
-             }); // end each event of calendar
+             }else{
+              if (EstiloStr != "pasada"){
+                var obj = {"Nombre": item.Titulo, 
+                       "Descripcion": item.Descripcion, 
+                       "Organizador": item.Organizador,
+                       "NAsistentes": item.NAsistentes,
+                       "Estado": item.Estado,
+                       "Fecha_Inicio": Fecha_InicioStr,
+                       "Fecha_Fin": Fecha_Fin_Str,
+                       "Fecha_Rango" : Fecha_RangoStr,
+                       "Fecha_Inicio_Date": Fecha_Inicio,
+                       "Estilo":EstiloStr
+                      };   
+             activitiesGoogle_stuff.push(obj);
+           } // end if
+           } // enf else
+          }); // end each event of calendar
             function custom_sort(a, b) {
                 a = new Date(a.Fecha_Inicio_Date);
                 b = new Date(b.Fecha_Inicio_Date);
                 return a<b ? -1 : a>b ? 1 : 0;
              }  
+             var titulo = "Próximas actividades";
+             if(bAll == true) titulo = "Listado de actividades";
              activitiesGoogle_stuff.sort(custom_sort);
              var GoogleActivities = {GoogleActivities: activitiesGoogle_stuff, 
-                                     "Url_Publica":    activitiesGoogle_url
+                                     "Url_Publica":    activitiesGoogle_url,
+                                     "TituloLista":titulo
              };
              // TEMPLATING WITH MUSTACHE
              $.get(mustacheTemplateFile, function(templates) { 

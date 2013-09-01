@@ -165,7 +165,7 @@ jqxhr.complete(function() { if(DEBUG_HUERTO){ console.log( "flickr second comple
 // DATOS DE ENTRADA: reemplazar por vuestros datos particulares.
 // Identificador de la SpreadSheet de Google (obtener de URL)
 
-getListActivitiesIntoTemplate(activitiesGoogle_sh_id, activitiesHeaderTitles, activitiesGoogle_htmlTag);
+getListActivitiesIntoTemplate(activitiesGoogle_sh_id, activitiesHeaderTitles, activitiesGoogle_htmlTag, false);
 // Campos:  Orden,  Titulo,  Descripcion,  Organizador,  FechaInicio,  FechaFin,  Estado,  NAsistentes,  Contacto,  
 
 /**

@@ -34,7 +34,7 @@ var cabeceraSegundo_htmlTag = '.imagenfondo'; // Este es el TAG donde se inserta
  */
 var activitiesGoogle_sh_id =  '0ApaZkqgevJCgdDNrM0RaX3RhaDEzVGhGcEo5allQaHc'; //'0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE'; //
 // Este es el TAG donde se insertarán los eventos del calendario
-var activitiesGoogle_htmlTag = '#actividadesfuturasTpl';
+var activitiesGoogle_htmlTag = '#actividadesTpl';
 // Identificador de la template de mustache
 var activitiesGoogleTemplateID = '#tpl-GoogleActivities';
 var activitiesHeaderTitles = {
