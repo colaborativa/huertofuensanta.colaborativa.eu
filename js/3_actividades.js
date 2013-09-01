@@ -6,5 +6,5 @@
  *
  */
 getImageColorsCabeceraSegunda();
-
 getListActivitiesIntoTemplate(activitiesGoogle_sh_id, activitiesHeaderTitles, activitiesGoogle_htmlTag, true);
+

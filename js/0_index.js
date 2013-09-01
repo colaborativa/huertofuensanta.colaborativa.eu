@@ -76,7 +76,9 @@ var jqxhr = $.getJSON( url, function() {
  		var imageMes = Date.locale['es'].month_names[imageFecha.getMonth()];
  		if( item.ownername != ocultarFlickrOwnerName){ // Test
 			imageOwner = 'Por ' + item.ownername + ' a ';
-		}
+		}else{
+      imageOwnerIcon =""; // Que tome icono por defecto
+    }
  		var imageFechaFinal= imageFecha.getDate() + ' de ' + imageMes + ' de ' + imageFecha.getFullYear();
     // Setting Up Default Colors for all images: Black
     var imageColorR =0;
