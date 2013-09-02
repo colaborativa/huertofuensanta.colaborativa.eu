@@ -6,22 +6,19 @@ permalink: actividades/
 layout: 3_actividades
 base_url: "../"
 
-cabecera: "Está pasando"
-cabecera-subtitulo: "El Huerto Fuesanta recupera un espacio público abandonado del barrio de la Fuensanta en Córdoba"
+cabecera: "Está pasando…"
+cabecera-subtitulo: "Disfruta de las actividades y participa activamente en la programación del huerto Fuensanta"
 
-titulo: "Agradecimientos"
-subtitulo: "Gracias al trabajo en equipo y la generosidad de multitud de personas, colectivos y asociaciones el solar abandonado del antiguo cine Fuensanta ha pasado a ser motivo de orgullo de los vecinos del barrio y un ejemplo de éxito de gestión ciudadana del espacio público en Córdoba"
+titulo: "¡Más que un huerto!"
+subtitulo: "El huerto Fuesanta es un **espacio público de todos y para todos**. Hemos preparado una zona al aire libre para que se puedan realizar todo tipo de actividades abiertas y gratuitas: cultura, arte, naturaleza, deporte, salud… ¡Todas las actividades y temáticas son bienvenidas!"
 
 boton-calendario-actividades:
  titulo: "Ir al Google Spreadsheets"
  url: "https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdDNrM0RaX3RhaDEzVGhGcEo5allQaHc#gid=0"
 
+contenido:
+ como: 
+  header: "¿Cómo puedo organizar una actividad en el huerto?"
+  content: "¡Estás en tu casa! Tan sólo te pedimos que respetes la zona cultivo y el descanso de los vecinos. Para añadir tu actividad en el listado de próxima actividades o si tienes cualquier duda contacta con nosotros [suscribiéndote a la lista de correo](#suscribirse)."
+
 ---
-
-#### ¿Puedo organizar una actividad?
-
-Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et..
-
-#### Aqui la información
-
-Aquí la información de como añadir una nueva actividad al huerto. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.

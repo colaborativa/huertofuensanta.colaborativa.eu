@@ -17,5 +17,7 @@ mailto:
 
     ¿Quieres participar en el huerto, organizar actividades o simplemente conocer más sobre la iniciativa? ¡No lo dudes un momento y ponte en contacto con nosotros! Podrás configurar tu suscripción a la lista una vez envíes este mensaje y recibas la confirmación de tu suscripción
 
-    ¡Gracias de nuevo y bienvenido al Huerto Fuensanta! 
+    ¡Gracias de nuevo y bienvenido al Huerto Fuensanta!
+
+
 ---

@@ -461,6 +461,12 @@ section {
     margin-bottom: 0;
     color: #777;
   }
+  a:link, a:visited, a:active{
+    color: $colorLinks;
+    &:hover{
+      font-style: underline;
+    }
+  }
   .footer-links {
     margin: 10px 0;
     li {
@@ -496,7 +502,7 @@ section {
   .principal.confondo#quees:after{
     content:"";
     position:absolute;
-    top:-11%;
+    top:-8.5%;
     left:0;
     right:0;
     bottom:0;

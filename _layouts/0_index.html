@@ -14,20 +14,17 @@
     </div>
     <!-- include navbar -->
     {% include _navbar.html %}
+    {% for node in site.pages %}
+    {% if node.slug == "informacion" %}
     <section class="principal confondo" id="quees">
       <div class="container">
         <!-- Que es el huerto fuensanta -->
         <div class="row">
           <div class="col-sm-9 col-lg-7">
-            {% for node in site.pages %}
-              {% if node.slug == "informacion" %}
-                <hgroup>
-                  <h1>{{ node.cabecera }}</h1>
-                  <h2 class="subtitle">{{ node.cabecera-subtitulo }}</h2>
-                </hgroup>
-              {% else %}
-              {% endif %}
-            {% endfor %}
+            <hgroup>
+              <h1>{{ node.cabecera }}</h1>
+              <h2 class="subtitle">{{ node.cabecera-subtitulo }}</h2>
+            </hgroup>
           </div>
           <div class="col-sm-3 col-lg-5">
           </div>
@@ -35,8 +32,8 @@
         <div class="row">
           <div class="col-sm-6 col-lg-6">
             <div class="descripcion">
-              <h3>¿Cómo funciona?</h3>
-              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+              <h3>{{ node.contenido.funciona.header }}</h3>
+              {{ node.contenido.funciona.content | markdownify }}
               <div class="boton hidden-sm">
                 <div>
                   <a href="informacion/" class="btn btn-lg btn-default"><i class="icon-info-sign icon-large"></i> Ir a información</a>
@@ -45,10 +42,10 @@
             </div>
           </div>
           <div class="col-sm-6 col-lg-6">
-            <div class="suscripcion-lista">
-              <h3>¿Te apuntas?</h3>
-              <p>¿Quieres participar? El Huerto Fuensanta está abierto a todo el mundo, pásate un lunes por la tarde (invierno a partir de las 18:00 y en verano a partir de las 20:30) o apúntante a la lista de correopara ponerte en contacto con nosotros ¡Bienvenido!</p>
-              <div class="formulario">
+            <div class="suscripcion-lista" id="suscribirse">
+              <h3>{{ node.contenido.participar.header }}</h3>
+              {{ node.contenido.participar.content | markdownify }}
+              <div class="formulario" >
                 <a class="btn btn-block btn-lg" href="mailto:{{page.mailto.address}}?subject={{page.mailto.subject | uri_escape }}&body={{page.mailto.body | uri_escape }}" type="button"><i class="icon-envelope-alt icon-large"></i> Suscribirme a la lista de correo</a>
               </div>
               <hr class="visible-sm" >
@@ -62,6 +59,9 @@
         </div>
       </div>
     </section>
+    {% else %}
+    {% endif %}
+    {% endfor %}
     <section class="principal sinfondo" id="gestion">
       <div class="container">
         <!-- La gestion en el huerto fuensanta -->
@@ -90,31 +90,29 @@
         </div>
       </div>
     </section>
+    {% for node in site.pages %}
+    {% if node.slug == "actividades" %}
     <section class="principal confondo" id="estapasando" >
       <div class="container">
         <!-- Esta pasando -->
         <div class="row" >
-          <div class="col-sm-9 col-lg-8" id="actividadesfuturas">
-            {% for node in site.pages %}
-              {% if node.slug == "actividades" %}
+          <div class="col-sm-9 col-lg-7" id="actividadesfuturas">
+
                 <hgroup>
                   <h1>{{ node.cabecera }}</h1>
                   <h2 class="subtitle">{{ node.cabecera-subtitulo }}</h2>
                 </hgroup>
-              {% else %}
-              {% endif %}
-            {% endfor %}
           </div>
-          <div class="col-sm-3 col-lg-4">
+          <div class="col-sm-3 col-lg-5">
           </div>
         </div>
         <div class="row" >
           <div class="col-sm-6 col-lg-6">
             <div class="descripcion">
-              <h3>¿Puedo organizar una actividad en el huerto?</h3>
-              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-              <h3>¿Otra información?</h3>
-              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus</p>
+              <h3>{{ node.titulo }}</h3>
+              <p>{{ node.subtitulo | markdownify }}</p>
+              <h3>{{ node.contenido.como.header }}</h3>
+              {{ node.contenido.como.content | markdownify }}
             </div>
             <div class="boton hidden-sm">
               <div>
@@ -134,6 +132,9 @@
         </div>
       </div>
     </section>
+    {% else %}
+    {% endif %}
+    {% endfor %}
     <section class="principal sinfondo" id="gestion">
       <div class="container">
         <div class="row" >
@@ -196,6 +197,5 @@
         })
       }(window.jQuery)
     </script>
-
   </body>
 </html>

@@ -77,7 +77,7 @@ var jqxhr = $.getJSON( url, function() {
  		if( item.ownername != ocultarFlickrOwnerName){ // Test
 			imageOwner = 'Por ' + item.ownername + ' a ';
 		}else{
-      imageOwnerIcon =""; // Que tome icono por defecto
+      imageOwnerIcon ="/img/icon-default.jpg"; // Que tome icono por defecto
     }
  		var imageFechaFinal= imageFecha.getDate() + ' de ' + imageMes + ' de ' + imageFecha.getFullYear();
     // Setting Up Default Colors for all images: Black

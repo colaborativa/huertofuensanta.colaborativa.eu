@@ -11,7 +11,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-7 col-sm-6">
-            <hgroup>
+            <hgroup id="titulo">
               <h1>{{ page.cabecera }}</h1>
               <h2 class="subtitle">{{ page.cabecera-subtitulo }}</h2>
             </hgroup>
@@ -41,7 +41,7 @@
             </div>
             <div id="cuentas">
               <h3>{{page.cuentas.titulo}}</h3>
-              <p>{{page.cuentas.descripcion}}</p>
+              {{page.cuentas.descripcion | markdownify}}
               <div class="embebido">
                 <div class="marco"></div><iframe src='{{page.cuentas.link.url}}'></iframe>
                 <small><a href="{{page.cuentas.link.url}}">{{page.cuentas.link.titulo}}</a></small>

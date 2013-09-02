@@ -36,7 +36,12 @@
 </script>
 
 <script id="tpl-CabeceraSegundoNivel" type="text/template">
-<!-- JAVI: Falta incluir {{ColorTexto}} en el texto asociado a la imagen, ya está calculado -->
+<!-- 
+
+JAVI: Falta incluir {{ColorTexto}} en el texto asociado a la imagen, ya está calculado el color. 
+El tema es que se encuentra fuera de itemContenedor, cambia la estructura del HTML para que este dentro.
+
+-->
   <div class="item" style="background-color: rgb({{ColorR}},{{ColorG}},{{ColorB}})">
     <div class="itemContenedor">
       <div class="mascaraColorPhone visible-sm" style="background: -webkit-linear-gradient(top, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 180px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 350px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 100%);"></div>
@@ -45,6 +50,10 @@
       <div class="mascaraColor visible-grande" style="background: -webkit-linear-gradient(right, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 20px, rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 200px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 600px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 800px,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 100%);"></div>
       <div class="image" style="background-image:url({{Nombre}})"></div>
       <img class="lazy-load" src="" lazy-load-src="{{Nombre}}" style="display: none"> </img>
+      <script>
+        $('#titulo').find('h1').attr('style','color: {{ColorTexto}}');
+        $('#titulo').find('h2').attr('style','color: {{ColorTexto}}; opacity: 0.7');
+      </script>
     </div>
   </div>     
 </script>

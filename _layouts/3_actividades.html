@@ -11,7 +11,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-7 col-sm-6">
-            <hgroup>
+            <hgroup id="titulo">
               <h1>{{ page.cabecera }}</h1>
               <h2 class="subtitle">{{ page.cabecera-subtitulo }}</h2>
             </hgroup>
@@ -41,7 +41,8 @@
 
           </div>
           <div class="col-lg-5">
-            {{ content }}
+            <h4>{{ page.contenido.como.header }}</h4>
+            {{ page.contenido.como.content | markdownify }}
             <div class="boton">
               <a href="{{page.boton-calendario-actividades.url}}" class="btn btn-lg btn-block btn-default"><i class="icon-calendar icon-large"></i>{{page.boton-calendario-actividades.titulo}}</a>
             </div>
