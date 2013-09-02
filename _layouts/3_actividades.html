@@ -41,7 +41,8 @@
 
           </div>
           <div class="col-lg-5">
-            {{ content }}
+            <h4>{{ page.contenido.como.header }}</h4>
+            {{ page.contenido.como.content | markdownify }}
             <div class="boton">
               <a href="{{page.boton-calendario-actividades.url}}" class="btn btn-lg btn-block btn-default"><i class="icon-calendar icon-large"></i>{{page.boton-calendario-actividades.titulo}}</a>
             </div>

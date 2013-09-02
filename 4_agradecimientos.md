@@ -10,7 +10,7 @@ cabecera: "¡Gracias por todo!"
 cabecera-subtitulo: "El Huerto Fuensanta es posible gracias al trabajo en equipo y la generosidad de multitud de personas, colectivos y asociaciones"
 
 titulo: "Agradecimientos"
-subtitulo: "Gracias al trabajo en equipo y la generosidad de multitud de personas, colectivos y asociaciones el solar abandonado del antiguo cine Fuensanta ha pasado a ser motivo de orgullo de los vecinos del barrio y un ejemplo de éxito de gestión ciudadana del espacio público en Córdoba"
+subtitulo: ""
 
 agradecimientos:
   
