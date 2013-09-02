@@ -41,7 +41,7 @@
             </div>
             <div id="cuentas">
               <h3>{{page.cuentas.titulo}}</h3>
-              <p>{{page.cuentas.descripcion}}</p>
+              {{page.cuentas.descripcion | markdownify}}
               <div class="embebido">
                 <div class="marco"></div><iframe src='{{page.cuentas.link.url}}'></iframe>
                 <small><a href="{{page.cuentas.link.url}}">{{page.cuentas.link.titulo}}</a></small>

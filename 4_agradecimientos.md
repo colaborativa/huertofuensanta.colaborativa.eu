@@ -7,7 +7,7 @@ layout: 4_agradecimientos
 base_url: "../"
 
 cabecera: "¡Gracias por todo!"
-cabecera-subtitulo: "El Huerto Fuensanta es posible gracias al trabajo en equipo y la generosidad de multitud de personas, colectivos y asociaciones"
+cabecera-subtitulo: "Esta iniciativa es posible gracias la generosidad de multitud de personas, colectivos y asociaciones"
 
 titulo: "Agradecimientos"
 subtitulo: ""

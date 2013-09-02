@@ -19,6 +19,6 @@ boton-calendario-actividades:
 contenido:
  como: 
   header: "¿Cómo puedo organizar una actividad en el huerto?"
-  content: "No es necesario pedir permiso ¡Estás en tu casa! Tan sólo te pedimos que respetes la zona cultivo y otras actividades que estén ocurriendo. Si quieres aparecer en el listado de actividades o tienes cualquier duda contacta con nosotros [suscribiéndote a la lista de correo](#suscribirse)."
+  content: "¡Estás en tu casa! Tan sólo te pedimos que respetes la zona cultivo y el descanso de los vecinos. Para añadir tu actividad en el listado de próxima actividades o si tienes cualquier duda contacta con nosotros [suscribiéndote a la lista de correo](#suscribirse)."
 
 ---
