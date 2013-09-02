@@ -10,7 +10,7 @@ cabecera: "Está pasando…"
 cabecera-subtitulo: "Disfruta de las actividades y participa activamente en la programación del huerto Fuensanta"
 
 titulo: "¡Más que un huerto!"
-subtitulo: "El huerto Fuesanta es un **espacio público de todos y para todos**. Hemos preparado una zona al aire libre para que se puedan realizar todo tipo de actividades abiertas y gratuitas: cultura, arte, naturaleza, deporte, salud… ¡Todas las actividades y temáticas son bienvenidas!"
+subtitulo: "El huerto Fuesanta es un espacio público de todos y para todos. Hemos preparado una zona al aire libre para que se puedan realizar todo tipo de actividades abiertas y gratuitas: cultura, arte, naturaleza, deporte, salud… ¡Todas las actividades y temáticas son bienvenidas!"
 
 boton-calendario-actividades:
  titulo: "Ir al Google Spreadsheets"
