@@ -7,16 +7,7 @@
           <div class="imagenAutor">
             <img class="imagen" src="{{OwnerIcon}}" data-toggle="tooltip" title="{{Owner}}" onerror="this.src = '/img/icon-default.jpg'">
           </div>
-          <!-- for the text color http://24ways.org/2010/calculating-color-contrast/ 
-          /*function getContrastYIQ(hexcolor){
-            var r = parseInt(hexcolor.substr(0,2),16);
-            var g = parseInt(hexcolor.substr(2,2),16);
-            var b = parseInt(hexcolor.substr(4,2),16);
-            var yiq = ((r*299)+(g*587)+(b*114))/1000;
-            return (yiq >= 128) ? 'black' : 'white';
-          }*/
-          -->
-          <div class="textoAutor" style="color: white">
+          <div class="textoAutor" style="color: {{ColorTexto}}">
             <p class="texto"><span class="titulo"> {{Titulo}}</span>. <span class="fecha">{{Fecha}}</span>. <span>{{Descripcion}}</span></p>
           </div>
         </div>
@@ -45,6 +36,7 @@
 </script>
 
 <script id="tpl-CabeceraSegundoNivel" type="text/template">
+<!-- JAVI: Falta incluir {{ColorTexto}} en el texto asociado a la imagen, ya está calculado -->
   <div class="item" style="background-color: rgb({{ColorR}},{{ColorG}},{{ColorB}})">
     <div class="itemContenedor">
       <div class="mascaraColorPhone visible-sm" style="background: -webkit-linear-gradient(top, rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 0%,rgba({{ColorR}},{{ColorG}},{{ColorB}},1) 180px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 350px,rgba({{ColorR}},{{ColorG}},{{ColorB}},0) 100%);"></div>

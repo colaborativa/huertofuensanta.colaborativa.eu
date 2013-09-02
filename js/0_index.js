@@ -92,7 +92,8 @@ var jqxhr = $.getJSON( url, function() {
                "Fecha": imageFechaFinal,
                "OwnerIcon": imageOwnerIcon,
                "Owner": imageOwner,
-               "Descripcion": imageDesc};
+               "Descripcion": imageDesc,
+               "ColorTexto":"white"}; //by default
     stuff.push(obj);
   }); // End Each Item of Flickr 
   // 2nd Step: Get dominant colors from SpreadSheets key=0ApaZkqgevJCgdG1DMVIxdUtGQ1lpUGFvLWZnNTgxX1E
@@ -108,7 +109,7 @@ var jqxhr = $.getJSON( url, function() {
             if(color["Imagen"] == image["Nombre"]){
                image["ColorR"] = color["ColorR"];
                image["ColorG"] = color["ColorG"];
-               image["ColorB"] = color["ColorB"]; 
+               image["ColorB"] = color["ColorB"];            
                imageFound = true;
             } // End if
         }); // End Each Color
@@ -127,6 +128,16 @@ var jqxhr = $.getJSON( url, function() {
                       // FALTA AÑADIR FILA A SPREADSHEET ****
               }); // end .progress
         } // End if Image not Found
+          // Calculate Black or White for Text
+          var r = image["ColorR"];
+          var g = image["ColorG"];
+          var b = image["ColorB"];
+          var yiq = ((r*299)+(g*587)+(b*114))/1000;
+          if (yiq >= 128){
+                image["ColorTexto"] = 'black';
+          }else{
+                image["ColorTexto"] = 'white';            
+          }
       }); // End Each Image
       // 4th Step: Render Template with Values   
       var flickrImages = {flickrImages: stuff}; 

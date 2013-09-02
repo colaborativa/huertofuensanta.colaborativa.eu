@@ -112,13 +112,25 @@ function getImageColorsCabeceraSegunda(){
     google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, backImageAdd, 0);
     function backImageAdd(ImageColors){
         var randomnumber=Math.floor(Math.random()*(ImageColors.length));
-        //
+        // Calculate Black or White for Text
+        var colorTexto;
+          var r = ImageColors[randomnumber]["ColorR"];
+          var g = ImageColors[randomnumber]["ColorG"];
+          var b = ImageColors[randomnumber]["ColorB"];
+          var yiq = ((r*299)+(g*587)+(b*114))/1000;
+          if (yiq >= 128){
+                colorTexto = 'black';
+          }else{
+                colorTexto = 'white';            
+          }
         var selectedImage = {
-               "ColorR": ImageColors[randomnumber]["ColorR"],
-               "ColorG": ImageColors[randomnumber]["ColorG"],
-               "ColorB": ImageColors[randomnumber]["ColorB"],
-               "Nombre": ImageColors[randomnumber]["Imagen"]
+               "ColorR": r,
+               "ColorG": g,
+               "ColorB": b,
+               "Nombre": ImageColors[randomnumber]["Imagen"],
+               "ColorTexto": colorTexto
         };
+         
         /* TEMPLATING WITH MUSTACHE or HANDLERS */
         $.get(mustacheTemplateFile, function(templates) { 
             var source = $(templates).filter(cabeceraSegundoTemplateID).html();
