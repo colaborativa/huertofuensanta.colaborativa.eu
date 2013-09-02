@@ -10,16 +10,18 @@
     <section class="cabecera confondo">
       <div class="container">
         <div class="row">
-          <div class="col-lg-7">
+          <div class="col-lg-7 col-sm-6">
             <hgroup>
               <h1>{{ page.cabecera }}</h1>
               <h2 class="subtitle">{{ page.cabecera-subtitulo }}</h2>
             </hgroup>
           </div>
-          <div class="col-lg-5">
+          <div class="col-lg-5 col-sm-6">
           </div>
         </div>
       </div>
+      <!-- Template tpl-flickrimages AQUI! -->
+      <div class="imagenfondo" id="tpl-CabeceraSegundoNivel"></div>
     </section>
     <section class="secundaria">
       <div class="container">
@@ -30,33 +32,13 @@
               <h1>{{page.titulo}}</h1>
               <h2 class="subtitle">{{page.subtitulo}}</h2>
             </hgroup>
-            <div class="listaCalendario">
-              <!-- Template tpl-GoogleEvents pero incluyendo las actividades pasadas añadiendole la class .pasada -->
-              <h3>Todas las actividades Huerto Fuensanta</h3>
-              <ol>
-                <li class="actividad" toggle="popover" data-trigger="click" data-title="creando mobiliario para el Huerto" data-content="A partir de material reciclado vamos a construir asientos en huerto en  organizada por Javi y Magda" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> creando mobiliario para el Huerto: A partir de material reciclado vamos a construir asientos en huerto en  organizada por Javi y Magda</li>
-                
-                <li class="actividad" toggle="popover" data-trigger="click" data-title="del huerto a la cocina" data-content="recetas fáciles y saludables con productos de la huerta en  organizada por Paco" data-placement="bottom" data-original-title="" title=""><time>junio 9, 20:00 - 21:00</time> del huerto a la cocina: recetas fáciles y saludables con productos de la huerta en  organizada por Paco</li>
-                
-                <li class="actividad" toggle="popover" data-trigger="click" data-title="Actividad de prueba" data-content="Descripción de prueba en  organizada por Hortelano" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> Actividad de prueba: Descripción de prueba en  organizada por Hortelano</li>
-                
-                <li class="actividad" toggle="popover" data-trigger="click" data-title="Actividad de prueba" data-content="Descripción de prueba en  organizada por Hortelano" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> Actividad de prueba: Descripción de prueba en  organizada por Hortelano</li>
-                
-                <li class="actividad" toggle="popover" data-trigger="click" data-title="Actividad de prueba" data-content="Descripción de prueba en  organizada por Hortelano" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> Actividad de prueba: Descripción de prueba en  organizada por Hortelano</li>
-                
-                <li class="actividad" toggle="popover" data-trigger="click" data-title="Actividad de prueba" data-content="Descripción de prueba en  organizada por Hortelano" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> Actividad de prueba: Descripción de prueba en  organizada por Hortelano</li>
-                
-                <li class="actividad pasada" toggle="popover" data-trigger="click" data-title="Actividad de prueba" data-content="Descripción de prueba en  organizada por Hortelano" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> Actividad de prueba: Descripción de prueba en  organizada por Hortelano</li>
-
-                <li class="actividad pasada" toggle="popover" data-trigger="click" data-title="Actividad de prueba" data-content="Descripción de prueba en  organizada por Hortelano" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> Actividad de prueba: Descripción de prueba en  organizada por Hortelano</li>
-                
-                <li class="actividad pasada" toggle="popover" data-trigger="click" data-title="Actividad de prueba" data-content="Descripción de prueba en  organizada por Hortelano" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> Actividad de prueba: Descripción de prueba en  organizada por Hortelano</li>
-                
-                <li class="actividad pasada" toggle="popover" data-trigger="click" data-title="Actividad de prueba" data-content="Descripción de prueba en  organizada por Hortelano" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> Actividad de prueba: Descripción de prueba en  organizada por Hortelano</li>
-                
-                <li class="actividad pasada" toggle="popover" data-trigger="click" data-title="Actividad de prueba" data-content="Descripción de prueba en  organizada por Hortelano" data-placement="bottom" data-original-title="" title=""><time>[Fecha pendiente] </time> Actividad de prueba: Descripción de prueba en  organizada por Hortelano</li>
-              </ol>
+            <!-- Template tpl-GoogleEvents AQUI! limitando a las ultimas 5 actividades -->
+            <div id="actividadesTpl"></div> 
+            <div class="boton">
+              <div class="visible-sm">
+              </div>
             </div>
+
           </div>
           <div class="col-lg-5">
             {{ content }}
@@ -73,6 +55,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ page.base_url }}js/jquery.js"></script>
+    <script src="{{ page.base_url }}js/bootstrap.js"></script>
+    <script src="{{ page.base_url }}js/vendor/moment.min.js"></script>
+    <script src="{{ page.base_url }}js/vendor/twix.min.js"></script>
+    <script src="{{ page.base_url }}js/vendor/lang/es.js"></script>
         <!-- Dependencias de Google y flickr  -->
     <script src='https://www.google.com/jsapi'></script>
     <script src="{{ page.base_url }}js/reqwest.js"></script>

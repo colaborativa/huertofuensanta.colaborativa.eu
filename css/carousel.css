@@ -1,0 +1,830 @@
+/* Slideshow animations */
+@-webkit-keyframes fadeInDown {
+  /* line 3, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-150px);
+  }
+
+  /* line 4, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@-moz-keyframes fadeInDown {
+  /* line 7, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(-150px);
+  }
+
+  /* line 8, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+}
+
+@-o-keyframes fadeInDown {
+  /* line 11, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -o-transform: translateY(-150px);
+  }
+
+  /* line 12, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -o-transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  /* line 15, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+
+  /* line 16, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes fadeOutUp {
+  /* line 20, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+
+  /* line 21, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-150px);
+  }
+}
+
+@-moz-keyframes fadeOutUp {
+  /* line 24, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+
+  /* line 25, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+    -moz-transform: translateY(-150px);
+  }
+}
+
+@-o-keyframes fadeOutUp {
+  /* line 28, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+    -o-transform: translateY(0);
+  }
+
+  /* line 29, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+    -o-transform: translateY(-150px);
+  }
+}
+
+@keyframes fadeOutUp {
+  /* line 32, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* line 33, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  /* line 37, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 38, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  /* line 41, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 42, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  /* line 45, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 46, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  /* line 49, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 50, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  /* line 54, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+  }
+
+  /* line 55, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  /* line 58, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+  }
+
+  /* line 59, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  /* line 62, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+  }
+
+  /* line 63, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  /* line 66, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+  }
+
+  /* line 67, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeOutRight {
+  /* line 71, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+
+  /* line 72, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(20px);
+  }
+}
+
+@-moz-keyframes fadeOutRight {
+  /* line 75, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+    -moz-transform: translateX(0);
+  }
+
+  /* line 76, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+    -moz-transform: translateX(20px);
+  }
+}
+
+@-o-keyframes fadeOutRight {
+  /* line 79, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+    -o-transform: translateX(0);
+  }
+
+  /* line 80, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+    -o-transform: translateX(20px);
+  }
+}
+
+@keyframes fadeOutRight {
+  /* line 83, ../sass/_animations.scss */
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* line 84, ../sass/_animations.scss */
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+/* Sliding slideshow content in from the right*/
+@-webkit-keyframes fadeInRight {
+  /* line 89, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(20px);
+  }
+
+  /* line 90, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@-moz-keyframes fadeInRight {
+  /* line 93, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(20px);
+  }
+
+  /* line 94, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -moz-transform: translateX(0);
+  }
+}
+
+@-o-keyframes fadeInRight {
+  /* line 97, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -o-transform: translateX(20px);
+  }
+
+  /* line 98, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -o-transform: translateX(0);
+  }
+}
+
+/* Carousel base class */
+/* line 8, ../sass/carousel.scss */
+.carousel, .imagenfondo {
+  margin-bottom: 0px;
+  overflow: hidden;
+}
+/* line 11, ../sass/carousel.scss */
+.carousel .item, .imagenfondo .item {
+  width: 100%;
+  overflow: hidden;
+}
+/* line 14, ../sass/carousel.scss */
+.carousel .item .itemContenedor, .imagenfondo .item .itemContenedor {
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 19, ../sass/carousel.scss */
+.carousel .mascaraColor, .imagenfondo .mascaraColor {
+  z-index: 2;
+  top: 0px;
+  left: 50%;
+  position: absolute;
+  height: 100%;
+}
+/* line 26, ../sass/carousel.scss */
+.carousel .mascaraColorPhone, .imagenfondo .mascaraColorPhone {
+  z-index: 2;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  height: 100%;
+}
+/* line 33, ../sass/carousel.scss */
+.carousel .carousel-inner, .imagenfondo .carousel-inner {
+  width: 100%;
+}
+
+/* line 38, ../sass/carousel.scss */
+.imagenfondo {
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  z-index: -100;
+}
+
+/* line 45, ../sass/carousel.scss */
+section.cabecera {
+  padding-bottom: 0px;
+  height: 395px;
+}
+
+/* line 50, ../sass/carousel.scss */
+.carousel-control {
+  position: absolute;
+  top: 40%;
+  width: 50px;
+  font-family: latohairline;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  background: #222;
+  border: 3px solid white;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  border-radius: 23px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  height: 80px;
+  margin-top: 0;
+  font-size: 120px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  background-color: transparent;
+  background-image: none !important;
+  border: 0;
+  z-index: 10;
+}
+/* line 73, ../sass/carousel.scss */
+.carousel-control.left, .carousel-control.right {
+  background-color: transparent;
+  background-image: none !important;
+}
+
+/* line 79, ../sass/carousel.scss */
+.carousel.carousel-fade .item {
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+/* line 87, ../sass/carousel.scss */
+.carousel.carousel-fade .active.left,
+.carousel.carousel-fade .active.right {
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+/* line 94, ../sass/carousel.scss */
+.carousel.carousel-fade .next,
+.carousel.carousel-fade .prev {
+  left: 0;
+  z-index: 1;
+}
+
+/* line 99, ../sass/carousel.scss */
+.carousel.carousel-fade .carousel-control {
+  z-index: 3;
+}
+
+/* line 104, ../sass/carousel.scss */
+.pieImagenContainer {
+  z-index: 4;
+  position: absolute;
+  display: table;
+}
+/* line 108, ../sass/carousel.scss */
+.pieImagenContainer .pieImagen {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: latoregular;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 115, ../sass/carousel.scss */
+.pieImagenContainer .pieImagen .imagenAutor {
+  float: right;
+  border: 2px solid white;
+  -webkit-border-radius: 50% 50%;
+  -moz-border-radius: 50% / 50%;
+  border-radius: 50% / 50%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
+  overflow: hidden;
+}
+/* line 121, ../sass/carousel.scss */
+.pieImagenContainer .pieImagen .imagenAutor .imagen {
+  background-color: gray;
+}
+/* line 125, ../sass/carousel.scss */
+.pieImagenContainer .pieImagen .textoAutor {
+  text-align: right;
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 129, ../sass/carousel.scss */
+.pieImagenContainer .pieImagen .textoAutor .texto {
+  padding-right: 20px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-style: none;
+  border-top-style: none;
+  border-left-style: none;
+}
+/* line 138, ../sass/carousel.scss */
+.pieImagenContainer .pieImagen .textoAutor .texto .titulo {
+  font-family: latobold;
+}
+/* line 141, ../sass/carousel.scss */
+.pieImagenContainer .pieImagen .textoAutor .texto .fecha {
+  font-family: latoitalic;
+}
+
+@media (max-width: 767px) {
+  /* line 153, ../sass/carousel.scss */
+  section.cabecera {
+    padding-top: 80px;
+    padding-bottom: 0px;
+    height: 510px;
+  }
+
+  /* line 158, ../sass/carousel.scss */
+  .imagenfondo {
+    height: 460px;
+  }
+  /* line 160, ../sass/carousel.scss */
+  .imagenfondo .item {
+    height: 460px;
+    width: 100%;
+  }
+  /* line 161, ../sass/carousel.scss */
+  .imagenfondo .item .itemContenedor {
+    width: 100%;
+  }
+  /* line 164, ../sass/carousel.scss */
+  .imagenfondo .item .mascaraColorPhone {
+    width: 100%;
+  }
+  /* line 169, ../sass/carousel.scss */
+  .imagenfondo .item .image {
+    width: 100%;
+    height: 460px;
+    -webkit-background-size: 130% auto;
+    -moz-background-size: 130% auto;
+    -o-background-size: 130% auto;
+    background-size: 130% auto;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+  }
+
+  /* line 178, ../sass/carousel.scss */
+  .carousel {
+    margin-top: 50px;
+  }
+  /* line 180, ../sass/carousel.scss */
+  .carousel .carousel-inner {
+    height: 420px;
+  }
+  /* line 182, ../sass/carousel.scss */
+  .carousel .carousel-inner .itemContenedor {
+    width: 100%;
+  }
+  /* line 185, ../sass/carousel.scss */
+  .carousel .carousel-inner .item {
+    height: 420px;
+    width: 100%;
+  }
+  /* line 186, ../sass/carousel.scss */
+  .carousel .carousel-inner .item .mascaraColorPhone {
+    width: 100%;
+  }
+  /* line 189, ../sass/carousel.scss */
+  .carousel .carousel-inner .item .pieImagenContainer {
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+    bottom: 0px;
+    left: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* line 198, ../sass/carousel.scss */
+  .carousel .carousel-inner .item .pieImagenContainer .pieImagen {
+    padding-bottom: 30px;
+  }
+  /* line 200, ../sass/carousel.scss */
+  .carousel .carousel-inner .item .pieImagenContainer .pieImagen .textoAutor {
+    width: auto;
+    padding-right: 90px;
+  }
+  /* line 204, ../sass/carousel.scss */
+  .carousel .carousel-inner .item .pieImagenContainer .pieImagen .imagen {
+    width: 60px;
+    height: 60px;
+  }
+  /* line 212, ../sass/carousel.scss */
+  .carousel .carousel-inner .item .image {
+    width: 100%;
+    height: 420px;
+    -webkit-background-size: 150% auto;
+    -moz-background-size: 150% auto;
+    -o-background-size: 150% auto;
+    background-size: 150% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+}
+@media (min-width: 768px) and (max-width: 990px) {
+  /* line 227, ../sass/carousel.scss */
+  .visible-mediano {
+    display: none;
+  }
+
+  /* line 230, ../sass/carousel.scss */
+  .visible-grande {
+    display: none;
+  }
+
+  /* line 233, ../sass/carousel.scss */
+  .mascaraColor {
+    width: 768px;
+    margin-left: -384px;
+  }
+
+  /* line 237, ../sass/carousel.scss */
+  .carousel-inner {
+    height: 345px;
+  }
+
+  /* line 240, ../sass/carousel.scss */
+  .itemContenedor {
+    width: 728px;
+  }
+
+  /* line 243, ../sass/carousel.scss */
+  .image {
+    height: 345px;
+    -webkit-background-size: auto 100%;
+    -moz-background-size: auto 100%;
+    -o-background-size: auto 100%;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
+
+  /* line 249, ../sass/carousel.scss */
+  .carousel .image {
+    background-position: left center;
+  }
+
+  /* line 254, ../sass/carousel.scss */
+  .imagenfondo .itemContenedor {
+    width: 100%;
+  }
+  /* line 257, ../sass/carousel.scss */
+  .imagenfondo .image {
+    background-position: right center;
+  }
+
+  /* line 261, ../sass/carousel.scss */
+  .pieImagenContainer {
+    height: 345px;
+    left: 50%;
+    width: 364px;
+    top: 0px;
+  }
+  /* line 266, ../sass/carousel.scss */
+  .pieImagenContainer .textoAutor {
+    width: 284px;
+  }
+  /* line 269, ../sass/carousel.scss */
+  .pieImagenContainer .imagen {
+    width: 50px;
+    height: 50px;
+  }
+}
+@media (min-width: 991px) and (max-width: 1199px) {
+  /* line 278, ../sass/carousel.scss */
+  .visible-mediano {
+    display: block;
+  }
+
+  /* line 281, ../sass/carousel.scss */
+  .visible-grande {
+    display: none;
+  }
+
+  /* line 284, ../sass/carousel.scss */
+  .mascaraColor {
+    width: 990px;
+    margin-left: -495px;
+  }
+
+  /* line 288, ../sass/carousel.scss */
+  .carousel-inner {
+    height: 345px;
+  }
+
+  /* line 291, ../sass/carousel.scss */
+  .itemContenedor {
+    width: 990px;
+  }
+
+  /* line 294, ../sass/carousel.scss */
+  .image {
+    height: 345px;
+    -webkit-background-size: 70% auto;
+    -moz-background-size: 70% auto;
+    -o-background-size: 70% auto;
+    background-size: 70% auto;
+    background-repeat: no-repeat;
+  }
+
+  /* line 300, ../sass/carousel.scss */
+  .carousel .image {
+    background-position: left center;
+  }
+
+  /* line 305, ../sass/carousel.scss */
+  .imagenfondo .itemContenedor {
+    width: 100%;
+  }
+  /* line 308, ../sass/carousel.scss */
+  .imagenfondo .image {
+    background-position: right center;
+  }
+
+  /* line 312, ../sass/carousel.scss */
+  .pieImagenContainer {
+    height: 345px;
+    left: 50%;
+    width: 480px;
+    top: 0px;
+  }
+  /* line 317, ../sass/carousel.scss */
+  .pieImagenContainer .textoAutor {
+    width: 395px;
+  }
+  /* line 320, ../sass/carousel.scss */
+  .pieImagenContainer .imagen {
+    width: 55px;
+    height: 55px;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 329, ../sass/carousel.scss */
+  .visible-mediano {
+    display: none;
+  }
+
+  /* line 332, ../sass/carousel.scss */
+  .visible-grande {
+    display: block;
+  }
+
+  /* line 335, ../sass/carousel.scss */
+  .mascaraColor {
+    width: 1200px;
+    margin-left: -600px;
+  }
+
+  /* line 339, ../sass/carousel.scss */
+  .carousel-inner {
+    height: 345px;
+  }
+
+  /* line 342, ../sass/carousel.scss */
+  .itemContenedor {
+    width: 1200px;
+  }
+
+  /* line 345, ../sass/carousel.scss */
+  .image {
+    height: 345px;
+    -webkit-background-size: 900px auto;
+    -moz-background-size: 900px auto;
+    -o-background-size: 900px auto;
+    background-size: 900px auto;
+    background-repeat: no-repeat;
+  }
+
+  /* line 351, ../sass/carousel.scss */
+  .carousel .image {
+    background-position: left center;
+  }
+
+  /* line 356, ../sass/carousel.scss */
+  .imagenfondo .image {
+    background-position: right center;
+  }
+
+  /* line 361, ../sass/carousel.scss */
+  .pieImagenContainer {
+    height: 345px;
+    left: 50%;
+    width: 570px;
+    top: 0px;
+  }
+  /* line 366, ../sass/carousel.scss */
+  .pieImagenContainer .textoAutor {
+    width: 480px;
+  }
+  /* line 369, ../sass/carousel.scss */
+  .pieImagenContainer .imagen {
+    width: 60px;
+    height: 60px;
+  }
+}
+/* line 378, ../sass/carousel.scss */
+.cabecera.confondo hgroup {
+  -webkit-animation: fadeIn 1000ms ease 1500ms both;
+  -moz-animation: fadeIn 1000ms ease 1500ms both;
+  animation: fadeIn 1000ms ease 1500ms both;
+}
+
+/* line 384, ../sass/carousel.scss */
+.imagenfondo .item {
+  -webkit-animation: fadeIn 500ms ease 500ms both;
+  -moz-animation: fadeIn 500ms ease 500ms both;
+  animation: fadeIn 500ms ease 500ms both;
+}
+
+/* line 389, ../sass/carousel.scss */
+.imagenfondo .item img {
+  -webkit-animation: fadeIn 1000ms ease 1000ms both;
+  -moz-animation: fadeIn 1000ms ease 1000ms both;
+  animation: fadeIn 1000ms ease 1000ms both;
+}
+
+/* line 396, ../sass/carousel.scss */
+.carousel.fade {
+  opacity: 1;
+}
+/* line 398, ../sass/carousel.scss */
+.carousel.fade .item {
+  -moz-transition: opacity ease-in-out .7s;
+  -o-transition: opacity ease-in-out .7s;
+  -webkit-transition: opacity ease-in-out .7s;
+  transition: opacity ease-in-out .7s;
+  left: 0 !important;
+  opacity: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  display: block !important;
+  z-index: 1;
+}
+/* line 410, ../sass/carousel.scss */
+.carousel.fade .item:first-child {
+  top: auto;
+  position: relative;
+}
+/* line 416, ../sass/carousel.scss */
+.carousel.fade .item.active {
+  opacity: 1;
+  -moz-transition: opacity ease-in-out .7s;
+  -o-transition: opacity ease-in-out .7s;
+  -webkit-transition: opacity ease-in-out .7s;
+  transition: opacity ease-in-out .7s;
+  z-index: 2;
+}

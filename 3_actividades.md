@@ -14,7 +14,7 @@ subtitulo: "Gracias al trabajo en equipo y la generosidad de multitud de persona
 
 boton-calendario-actividades:
  titulo: "Ir al Google Spreadsheets"
- url: "https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdEJkcjZycFpWdHRZV1ByTDNFMDlsUkE#gid=0"
+ url: "https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdDNrM0RaX3RhaDEzVGhGcEo5allQaHc#gid=0"
 
 ---
 

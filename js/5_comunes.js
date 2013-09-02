@@ -5,20 +5,132 @@
  *
  *
  **/
+
+// ActivitiesAdd es la Callback una vez concluida la extracción de información de la SpreadSheet
+// Llamada a la función que extrae información de SpreadSheet
+function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
+    google_GetSpreadsheet(sh_id, HeaderTitles, 9, ActivitiesAdd, 1);
+    function ActivitiesAdd(features){
+      var activitiesGoogle_stuff = [];
+       $.each(features, function(i, item){
+              var activityMes, Fecha_Fin_Str, Fecha_InicioStr;
+              var parts = item.FechaInicio.split(/\//);
+              var Fecha_Inicio = new Date(parts[1] + '/'+parts[0] +'/'+ parts[2]);
+              var Fecha_Rango;
+              var EstiloStr = ""; // "pasada" when older than current date
+              var Fecha_RangoStr;
+              if(Fecha_Inicio != 'Invalid Date'){
+                    activityMes = Date.locale['es'].month_names_short[Fecha_Inicio.getUTCMonth()]; // Day of the month = Month UK format
+                    var hours = Fecha_Inicio.getHours()
+                    var minutes = Fecha_Inicio.getMinutes()
+                    if (minutes < 10){
+                      minutes = "0" + minutes
+                    }
+                    Fecha_InicioStr = hours + ':' + minutes+'h ' + (Fecha_Inicio.getUTCDate()) + '-' + activityMes + '-' + Fecha_Inicio.getFullYear()+' ';
+              }else{
+                    Fecha_InicioStr ="[Fecha pendiente] ";
+              }     
+              parts = item.FechaFin.split(/\//);
+              var Fecha_Fin = new Date(parts[1] + '/'+parts[0] +'/'+ parts[2]);
+              if(Fecha_Fin != 'Invalid Date'){
+                    activityMes = Date.locale['es'].month_names_short[Fecha_Fin.getUTCMonth()];
+                    var hours = Fecha_Fin.getHours()
+                    var minutes = Fecha_Fin.getMinutes()
+                    if (minutes < 10){
+                      minutes = "0" + minutes
+                    }
+                    Fecha_Fin_Str = hours + ':' + minutes+ 'h ' + (Fecha_Fin.getUTCDate()) + '-' + activityMes + '-' + Fecha_Fin.getFullYear()+ ' ';
+              }else{
+                    Fecha_Fin_Str ="[Fecha pendiente] ";
+              } 
+              var currentDate = new Date(); 
+              if(Fecha_Fin != 'Invalid Date' && Fecha_Inicio != 'Invalid Date'){
+                Fecha_Rango = moment.twix(Fecha_Inicio, Fecha_Fin);
+                Fecha_RangoStr = Fecha_Rango.format({monthFormat: "MMMM", weekdayFormat: "DDD", twentyFourHour: true, dayFormat: "D", groupMeridiems: true});
+                if ( currentDate > Fecha_Fin){
+                  EstiloStr = "pasada";
+                }
+              } else {
+                Fecha_RangoStr = "[Fecha pendiente] ";
+              }
+              if( bAll == true){
+              var obj = {"Nombre": item.Titulo, 
+                       "Descripcion": item.Descripcion, 
+                       "Organizador": item.Organizador,
+                       "NAsistentes": item.NAsistentes,
+                       "Estado": item.Estado,
+                       "Fecha_Inicio": Fecha_InicioStr,
+                       "Fecha_Fin": Fecha_Fin_Str,
+                       "Fecha_Rango" : Fecha_RangoStr,
+                       "Fecha_Inicio_Date": Fecha_Inicio,
+                       "Estilo":EstiloStr
+                      };   
+             activitiesGoogle_stuff.push(obj);
+             }else{
+              if (EstiloStr != "pasada"){
+                var obj = {"Nombre": item.Titulo, 
+                       "Descripcion": item.Descripcion, 
+                       "Organizador": item.Organizador,
+                       "NAsistentes": item.NAsistentes,
+                       "Estado": item.Estado,
+                       "Fecha_Inicio": Fecha_InicioStr,
+                       "Fecha_Fin": Fecha_Fin_Str,
+                       "Fecha_Rango" : Fecha_RangoStr,
+                       "Fecha_Inicio_Date": Fecha_Inicio,
+                       "Estilo":EstiloStr
+                      };   
+             activitiesGoogle_stuff.push(obj);
+           } // end if
+           } // enf else
+          }); // end each event of calendar
+            function custom_sort(a, b) {
+                a = new Date(a.Fecha_Inicio_Date);
+                b = new Date(b.Fecha_Inicio_Date);
+                return a<b ? -1 : a>b ? 1 : 0;
+             }  
+             var titulo = "Próximas actividades";
+             if(bAll == true) titulo = "Listado de actividades";
+             activitiesGoogle_stuff.sort(custom_sort);
+             var GoogleActivities = {GoogleActivities: activitiesGoogle_stuff, 
+                                     "Url_Publica":    activitiesGoogle_url,
+                                     "TituloLista":titulo
+             };
+             // TEMPLATING WITH MUSTACHE
+             $.get(mustacheTemplateFile, function(templates) { 
+                    var source = $(templates).filter(activitiesGoogleTemplateID).html();
+                    var template = Handlebars.compile(source);
+                    var result = template(GoogleActivities);
+                    $(htmlTag).html(result);
+                    $('.actividad').popover();
+             });
+    }
+}
 var DEBUG_COMUNES = 0;
 // Get dominant colors from SpreadSheets
 function getImageColorsCabeceraSegunda(){
     var google_stuff_colors = [];
-    google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, backImageAdd);
+    google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, backImageAdd, 0);
     function backImageAdd(ImageColors){
         var randomnumber=Math.floor(Math.random()*(ImageColors.length));
-        //
+        // Calculate Black or White for Text
+        var colorTexto;
+          var r = ImageColors[randomnumber]["ColorR"];
+          var g = ImageColors[randomnumber]["ColorG"];
+          var b = ImageColors[randomnumber]["ColorB"];
+          var yiq = ((r*299)+(g*587)+(b*114))/1000;
+          if (yiq >= 128){
+                colorTexto = 'black';
+          }else{
+                colorTexto = 'white';            
+          }
         var selectedImage = {
-               "ColorR": ImageColors[randomnumber]["ColorR"],
-               "ColorG": ImageColors[randomnumber]["ColorG"],
-               "ColorB": ImageColors[randomnumber]["ColorB"],
-               "Nombre": ImageColors[randomnumber]["Imagen"]
+               "ColorR": r,
+               "ColorG": g,
+               "ColorB": b,
+               "Nombre": ImageColors[randomnumber]["Imagen"],
+               "ColorTexto": colorTexto
         };
+         
         /* TEMPLATING WITH MUSTACHE or HANDLERS */
         $.get(mustacheTemplateFile, function(templates) { 
             var source = $(templates).filter(cabeceraSegundoTemplateID).html();
@@ -44,7 +156,7 @@ function getImageColorsCabeceraSegunda(){
  * @param {File} fileData File object to read data from.
  * @param {Function} callback Callback function to call when the request is complete.
  */
- function google_GetSpreadsheet(id, headerTitlesName,headerTitlesNumber, callback) {
+ function google_GetSpreadsheet(id, headerTitlesName, headerTitlesNumber, callback, startRow) {
     if( DEBUG_COMUNES) { console.log("function google_GetSpreadsheet");}
     // Chequear que `reqwest` existe para así poder comunicarnos con Google Drive.
     if (typeof reqwest === 'undefined'){
@@ -58,11 +170,14 @@ function getImageColorsCabeceraSegunda(){
         var features = []; // This array stores the spreadsheet values
         // Chequear que los datos son válidos antes de continuar.
         if (!x || !x.feed) return features;
+         //console.log(JSON.stringify(x.feed));
         // Bucle for para cada fila de la spreadsheet, que corresponde con un edificio abandonado.
-        for (var i = 0; i < x.feed.entry.length; i++) {                             
+        for (var i = startRow; i < x.feed.entry.length; i++) { // skyp first line                            
            var entry = x.feed.entry[i];
            var obj = {}; // Object
+          
            for(var y = 0; y < headerTitlesNumber; y++){
+                //console.log(y + " " + headerTitlesName[y][0]);
                 var titleName = headerTitlesName[y][0];
                 var titleValue= 'gsx$'+headerTitlesName[y][1];
                 obj[titleName] = entry[titleValue].$t;

@@ -49,7 +49,6 @@ var stuff = [];
 // and remember the jqxhr object for this request
 $.embedly.defaults.key = flickr_embed_api_key; //http://embed.ly/ Servicio Web para extraer Colores Dominantes en Fotos de Flickr
 // Llamada a la API de Flick
-console.log(url);
 var jqxhr = $.getJSON( url, function() {
   if(DEBUG_HUERTO){ console.log( "flickr success" );}
 })
@@ -77,7 +76,9 @@ var jqxhr = $.getJSON( url, function() {
  		var imageMes = Date.locale['es'].month_names[imageFecha.getMonth()];
  		if( item.ownername != ocultarFlickrOwnerName){ // Test
 			imageOwner = 'Por ' + item.ownername + ' a ';
-		}
+		}else{
+      imageOwnerIcon =""; // Que tome icono por defecto
+    }
  		var imageFechaFinal= imageFecha.getDate() + ' de ' + imageMes + ' de ' + imageFecha.getFullYear();
     // Setting Up Default Colors for all images: Black
     var imageColorR =0;
@@ -91,14 +92,15 @@ var jqxhr = $.getJSON( url, function() {
                "Fecha": imageFechaFinal,
                "OwnerIcon": imageOwnerIcon,
                "Owner": imageOwner,
-               "Descripcion": imageDesc};
+               "Descripcion": imageDesc,
+               "ColorTexto":"white"}; //by default
     stuff.push(obj);
   }); // End Each Item of Flickr 
   // 2nd Step: Get dominant colors from SpreadSheets key=0ApaZkqgevJCgdG1DMVIxdUtGQ1lpUGFvLWZnNTgxX1E
     // Este es el TAG donde se insertarán los eventos del calendario
   var google_stuff_colors = [];
   // Llamada a la función que extrae información de SpreadSheet
-  google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, ColorsAdd);
+  google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, ColorsAdd, 0);
   //google_SetSpreadsheet(google_sh_id_colors, null, null, null);
   function ColorsAdd(colors){
       $.each(stuff, function(i,image){
@@ -107,7 +109,7 @@ var jqxhr = $.getJSON( url, function() {
             if(color["Imagen"] == image["Nombre"]){
                image["ColorR"] = color["ColorR"];
                image["ColorG"] = color["ColorG"];
-               image["ColorB"] = color["ColorB"]; 
+               image["ColorB"] = color["ColorB"];            
                imageFound = true;
             } // End if
         }); // End Each Color
@@ -126,6 +128,16 @@ var jqxhr = $.getJSON( url, function() {
                       // FALTA AÑADIR FILA A SPREADSHEET ****
               }); // end .progress
         } // End if Image not Found
+          // Calculate Black or White for Text
+          var r = image["ColorR"];
+          var g = image["ColorG"];
+          var b = image["ColorB"];
+          var yiq = ((r*299)+(g*587)+(b*114))/1000;
+          if (yiq >= 128){
+                image["ColorTexto"] = 'black';
+          }else{
+                image["ColorTexto"] = 'white';            
+          }
       }); // End Each Image
       // 4th Step: Render Template with Values   
       var flickrImages = {flickrImages: stuff}; 
@@ -166,69 +178,9 @@ jqxhr.complete(function() { if(DEBUG_HUERTO){ console.log( "flickr second comple
 // DATOS DE ENTRADA: reemplazar por vuestros datos particulares.
 // Identificador de la SpreadSheet de Google (obtener de URL)
 
-// Llamada a la función que extrae información de SpreadSheet
-google_GetSpreadsheet(activitiesGoogle_sh_id, activitiesHeaderTitles, 9, ActivitiesAdd);
+getListActivitiesIntoTemplate(activitiesGoogle_sh_id, activitiesHeaderTitles, activitiesGoogle_htmlTag, false);
 // Campos:  Orden,  Titulo,  Descripcion,  Organizador,  FechaInicio,  FechaFin,  Estado,  NAsistentes,  Contacto,  
-var activitiesGoogle_stuff = [];
-// ActivitiesAdd es la Callback una vez concluida la extracción de información de la SpreadSheet
-function ActivitiesAdd(features){
-   $.each(features, function(i, item){
-          var activityMes, Fecha_Fin_Str, Fecha_InicioStr;
-          var Fecha_Inicio = new Date(item.FechaInicio);
-          var Fecha_Rango;
-          var Fecha_RangoStr;
-          if(Fecha_Inicio != 'Invalid Date'){
-                activityMes = Date.locale['es'].month_names_short[Fecha_Inicio.getMonth()];
-                var hours = Fecha_Inicio.getHours()
-                var minutes = Fecha_Inicio.getMinutes()
-                if (minutes < 10){
-                  minutes = "0" + minutes
-                }
-                Fecha_InicioStr = hours + ':' + minutes+'h ' + Fecha_Inicio.getDate() + '-' + activityMes + '-' + Fecha_Inicio.getFullYear()+' ';
-          }else{
-                Fecha_InicioStr ="[Fecha pendiente] ";
-          }     
-          var Fecha_Fin = new Date(item.FechaFin);
-          if(Fecha_Fin != 'Invalid Date'){
-                activityMes = Date.locale['es'].month_names_short[Fecha_Fin.getMonth()];
-                var hours = Fecha_Inicio.getHours()
-                var minutes = Fecha_Inicio.getMinutes()
-                if (minutes < 10){
-                  minutes = "0" + minutes
-                }
-                Fecha_Fin_Str = hours + ':' + minutes+ 'h ' + Fecha_Fin.getDate() + '-' + activityMes + '-' + Fecha_Fin.getFullYear()+ ' ';
-          }else{
-                Fecha_Fin_Str ="[Fecha pendiente] ";
-          } 
-          if(Fecha_Fin != 'Invalid Date' && Fecha_Inicio != 'Invalid Date'){
-            Fecha_Rango = moment.twix(Fecha_Inicio, Fecha_Fin);
-            Fecha_RangoStr = Fecha_Rango.format({monthFormat: "MMMM", weekdayFormat: "DDD", twentyFourHour: true, dayFormat: "D", groupMeridiems: true});
-          } else {
-            Fecha_RangoStr = "[Fecha pendiente] ";
-          }
-          var obj = {"Nombre": item.Titulo, 
-                   "Descripcion": item.Descripcion, 
-                   "Organizador": item.Organizador,
-                   "NAsistentes": item.NAsistentes,
-                   "Estado": item.Estado,
-                   "Fecha_Inicio": Fecha_InicioStr,
-                   "Fecha_Fin": Fecha_Fin_Str,
-                   "Fecha_Rango" : Fecha_RangoStr
-                   };
-          activitiesGoogle_stuff.push(obj);
-         }); // end each event of calendar
-         var GoogleActivities = {GoogleActivities: activitiesGoogle_stuff, 
-                                 "Url_Publica":    activitiesGoogle_url
-         };
-         // TEMPLATING WITH MUSTACHE
-         $.get(mustacheTemplateFile, function(templates) { 
-                var source = $(templates).filter(activitiesGoogleTemplateID).html();
-                var template = Handlebars.compile(source);
-                var result = template(GoogleActivities);
-                $(activitiesGoogle_htmlTag).html(result);
-                $('.actividad').popover();
-         });
-}
+
 /**
  *
  *
