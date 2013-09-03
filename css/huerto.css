@@ -1073,61 +1073,65 @@ section h3 {
 }
 /* line 431, ../sass/huerto.scss */
 .listaCalendario ol li {
-  /*texttruncation*/
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  /**/
   border-color: rgba(0, 0, 0, 0.2);
 }
 /* line 432, ../sass/huerto.scss */
 .listaCalendario ol li time {
   font-style: italic;
 }
-/* line 441, ../sass/huerto.scss */
+/* line 435, ../sass/huerto.scss */
+.listaCalendario ol li a {
+  display: block;
+  /*texttruncation*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /**/
+}
+/* line 445, ../sass/huerto.scss */
 .listaCalendario ol li:last-child {
   border-color: rgba(0, 0, 0, 0.4);
 }
-/* line 444, ../sass/huerto.scss */
+/* line 448, ../sass/huerto.scss */
 .listaCalendario ol li.pasada {
   opacity: 0.3;
 }
-/* line 449, ../sass/huerto.scss */
+/* line 453, ../sass/huerto.scss */
 .listaCalendario a {
   line-height: 2.25em;
 }
 
 /* Footer */
-/* line 457, ../sass/huerto.scss */
+/* line 461, ../sass/huerto.scss */
 .footer {
   text-align: left;
   padding: 30px 0;
   border-top: 1px solid #e5e5e5;
   background-color: #fff;
 }
-/* line 462, ../sass/huerto.scss */
+/* line 466, ../sass/huerto.scss */
 .footer p {
   margin-bottom: 0;
   color: #777;
 }
-/* line 466, ../sass/huerto.scss */
+/* line 470, ../sass/huerto.scss */
 .footer a:link, .footer a:visited, .footer a:active {
   color: #669433;
 }
-/* line 468, ../sass/huerto.scss */
+/* line 472, ../sass/huerto.scss */
 .footer a:link:hover, .footer a:visited:hover, .footer a:active:hover {
   font-style: underline;
 }
-/* line 472, ../sass/huerto.scss */
+/* line 476, ../sass/huerto.scss */
 .footer .footer-links {
   margin: 10px 0;
 }
-/* line 474, ../sass/huerto.scss */
+/* line 478, ../sass/huerto.scss */
 .footer .footer-links li {
   display: inline;
   padding: 0 2px;
 }
-/* line 478, ../sass/huerto.scss */
+/* line 482, ../sass/huerto.scss */
 .footer .footer-links li:first-child {
   padding-left: 0;
 }
@@ -1310,28 +1314,28 @@ section h3 {
     margin-bottom: 0px;
   }
 
-  /* line 490, ../sass/huerto.scss */
+  /* line 494, ../sass/huerto.scss */
   .visible-mediano {
     display: none;
   }
 
-  /* line 493, ../sass/huerto.scss */
+  /* line 497, ../sass/huerto.scss */
   .visible-grande {
     display: none;
   }
 
-  /* line 496, ../sass/huerto.scss */
+  /* line 500, ../sass/huerto.scss */
   .principal.confondo#quees {
     position: relative;
     background-image: none;
     overflow: hidden;
   }
-  /* line 500, ../sass/huerto.scss */
+  /* line 504, ../sass/huerto.scss */
   .principal.confondo#quees hgroup {
     padding-bottom: 28%;
   }
 
-  /* line 504, ../sass/huerto.scss */
+  /* line 508, ../sass/huerto.scss */
   .principal.confondo#quees:after {
     content: "";
     position: absolute;
@@ -1545,24 +1549,24 @@ section h3 {
     margin-bottom: 0px;
   }
 
-  /* line 521, ../sass/huerto.scss */
+  /* line 525, ../sass/huerto.scss */
   .visible-mediano {
     display: none;
   }
 
-  /* line 524, ../sass/huerto.scss */
+  /* line 528, ../sass/huerto.scss */
   .visible-grande {
     display: none;
   }
 
-  /* line 527, ../sass/huerto.scss */
+  /* line 531, ../sass/huerto.scss */
   .principal.confondo#quees {
     position: relative;
     background-image: none;
     overflow: hidden;
   }
 
-  /* line 532, ../sass/huerto.scss */
+  /* line 536, ../sass/huerto.scss */
   .principal.confondo#quees:after {
     content: "";
     position: absolute;
@@ -1776,24 +1780,24 @@ section h3 {
     margin-bottom: 0px;
   }
 
-  /* line 549, ../sass/huerto.scss */
+  /* line 553, ../sass/huerto.scss */
   .visible-mediano {
     display: block;
   }
 
-  /* line 552, ../sass/huerto.scss */
+  /* line 556, ../sass/huerto.scss */
   .visible-grande {
     display: none;
   }
 
-  /* line 555, ../sass/huerto.scss */
+  /* line 559, ../sass/huerto.scss */
   .principal.confondo#quees {
     position: relative;
     background-image: none;
     overflow: hidden;
   }
 
-  /* line 560, ../sass/huerto.scss */
+  /* line 564, ../sass/huerto.scss */
   .principal.confondo#quees:after {
     content: "";
     position: absolute;
@@ -2007,24 +2011,24 @@ section h3 {
     margin-bottom: 0px;
   }
 
-  /* line 577, ../sass/huerto.scss */
+  /* line 581, ../sass/huerto.scss */
   .visible-mediano {
     display: none;
   }
 
-  /* line 580, ../sass/huerto.scss */
+  /* line 584, ../sass/huerto.scss */
   .visible-grande {
     display: block;
   }
 
-  /* line 583, ../sass/huerto.scss */
+  /* line 587, ../sass/huerto.scss */
   .principal.confondo#quees {
     position: relative;
     background-image: none;
     overflow: hidden;
   }
 
-  /* line 588, ../sass/huerto.scss */
+  /* line 592, ../sass/huerto.scss */
   .principal.confondo#quees:after {
     content: "";
     position: absolute;

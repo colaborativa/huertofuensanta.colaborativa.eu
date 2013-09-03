@@ -66,7 +66,8 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
                        "Fecha_Fin": Fecha_Fin_Str,
                        "Fecha_Rango" : Fecha_RangoStr,
                        "Fecha_Inicio_Date": Fecha_Inicio,
-                       "Estilo":EstiloStr
+                       "Estilo": EstiloStr,
+                       "Emilio": item.Email
                       };   
              activitiesGoogle_stuff.push(obj);
              }else{
@@ -82,7 +83,8 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
                        "Fecha_Fin": Fecha_Fin_Str,
                        "Fecha_Rango" : Fecha_RangoStr,
                        "Fecha_Inicio_Date": Fecha_Inicio,
-                       "Estilo":EstiloStr
+                       "Estilo": EstiloStr,
+                       "Emilio": item.Email
                       };   
              activitiesGoogle_stuff.push(obj);
            } // end if

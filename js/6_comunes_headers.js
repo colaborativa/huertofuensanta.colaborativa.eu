@@ -47,6 +47,7 @@ var activitiesHeaderTitles = {
     '6': ['Estado','estado'],
     '7': ['NAsistentes','númerodeasistentes'],
     '8': ['Contacto','datosdecontacto'] ,
+    '9': ['Emilio','emailcontacto']
 };
 var activitiesGoogle_url = "https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdDNrM0RaX3RhaDEzVGhGcEo5allQaHc#gid=0";
 /* 
