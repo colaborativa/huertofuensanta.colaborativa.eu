@@ -19,6 +19,6 @@ boton-calendario-actividades:
 contenido:
  como: 
   header: "¿Cómo puedo organizar una actividad en el huerto?"
-  content: "¡Estás en tu casa! Tan sólo te pedimos que respetes la zona cultivo y el descanso de los vecinos. Para añadir tu actividad en el listado de próxima actividades o si tienes cualquier duda contacta con nosotros [suscribiéndote a la lista de correo](#suscribirse)."
+  content: "¡Estás en tu casa! Tan sólo te pedimos que respetes la zona de cultivo y el descanso de los vecinos. Para añadir tu actividad en el listado de próxima actividades o para cualquier duda [envíanos un email](mailto:huertofuensanta@googlegroups.com)."
 
 ---

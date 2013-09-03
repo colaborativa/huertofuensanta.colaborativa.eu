@@ -27,12 +27,19 @@
 <script id="tpl-GoogleActivities" type="text/template">
    <div class="listaCalendario">
     <h3>{{TituloLista}}</h3>
-    <ol>
-        {{#GoogleActivities}}
-        <li class="actividad {{Estilo}}" toggle="popover" data-trigger="click" data-title="{{Nombre}}" data-content="{{Descripcion}} organizada por {{Organizador}}" data-placement="bottom"><time>{{Fecha_Rango}}</time> {{Nombre}}: {{Descripcion}} en {{Localizacion}} organizada por {{Organizador}}</li>
-        {{/GoogleActivities}}
+    <ol id="accordion">
+      {{#GoogleActivities}}
+      <li class="accordion-group lista">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{Indice}}">
+          <time>{{Fecha_Rango}}</time> {{Nombre}}: {{Descripcion}} en {{Localizacion}} organizada por {{Organizador}}
+        </a>
+        <div id="collapse{{Indice}}" class="collapse">
+            <p>{{Descripcion}} organizada por {{Organizador}}</p>
+        </div>
+      </li>
+      {{/GoogleActivities}}
     </ol>
-   </div>
+  </div>
 </script>
 
 <script id="tpl-CabeceraSegundoNivel" type="text/template">

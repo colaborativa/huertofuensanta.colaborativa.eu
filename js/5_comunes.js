@@ -12,6 +12,7 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
     google_GetSpreadsheet(sh_id, HeaderTitles, 9, ActivitiesAdd, 1);
     function ActivitiesAdd(features){
       var activitiesGoogle_stuff = [];
+      var indice = 1;
        $.each(features, function(i, item){
               var activityMes, Fecha_Fin_Str, Fecha_InicioStr;
               var parts = item.FechaInicio.split(/\//);
@@ -54,7 +55,9 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
                 Fecha_RangoStr = "[Fecha pendiente] ";
               }
               if( bAll == true){
-              var obj = {"Nombre": item.Titulo, 
+              var obj = {
+                        "Indice":indice,
+                       "Nombre": item.Titulo, 
                        "Descripcion": item.Descripcion, 
                        "Organizador": item.Organizador,
                        "NAsistentes": item.NAsistentes,
@@ -68,7 +71,9 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
              activitiesGoogle_stuff.push(obj);
              }else{
               if (EstiloStr != "pasada"){
-                var obj = {"Nombre": item.Titulo, 
+                var obj = {
+                        "Indice":indice,
+                        "Nombre": item.Titulo, 
                        "Descripcion": item.Descripcion, 
                        "Organizador": item.Organizador,
                        "NAsistentes": item.NAsistentes,
@@ -82,6 +87,7 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
              activitiesGoogle_stuff.push(obj);
            } // end if
            } // enf else
+           indice += 1;
           }); // end each event of calendar
             function custom_sort(a, b) {
                 a = new Date(a.Fecha_Inicio_Date);
