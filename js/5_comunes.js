@@ -9,7 +9,7 @@
 // ActivitiesAdd es la Callback una vez concluida la extracción de información de la SpreadSheet
 // Llamada a la función que extrae información de SpreadSheet
 function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
-    google_GetSpreadsheet(sh_id, HeaderTitles, 9, ActivitiesAdd, 1);
+    google_GetSpreadsheet(sh_id, HeaderTitles, activitiesNumberofRows, ActivitiesAdd, 1);
     function ActivitiesAdd(features){
       var activitiesGoogle_stuff = [];
       var indice = 1;
@@ -56,7 +56,7 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
               }
               if( bAll == true){
               var obj = {
-                        "Indice":indice,
+                       "Indice":indice,
                        "Nombre": item.Titulo, 
                        "Descripcion": item.Descripcion, 
                        "Organizador": item.Organizador,
@@ -67,14 +67,14 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
                        "Fecha_Rango" : Fecha_RangoStr,
                        "Fecha_Inicio_Date": Fecha_Inicio,
                        "Estilo": EstiloStr,
-                       "Emilio": item.Email
+                       "Emilio": item.Emilio
                       };   
              activitiesGoogle_stuff.push(obj);
              }else{
               if (EstiloStr != "pasada"){
                 var obj = {
-                        "Indice":indice,
-                        "Nombre": item.Titulo, 
+                       "Indice":indice,
+                       "Nombre": item.Titulo, 
                        "Descripcion": item.Descripcion, 
                        "Organizador": item.Organizador,
                        "NAsistentes": item.NAsistentes,
@@ -84,7 +84,7 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
                        "Fecha_Rango" : Fecha_RangoStr,
                        "Fecha_Inicio_Date": Fecha_Inicio,
                        "Estilo": EstiloStr,
-                       "Emilio": item.Email
+                       "Emilio": item.Emilio
                       };   
              activitiesGoogle_stuff.push(obj);
            } // end if
@@ -117,7 +117,7 @@ var DEBUG_COMUNES = 0;
 // Get dominant colors from SpreadSheets
 function getImageColorsCabeceraSegunda(){
     var google_stuff_colors = [];
-    google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, 4, backImageAdd, 0);
+    google_GetSpreadsheet(colorGoogle_sh_id, colorsHeaderTitles, colorsNumberofRows, backImageAdd, 0);
     function backImageAdd(ImageColors){
         var randomnumber=Math.floor(Math.random()*(ImageColors.length));
         // Calculate Black or White for Text
