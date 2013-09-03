@@ -432,11 +432,15 @@ section {
       time{
         font-style: italic;
       }
-      /*texttruncation*/
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      /**/
+      a{
+        display: block;
+        /*texttruncation*/
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /**/
+      }
+
       border-color: rgba(black,0.2);
       &:last-child{
         border-color: rgba(black,0.4);

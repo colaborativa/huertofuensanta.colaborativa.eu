@@ -29,12 +29,12 @@
     <h3>{{TituloLista}}</h3>
     <ol id="accordion">
       {{#GoogleActivities}}
-      <li class="accordion-group lista">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{Indice}}">
-          <time>{{Fecha_Rango}}</time> {{Nombre}}: {{Descripcion}} en {{Localizacion}} organizada por {{Organizador}}
+      <li class="accordion-group lista {{Estilo}}">
+        <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapse{{Indice}}">
+          <time>{{Fecha_Rango}}</time> {{Nombre}}
         </a>
         <div id="collapse{{Indice}}" class="collapse">
-            <p>{{Descripcion}} organizada por {{Organizador}}</p>
+            <p>{{Descripcion}} <strong>Organizada por {{Organizador}}</strong> <!--<a href="mailto:{{Emilio}}">Contacto</a> --></p>
         </div>
       </li>
       {{/GoogleActivities}}
