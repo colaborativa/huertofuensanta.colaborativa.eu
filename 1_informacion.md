@@ -5,6 +5,9 @@ icono: icon-info-sign
 permalink: informacion/
 layout: 1_informacion
 base_url: "../"
+titulo: "Más información"
+descripcion: "El Huerto Fuensanta es una iniciativa ciudadana independiente que ha recuperado un espacio público abandonado desde hace más de 20 años"
+
 
 cabecera: "¿Qué es el huerto Fuensanta?"
 cabecera-subtitulo: "Una iniciativa ciudadana independiente que recupera un espacio público abandonado desde hace más de 20 años"

@@ -5,6 +5,8 @@ icono: icon-calendar
 permalink: actividades/
 layout: 3_actividades
 base_url: "../"
+titulo: "Está pasando…"
+descripcion: "Disfruta de las actividades y participa activamente en la programación del huerto Fuensanta"
 
 cabecera: "Está pasando…"
 cabecera-subtitulo: "Disfruta de las actividades y participa activamente en la programación del huerto Fuensanta"

@@ -5,6 +5,8 @@ icono: icon-smile
 permalink: agradecimientos/
 layout: 4_agradecimientos
 base_url: "../"
+titulo: "¡Gracias por todo!"
+descripcion: "Esta iniciativa es posible gracias a la generosidad de multitud de personas, colectivos y asociaciones"
 
 cabecera: "¡Gracias por todo!"
 cabecera-subtitulo: "Esta iniciativa es posible gracias a la generosidad de multitud de personas, colectivos y asociaciones"

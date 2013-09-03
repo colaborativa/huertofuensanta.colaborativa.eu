@@ -5,6 +5,8 @@ icono: icon-edit
 permalink: gestion/
 layout: 2_gestion
 base_url: "../"
+titulo: "Participa en la gestión"
+descripcion: "La gestión está recogida en el diario y las cuentas, toda la información es abierta y de acceso público"
 
 cabecera: "Participa en la gestión"
 cabecera-subtitulo: "La gestión está recogida en el diario y las cuentas, toda la información es abierta y de acceso público"

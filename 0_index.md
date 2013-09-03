@@ -6,6 +6,8 @@ icono: icon-home
 permalink: /
 layout: 0_index
 base_url: "./"
+titulo: "¡Más que un huerto!"
+descripcion: "El Huerto Fuensanta es una iniciativa ciudadana independiente que ha recuperado un espacio público abandonado desde hace más de 20 años"
 
 mailto:
   address: "huertofuensanta+subscribe@googlegroups.com"
