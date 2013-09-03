@@ -35,7 +35,9 @@ html body{
 input {
   -webkit-appearance: none;
 }
-
+.accordion-group{
+  border: none;
+}
 
 .principal.confondo#estapasando{
   background-image: url("../img/actividades_estatico.jpg");
@@ -95,7 +97,7 @@ input {
       @include leading-border();
       @include rhythm(0.5, 0, 0, 0, $base-font-size);
     }
-    li{
+    li, li.lista{
       @include adjust-font-size-to($base-font-size,1.6);
       @include trailing-border();
       @include rhythm(0, 0, 0, 0, $base-font-size);
@@ -193,7 +195,7 @@ input {
       @include leading-border();
       @include rhythm(0.5, 0, 0, 0, $base-font-size);
     }
-    li{
+    li, li.lista{
       @include adjust-font-size-to($base-font-size,1.6);
       @include trailing-border();
       @include rhythm(0, 0, 0, 0, $base-font-size);
