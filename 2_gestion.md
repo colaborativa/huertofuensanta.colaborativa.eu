@@ -7,9 +7,9 @@ layout: 2_gestion
 base_url: "../"
 
 cabecera: "Participa en la gestión"
-cabecera-subtitulo: "La gestión está recogida en el diario y las cuentas del huerto, toda la información es abierta y de acceso público"
+cabecera-subtitulo: "La gestión está recogida en el diario y las cuentas, toda la información es abierta y de acceso público"
 
-titulo: "El diario y las cuentas del Huerto Fuensanta"
+titulo: "El diario y las cuentas del huerto Fuensanta"
 subtitulo: ""
 
 diario:
