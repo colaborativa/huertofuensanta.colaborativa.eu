@@ -10,7 +10,7 @@ cabecera: "Está pasando…"
 cabecera-subtitulo: "Disfruta de las actividades y participa activamente en la programación del huerto Fuensanta"
 
 titulo: "¡Más que un huerto!"
-subtitulo: "El huerto Fuesanta es un espacio público de todos y para todos. Hemos preparado una zona al aire libre para que se puedan realizar todo tipo de actividades abiertas y gratuitas: cultura, arte, naturaleza, deporte, salud… ¡Todas las actividades y temáticas son bienvenidas!"
+subtitulo: "El huerto Fuensanta es un espacio público de todos y para todos. Hemos preparado una zona al aire libre para que se puedan realizar todo tipo de actividades abiertas y gratuitas: cultura, arte, naturaleza, deporte, salud… ¡Todas las actividades y temáticas son bienvenidas!"
 
 boton-calendario-actividades:
  titulo: "Ir al Google Spreadsheets"
@@ -19,6 +19,6 @@ boton-calendario-actividades:
 contenido:
  como: 
   header: "¿Cómo puedo organizar una actividad en el huerto?"
-  content: "¡Estás en tu casa! Tan sólo te pedimos que respetes la zona de cultivo y el descanso de los vecinos. Para añadir tu actividad en el listado de próxima actividades o para cualquier duda [envíanos un email](mailto:huertofuensanta@googlegroups.com)."
+  content: "¡Estás en tu casa! Tan sólo te pedimos que respetes la zona de cultivo y el descanso de los vecinos. Para añadir tu actividad en el listado de próximas actividades o para cualquier duda [envíanos un email](mailto:huertofuensanta@googlegroups.com)."
 
 ---
