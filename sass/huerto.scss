@@ -93,14 +93,16 @@ input {
       @include adjust-font-size-to($h3-size, 1.25);
       @include rhythm(0.75, 0, 0, 0.25, $base-font-size);
     }
-    ol{
-      @include leading-border();
-      @include rhythm(0.5, 0, 0, 0, $base-font-size);
-    }
-    li, li.lista{
-      @include adjust-font-size-to($base-font-size,1.6);
-      @include trailing-border();
-      @include rhythm(0, 0, 0, 0, $base-font-size);
+    .listaCalendario{
+      ol{
+        @include leading-border();
+        @include rhythm(0.5, 0, 0, 0, $base-font-size);
+      }
+      li, li.lista{
+        @include adjust-font-size-to($base-font-size,1.6);
+        @include trailing-border();
+        @include rhythm(0, 0, 0, 0, $base-font-size);
+      }
     }
     p{
       @include adjust-font-size-to($base-font-size);
@@ -191,14 +193,16 @@ input {
       @include adjust-font-size-to($h3-size, 1.25);
       @include rhythm(0.75, 0, 0, 0.25, $base-font-size);
     }
-    ol{
-      @include leading-border();
-      @include rhythm(0.5, 0, 0, 0, $base-font-size);
-    }
-    li, li.lista{
-      @include adjust-font-size-to($base-font-size,1.6);
-      @include trailing-border();
-      @include rhythm(0, 0, 0, 0, $base-font-size);
+    .listaCalendario{
+      ol{
+        @include leading-border();
+        @include rhythm(0.5, 0, 0, 0, $base-font-size);
+      }
+      li, li.lista{
+        @include adjust-font-size-to($base-font-size,1.6);
+        @include trailing-border();
+        @include rhythm(0, 0, 0, 0, $base-font-size);
+      }
     }
     p{
       @include adjust-font-size-to($base-font-size);
