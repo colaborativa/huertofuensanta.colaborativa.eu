@@ -47,4 +47,10 @@ Para unirse a la lista de correo del Huerto Fuensanta no es necesario tener una 
  - Para publicar una entrada en este grupo, envía un correo electrónico a huertofuensanta@googlegroups.com 
  - Para anular tu suscripción a este grupo, envía un correo electrónico a huertofuensanta+unsubscribe@googlegroups.com 
 
+## ¿Cómo añadir talleres/eventos/encuentros al listado de "Próximas Actividades?"
 
+El listado de actividades en la página Web se rellena a partir del contenido de una [hoja de cálculo]( https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdDNrM0RaX3RhaDEzVGhGcEo5allQaHc#gid=0) alojada en Google Drive. Esta hoja es abierta y de acceso público por lo que cualquiera puede añadir actividades.
+
+Al añadir una actividad hay que tener cuidado con la columna "Estado". Hay que especificar "PENDIENTE" si no está confirmada al 100% y "CONFIRMADA" sólo cuando la actividad esté confirmada de forma definitiva. A partir del momento en que este confirmada la actividad, os animamos a que la mováis en vuestras redes a través de Facebook y Twitter.
+
+La idea es que todo el mundo que desee hacer una actividad en el huerto tan sólo tenga que escribir un email a la lista informando (huertofuensanta@googlegroups.com) y que pueda subir la información él mismo. Si cualquiera tiene dudas sobre una actividad específica le animamos a que las plantee a la lista de correo, siempre desde el respeto hacia el que propone la actividad y apreciando el trabajo que todo el mundo ha hecho para el que huerto Fuensanta sea una realidad.
