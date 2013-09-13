@@ -26,6 +26,7 @@ var colorsHeaderTitles = {'0': ['Imagen', 'nombredelaimagen'],
                             '1': ['ColorR','colorr'],
                             '2': ['ColorG','colorg'],
                             '3': ['ColorB','colorb']};
+var colorsNumberofRows = 4; // number of rows to extract from Excell
 var cabeceraSegundoTemplateID = '#tpl-CabeceraSegundoNivel'; // Identificador de la plantilla de Mustache en donde se insertará la información
 var cabeceraSegundo_htmlTag = '.imagenfondo'; // Este es el TAG donde se insertarán las imágenes una vez extraídas
 /* 
@@ -49,6 +50,7 @@ var activitiesHeaderTitles = {
     '8': ['Contacto','datosdecontacto'] ,
     '9': ['Emilio','emailcontacto']
 };
+var activitiesNumberofRows = 10;// number of rows to extract from Excell
 var activitiesGoogle_url = "https://docs.google.com/a/colaborativa.eu/spreadsheet/ccc?key=0ApaZkqgevJCgdDNrM0RaX3RhaDEzVGhGcEo5allQaHc#gid=0";
 /* 
  *	Flickr 
