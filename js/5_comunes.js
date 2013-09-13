@@ -54,6 +54,7 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
               } else {
                 Fecha_RangoStr = "[Fecha pendiente] ";
               }
+             if (item.Estado == "CONFIRMADA"){
               if( bAll == true){
               var obj = {
                        "Indice":indice,
@@ -89,6 +90,7 @@ function getListActivitiesIntoTemplate(sh_id, HeaderTitles, htmlTag, bAll){
              activitiesGoogle_stuff.push(obj);
            } // end if
            } // enf else
+           } // end if CONFIRMADA
            indice += 1;
           }); // end each event of calendar
             function custom_sort(a, b) {
