@@ -5,5 +5,6 @@
  * of our visited and localStorage is not available yet.
  *
  */
-getImageColorsCabeceraSegunda();
-
+$( document ).ready(function() {
+	getImageColorsCabeceraSegunda();
+});

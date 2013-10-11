@@ -31,7 +31,7 @@
   - Fecha: Agosto 2013
 
 */
-(function() {
+$( document ).ready(function() {
 var DEBUG_HUERTO = 0;
 // DATOS DE ENTRADA:
 // Reemplazar por vuestros datos particulares
@@ -124,7 +124,7 @@ var jqxhr = $.getJSON( url, function() {
                       image["ColorR"] = colorTemp.r;
                       image["ColorG"] = colorTemp.g;
                       image["ColorB"] = colorTemp.b;
-                      console.log("EMBEDL.LY " + image["Nombre"]+" ,"+image["ColorR"]+" ,"+image["ColorG"]+" ,"+image["ColorB"]);
+                      console.log(image["Nombre"]+" ,"+image["ColorR"]+" ,"+image["ColorG"]+" ,"+image["ColorB"]);
                       // FALTA AÑADIR FILA A SPREADSHEET ****
               }); // end .progress
         } // End if Image not Found
@@ -247,7 +247,8 @@ function loadPrevNexImages(){
        // console.log("next next " + nextNextImage[1].src);
     }      
 }
-})(); // END OF FILE
+//})(); // END OF FILE
+});
 /*
 
     GOOGLE CALENDAR PUBLIC

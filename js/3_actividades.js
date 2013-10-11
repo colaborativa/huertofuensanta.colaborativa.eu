@@ -5,6 +5,7 @@
  * of our visited and localStorage is not available yet.
  *
  */
-getImageColorsCabeceraSegunda();
-getListActivitiesIntoTemplate(activitiesGoogle_sh_id, activitiesHeaderTitles, activitiesGoogle_htmlTag, true);
-
+$( document ).ready(function() {
+	getImageColorsCabeceraSegunda();
+	getListActivitiesIntoTemplate(activitiesGoogle_sh_id, activitiesHeaderTitles, activitiesGoogle_htmlTag, true);
+});
