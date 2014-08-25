@@ -38,7 +38,7 @@ var DEBUG_HUERTO = 0;
 var ocultarFlickrOwnerName = 'colaborativa.eu'; /* Si casi todas las fotos las ha insertado el mismo usuario entonces incluir 
 aqui el "ownerName" para no mostrarlo en las fotos ya que sería repetitivo */
 // Construir URL para obtener imágenes de Flickr
-var url = 'http://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos';
+var url = 'https://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos';
 url += '&api_key='+flickr_api_key;
 url += '&group_id='+flickr_group_id;
 url += '&extras=description%2Cdate_taken%2C+owner_name%2C+icon_server%2C+views%2C+tags';
